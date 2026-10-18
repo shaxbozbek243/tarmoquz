@@ -1260,6 +1260,12 @@ function fikraThreadHTML(p){
  '<div class="fikra-comments-tree">'+fikraCommentsHTML(p.comments,p.id)+'</div>'+
  fikraCommentForm(p.id,'','Fikringizni yozing...')+'</div>';
 }
+var fikraV11ReelHTML=fikraReelHTML;
+fikraReelHTML=function(r){
+ var html=fikraV11ReelHTML(r),u=userFor(r.who),who='<div class="fikra-reel-who">'+avatar(r.who)+'<strong>'+esc(u.name)+'</strong>';
+ if(fikraIsUuid(r.author_id))html=html.replace(who,'<div class="fikra-reel-who"><button type="button" class="fikra-click-profile" style="color:white;gap:7px" data-fikra-profile="'+esc(r.author_id)+'">'+avatar(r.who)+'<strong>'+esc(u.name)+'</strong></button>');
+ return html;
+};
 var fikraV11PostHTML=postHTML;
 postHTML=function(p){
  var html=fikraV11PostHTML(p);
