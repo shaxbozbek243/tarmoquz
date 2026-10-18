@@ -1,0 +1,673 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f8f9fd">
+<title>FIKRA — Fikrlar uchrashadigan joy</title>
+<style>
+:root{--bg:#f7f8fc;--panel:#fff;--text:#1e2433;--sub:#80879b;--line:#edf0f6;--purple:#6655ed;--purple-dark:#5042c8;--purple-light:#f0edff;--hover:#f5f6fb;--shadow:0 16px 50px rgba(29,36,78,.055)}
+body.dark{--bg:#0f1220;--panel:#191d2e;--text:#f2f3fa;--sub:#a2a7bb;--line:#2a3044;--purple-light:#282549;--hover:#24283b;--shadow:none;color-scheme:dark}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font:15px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;transition:background .2s,color .2s}button,input,textarea{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #988dff;outline-offset:2px}button{border:0;background:none;color:inherit}a{color:inherit;text-decoration:none}.icon{height:21px;width:21px;fill:none;stroke:currentColor;stroke-width:1.85;stroke-linecap:round;stroke-linejoin:round;vertical-align:middle;flex:none}.app{max-width:1450px;min-height:100vh;margin:auto;display:grid;grid-template-columns:258px minmax(0,660px) minmax(270px,330px);gap:24px;padding:0 25px}.left,.right{position:sticky;top:0;height:100vh;overflow-y:auto;scrollbar-width:none}.left::-webkit-scrollbar,.right::-webkit-scrollbar{display:none}.left{padding:30px 8px 25px 2px;display:flex;flex-direction:column}.brand{display:flex;align-items:center;gap:12px;margin:0 0 34px 16px;font-size:27px;font-weight:860;letter-spacing:-1.5px}.brand-logo{background:var(--purple);border-radius:16px 16px 16px 5px;width:45px;height:45px;display:grid;place-items:center;color:white;font-size:30px;font-weight:900;letter-spacing:-3px;box-shadow:0 8px 17px #6655ed37}.brand-name span{color:var(--purple)}.nav-list{display:grid;gap:5px}.nav-item{display:flex;align-items:center;gap:16px;padding:14px 17px;border-radius:15px;text-align:left;font-weight:620;color:var(--sub);font-size:16px;transition:.18s}.nav-item:hover{background:var(--hover);color:var(--text)}.nav-item.active{background:var(--purple-light);color:var(--purple);font-weight:750}.nav-item .icon{width:23px;height:23px}.new-post{width:100%;margin-top:27px;padding:14px 20px;background:var(--purple);color:white;border-radius:14px;font-weight:800;box-shadow:0 9px 20px #6655ed35;display:flex;justify-content:center;align-items:center;gap:10px}.new-post:hover,.btn-main:hover{background:var(--purple-dark)}.profile-mini{margin-top:auto;display:flex;align-items:center;text-align:left;gap:11px;padding:13px 11px;border:1px solid var(--line);background:var(--panel);border-radius:17px;width:100%}.profile-mini:hover{border-color:#c9c3fa}.profile-mini strong{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:126px}.profile-mini small{display:block;color:var(--sub)}.profile-mini .icon{margin-left:auto;width:17px}.avatar{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;font-weight:800;flex:none;color:white;letter-spacing:.2px}.avatar.a1{background:linear-gradient(135deg,#ffb798,#ed6d83)}.avatar.a2{background:linear-gradient(135deg,#8098ff,#6462d9)}.avatar.a3{background:linear-gradient(135deg,#63d1b3,#269b91)}.avatar.a4{background:linear-gradient(135deg,#f7c179,#df8b47)}.avatar.mine{background:linear-gradient(135deg,#7864fa,#a38afb)}.avatar.big{width:76px;height:76px;font-size:25px;border:5px solid var(--panel)}
+.main{min-height:100vh;background:var(--panel);border-left:1px solid var(--line);border-right:1px solid var(--line)}.mainhead{position:sticky;z-index:10;top:0;display:flex;align-items:center;justify-content:space-between;padding:19px 24px 17px;background:var(--panel);border-bottom:1px solid var(--line);background-color:color-mix(in srgb,var(--panel) 94%,transparent);backdrop-filter:blur(12px)}.mainhead h1{margin:0;font-size:21px;letter-spacing:-.6px;font-weight:820}.mainhead .subhead{font-size:12px;color:var(--sub)}.main-actions{display:flex;gap:6px}.round-action{width:37px;height:37px;border-radius:11px;display:grid;place-items:center;color:var(--sub)}.round-action:hover{background:var(--hover);color:var(--purple)}.intro{padding:24px 24px 5px}.intro-line{display:flex;align-items:center;gap:14px}.intro-hey{margin:0;color:var(--sub);font-size:13px}.intro h2{font-size:23px;letter-spacing:-.7px;margin:1px 0 0}.intro h2 em{font-style:normal;color:var(--purple)}.compose{display:flex;gap:12px;padding:20px 24px;border-bottom:1px solid var(--line)}.compose-content{min-width:0;flex:1}.compose textarea,.modal textarea{width:100%;border:0;outline:0;background:transparent;color:var(--text);resize:vertical;min-height:63px;max-height:250px;padding:6px 0;font-size:16px;line-height:1.55}.compose textarea::placeholder,.modal textarea::placeholder{color:#a4aabd}.compose-tools{display:flex;align-items:center;justify-content:space-between;padding-top:10px;border-top:1px solid var(--line)}.toolbox{display:flex;align-items:center;gap:5px}.toolbutton{display:grid;place-items:center;width:34px;height:34px;border-radius:9px;color:var(--purple)}.toolbutton:hover{background:var(--purple-light)}.post-send{display:flex;gap:10px;align-items:center}.count{font-size:12px;color:var(--sub)}.count.bad{color:#e34c5d}.btn-main{padding:10px 19px;border-radius:11px;color:white;background:var(--purple);font-weight:750}.btn-main:disabled{opacity:.45;cursor:not-allowed}.tabs{display:flex;padding:0 18px;border-bottom:1px solid var(--line)}.tab{position:relative;padding:16px 20px;color:var(--sub);font-weight:650;flex:1}.tab.active{color:var(--text);font-weight:780}.tab.active:after{content:"";position:absolute;height:3px;background:var(--purple);border-radius:5px 5px 0 0;bottom:0;left:27%;right:27%}.post-card{padding:19px 24px 14px;display:flex;gap:12px;border-bottom:1px solid var(--line);transition:background .15s}.post-card:hover{background:color-mix(in srgb,var(--hover) 45%,var(--panel))}.post-content{flex:1;min-width:0}.post-top{display:flex;gap:5px;align-items:center;flex-wrap:wrap;margin-bottom:6px}.post-top strong{font-size:14px}.verified{color:var(--purple);font-weight:900;font-size:13px}.muted,.time-dot{color:var(--sub);font-size:13px}.time-dot{margin:0 2px}.post-more{margin-left:auto;line-height:1;color:var(--sub);padding:3px 6px;border-radius:9px}.post-more:hover{background:var(--hover)}.post-text{font-size:15px;line-height:1.68;white-space:pre-wrap;overflow-wrap:anywhere;margin:3px 0 14px}.hashtag{color:var(--purple);font-weight:630}.post-media{border-radius:16px;display:block;width:100%;max-height:430px;object-fit:cover;margin:11px 0 15px;border:1px solid var(--line)}.promo-art{border-radius:17px;border:1px solid #ded8fe;margin:14px 0 15px;background:linear-gradient(125deg,#5e4ce1,#998cf8 60%,#dfd7ff);color:#fff;padding:28px;min-height:185px;display:flex;align-items:center;justify-content:space-between;overflow:hidden}.promo-art strong{font-size:30px;line-height:1.15;letter-spacing:-1.2px;position:relative;z-index:1}.promo-art .orb{width:132px;height:132px;border-radius:38px 38px 38px 8px;background:#ffffff30;transform:rotate(-20deg);position:relative;right:3px;box-shadow:20px -15px 0 #ffffff20}.post-actions{display:flex;justify-content:space-between;gap:5px;max-width:470px}.engage{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--sub);padding:6px;border-radius:8px;min-width:44px}.engage:hover{background:var(--hover);color:var(--purple)}.engage .icon{width:18px;height:18px}.engage.liked{color:#f25282}.engage.reposted{color:#26ae83}.engage.saved{color:var(--purple)}.engage.liked .icon{fill:#f2528230}.engage.saved .icon{fill:#6655ed30}.thread{border-top:1px solid var(--line);margin-top:13px;padding-top:14px}.thread-title{font-size:13px;color:var(--sub);font-weight:750;margin-bottom:10px}.comment{display:flex;gap:10px;margin-bottom:12px;font-size:13px}.comment .avatar{height:28px;width:28px;font-size:10px}.comment strong{margin-right:5px}.comment p{margin:2px 0;overflow-wrap:anywhere}.reply-box{display:flex;gap:8px;margin-top:12px}.reply-box input{border:1px solid var(--line);padding:10px 12px;flex:1;min-width:0;border-radius:10px;background:var(--bg);color:var(--text);outline:none}.reply-box button{background:var(--purple);color:white;border-radius:10px;padding:9px 13px;font-weight:700}
+.right{padding:27px 0 30px 0}.right-search{display:flex;align-items:center;gap:10px;background:var(--panel);padding:12px 15px;border:1px solid var(--line);border-radius:14px;margin-bottom:20px;color:var(--sub)}.right-search input{background:none;border:0;outline:0;width:100%;color:var(--text)}.sidecard{background:var(--panel);border:1px solid var(--line);border-radius:18px;margin:0 0 17px;overflow:hidden}.sidecard h3{font-size:17px;letter-spacing:-.3px;margin:0;padding:19px 17px 9px}.trend{padding:12px 17px;display:block;width:100%;text-align:left}.trend:hover,.suggestion:hover{background:var(--hover)}.trend small{display:block;color:var(--sub);font-size:11px}.trend strong{display:block;font-size:14px;margin:2px 0}.suggestion{display:flex;align-items:center;gap:9px;padding:12px 14px}.suggestion .avatar{width:38px;height:38px;font-size:12px}.suggestion .who{flex:1;min-width:0}.suggestion strong,.suggestion small{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.suggestion strong{font-size:13px}.suggestion small{color:var(--sub);font-size:12px}.follow{padding:7px 11px;color:var(--purple);background:var(--purple-light);border-radius:9px;font-weight:750;font-size:12px}.follow.on{background:var(--hover);color:var(--sub)}.side-foot{padding:6px 8px;font-size:12px;line-height:2;color:var(--sub)}.status-pill{background:var(--purple-light);color:var(--purple);display:inline-block;padding:4px 9px;border-radius:30px;font-size:11px;font-weight:800;letter-spacing:.1px}
+.searchbig{display:flex;gap:10px;padding:14px 16px;margin:18px 24px;background:var(--bg);border-radius:14px;align-items:center;color:var(--sub)}.searchbig input{border:0;background:none;outline:0;color:var(--text);width:100%;font-size:15px}.block-title{font-size:15px;font-weight:800;margin:0;padding:17px 24px;background:var(--panel)}.empty{min-height:240px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:38px 34px;color:var(--sub)}.empty .icon{width:36px;height:36px;color:var(--purple);margin-bottom:12px}.empty strong{font-size:18px;color:var(--text);margin-bottom:5px}.empty p{margin:0 0 15px;max-width:300px;font-size:13px}.profile-cover{height:140px;background:radial-gradient(circle at 82% 25%,#beaaff 0 18%,transparent 19%),linear-gradient(120deg,#5440d0,#8b77ff 65%,#ccc1ff)}.profile-area{padding:0 25px 18px}.profile-area .avatar.big{margin-top:-39px}.profile-row{display:flex;justify-content:space-between;align-items:center}.edit-btn{border:1px solid var(--line);background:var(--panel);border-radius:12px;padding:8px 14px;font-weight:730}.edit-btn:hover{background:var(--hover)}.profile-area h2{margin:10px 0 0;font-size:22px}.profile-area p{margin:8px 0;color:var(--text);font-size:14px}.profile-stat{display:flex;gap:20px;color:var(--sub);font-size:13px}.profile-stat strong{color:var(--text)}.notif{display:flex;gap:14px;padding:20px 23px;border-bottom:1px solid var(--line)}.notif .icon{color:var(--purple)}.notif p{margin:0;font-size:14px}.notif small{color:var(--sub)}.image-preview{position:relative;margin:10px 0}.image-preview img{display:block;max-height:225px;max-width:100%;border-radius:14px;object-fit:contain;background:var(--bg)}.remove-image{position:absolute;top:7px;right:7px;color:white;background:#272b39cc;border-radius:50%;height:28px;width:28px;font-weight:800}.mobile-nav{display:none}.mobile-header{display:none}.fab{display:none}
+.overlay{position:fixed;z-index:40;inset:0;background:#17162d9c;display:flex;align-items:flex-start;justify-content:center;padding:7vh 14px 18px;overflow-y:auto}.modal{width:100%;max-width:560px;border-radius:22px;background:var(--panel);padding:24px;box-shadow:0 22px 90px #12102630}.modal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}.modal-head h2{font-size:20px;margin:0}.modal-close{border-radius:9px;padding:6px}.modal textarea{min-height:140px}.modal-foot{display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--line);padding-top:13px}.field-label{display:block;font-weight:720;font-size:13px;margin:14px 0 6px}.field{border:1px solid var(--line);padding:11px 13px;border-radius:10px;width:100%;background:var(--bg);color:var(--text)}.hint{font-size:12px;color:var(--sub);margin-top:8px}.toast{position:fixed;z-index:99;bottom:24px;left:50%;transform:translateX(-50%);background:#252641;color:#fff;border-radius:12px;padding:12px 17px;box-shadow:0 10px 30px #0003;font-weight:630;max-width:90vw;text-align:center}.hide{display:none!important}
+@media(max-width:1190px){.app{grid-template-columns:215px minmax(0,660px) 270px;gap:14px;padding:0 13px}.left{padding-left:0}.nav-item{font-size:15px}.right{padding-right:0}}
+@media(max-width:990px){.app{grid-template-columns:215px minmax(0,680px);max-width:930px;gap:10px}.right{display:none}}
+@media(max-width:680px){.app{display:block;padding:0;max-width:680px}.left,.right{display:none}.main{border:0;padding-bottom:81px}.mainhead{padding:14px 17px}.mainhead h1{font-size:19px}.intro{padding:17px 16px 0}.intro h2{font-size:21px}.compose{padding:15px 15px 17px}.post-card{padding:17px 14px 12px;gap:9px}.post-card>.avatar{width:36px;height:36px;font-size:12px}.post-actions{gap:0}.engage{gap:4px;padding:5px 3px;font-size:11px}.engage .icon{width:17px;height:17px}.post-top strong{font-size:13px}.post-top .muted{font-size:12px}.mobile-nav{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:20;justify-content:space-around;align-items:center;padding:10px 8px max(12px,env(safe-area-inset-bottom));background:var(--panel);border-top:1px solid var(--line);box-shadow:0 -7px 35px #0000000a}.mobile-nav button{width:54px;height:40px;display:grid;place-items:center;color:var(--sub);border-radius:12px}.mobile-nav button.active{color:var(--purple);background:var(--purple-light)}.mobile-nav .icon{height:23px;width:23px}.fab{position:fixed;z-index:15;right:21px;bottom:91px;width:52px;height:52px;border-radius:16px;color:white;background:var(--purple);display:grid;place-items:center;box-shadow:0 10px 25px #6655ed77}.fab .icon{width:24px;height:24px}.tabs{padding:0 5px}.tab{padding:13px 9px}.searchbig{margin:15px}.profile-area{padding:0 18px 17px}.promo-art{min-height:135px;padding:18px}.promo-art strong{font-size:24px}.promo-art .orb{height:90px;width:90px;flex:none}}
+@media(max-width:370px){.post-top{gap:3px}.muted{font-size:11px}.post-text{font-size:14px}.engage{min-width:32px}.engage span{font-size:10px}.compose>.avatar{display:none}}
+.fikra-cloudbar{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:11px 17px;border-bottom:1px solid var(--line)}.fikra-cloudbar button{white-space:nowrap}.fikra-cloudbar .edit-btn{padding:5px 8px}.fikra-cloudbar .icon{width:16px;height:16px}.fikra-error{background:#ffe9ed;color:#bc2d42;font-size:12px;margin:0;padding:9px 16px}.fikra-sponsored{background:color-mix(in srgb,var(--purple-light) 55%,var(--panel));border-left:3px solid var(--purple)}@media(max-width:440px){.fikra-cloudbar{flex-wrap:wrap}}
+/* FIKRA official authentication view */
+.auth-gate{position:fixed;z-index:80;inset:0;background:#f6f5fc;overflow:auto;font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;color:#202139}
+.auth-gate[hidden]{display:none!important}
+.auth-shell{min-height:100vh;display:grid;grid-template-columns:minmax(0,1fr) minmax(390px,510px)}
+.auth-feature{position:relative;overflow:hidden;background:linear-gradient(140deg,#5140c8,#7162ed 52%,#9879f3);color:#fff;padding:clamp(32px,6vw,95px);display:flex;flex-direction:column;justify-content:space-between}
+.auth-feature::before{content:"";width:500px;height:500px;position:absolute;right:-210px;bottom:-180px;border:90px solid #ffffff15;border-radius:45%;transform:rotate(30deg)}
+.auth-feature::after{content:"";position:absolute;right:16%;top:24%;width:150px;height:150px;border-radius:32px 32px 32px 5px;transform:rotate(-18deg);border:30px solid #ffffff12}
+.auth-feature>*{position:relative;z-index:1}
+.auth-identity{display:flex;align-items:center;gap:13px;font-size:25px;font-weight:850;letter-spacing:-1px}
+.auth-feature .brand-logo{background:#fff;color:#6655ed;box-shadow:0 10px 28px #17125b33}
+.auth-feature h2{font-size:clamp(40px,5vw,70px);line-height:1.12;max-width:680px;letter-spacing:-2.8px;margin:34px 0 21px}
+.auth-feature h2 span{color:#dcd7ff}
+.auth-feature p{color:#e6e2ff;font-size:17px;max-width:420px;line-height:1.75}
+.auth-pillrow{display:flex;flex-wrap:wrap;gap:9px;margin-top:35px}
+.auth-pillrow span{display:inline-flex;gap:7px;align-items:center;padding:9px 14px;border-radius:50px;background:#ffffff1b;border:1px solid #ffffff33;font-size:13px}
+.auth-feature small{color:#e6e2ff}
+.auth-panel{background:#fff;display:flex;align-items:center;justify-content:center;padding:35px 38px;min-width:0}
+.auth-inner{width:100%;max-width:380px}
+.auth-mobile-brand{display:none}
+.auth-kicker{color:#6857ea;font-size:12px;font-weight:850;letter-spacing:1.6px;text-transform:uppercase}
+.auth-inner h1{font-size:34px;line-height:1.18;letter-spacing:-1.4px;margin:10px 0 12px}
+.auth-description{font-size:14px;color:#85899a;line-height:1.7;margin:0 0 27px}
+.auth-switch{display:grid;grid-template-columns:1fr 1fr;gap:5px;background:#f2f1fb;border-radius:14px;padding:5px;margin-bottom:24px}
+.auth-switch button{border-radius:10px;padding:12px 10px;font-size:14px;font-weight:760;color:#75758f;transition:.17s}
+.auth-switch button.selected{color:#6757e9;background:white;box-shadow:0 2px 8px #1f1b4a12}
+.auth-google{display:flex;align-items:center;justify-content:center;gap:13px;padding:14px 16px;border:1px solid #e3e4eb;border-radius:14px;background:#fff;width:100%;color:#23273b;font-weight:780;font-size:15px;box-shadow:0 2px 6px #15234509}
+.auth-google:hover{border-color:#aea4ff;background:#faf9ff;box-shadow:0 6px 22px #6655ed18}
+.auth-google:disabled{opacity:.45}
+.google-mark{flex:none;height:22px;width:22px}
+.auth-divider{display:flex;gap:12px;align-items:center;justify-content:center;color:#a4a8b5;font-size:12px;margin:21px 0}
+.auth-divider::before,.auth-divider::after{content:"";height:1px;flex:1;background:#eceef4}
+.auth-guest{width:100%;padding:12px 14px;color:#6256c9;font-weight:750;border-radius:12px}
+.auth-guest:hover{background:#f0edff}
+.auth-note{padding:16px;background:#f7f6fe;border:1px solid #e9e5ff;border-radius:13px;font-size:12px;color:#777995;line-height:1.7;margin-top:25px}
+.auth-foot{font-size:11px;color:#a5a8b7;text-align:center;line-height:1.7;margin-top:20px}
+.auth-status{margin:0 0 14px;font-size:12px;background:#fff1f2;border:1px solid #fed7d9;color:#b52d3e;padding:10px 13px;border-radius:9px}
+@media(max-width:870px){.auth-shell{grid-template-columns:1fr}.auth-feature{padding:25px 32px;min-height:245px}.auth-feature h2{font-size:32px;letter-spacing:-1.1px;margin:16px 0 10px}.auth-feature p{font-size:13px;line-height:1.5;margin:0}.auth-pillrow,.auth-feature small{display:none}.auth-panel{padding:36px 22px 60px}}
+@media(max-width:540px){.auth-feature{min-height:188px;padding:21px 22px}.auth-feature .auth-identity{font-size:20px}.auth-feature .brand-logo{height:36px;width:36px;border-radius:13px 13px 13px 4px;font-size:24px}.auth-feature h2{font-size:27px;max-width:320px;margin:15px 0 0}.auth-feature p{display:none}.auth-panel{align-items:flex-start;padding:30px 22px 40px}.auth-inner h1{font-size:29px}.auth-note{margin-top:18px}}
+
+
+/* FIKRA v5: corner-only sponsor, profile photos, premium, owner dashboard */
+.fikra-corner-ad{position:fixed;bottom:20px;right:20px;z-index:35;width:min(322px,calc(100vw - 24px));max-height:260px;overflow:auto;background:var(--panel);color:var(--text);border:1px solid var(--line);box-shadow:0 18px 50px #2020482c;border-radius:19px;padding:17px 18px 18px}
+.fikra-corner-ad .corner-top{display:flex;justify-content:space-between;gap:8px;align-items:center;margin-bottom:9px}
+.fikra-corner-ad .corner-mark{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--sub);letter-spacing:.35px;font-weight:700}
+.fikra-corner-ad .corner-dot{display:inline-grid;place-items:center;background:var(--purple-light);color:var(--purple);border-radius:8px;font-size:10px;font-weight:900;width:29px;height:29px}
+.fikra-corner-ad .corner-close{border-radius:9px;width:30px;height:30px;color:var(--sub);display:grid;place-items:center;background:var(--hover);font-size:20px}
+.fikra-corner-ad h3{font-size:16px;line-height:1.35;margin:4px 0 6px;letter-spacing:-.3px}
+.fikra-corner-ad p{font-size:12px;line-height:1.55;color:var(--sub);margin:4px 0 13px}
+.fikra-corner-ad .corner-link{display:inline-flex;padding:9px 13px;border-radius:10px;background:var(--purple);color:white;font-size:12px;font-weight:750}
+.fikra-corner-ad .corner-small{font-size:10px;color:var(--sub)}
+.fikra-premium-tag{display:inline-flex;align-items:center;gap:4px;background:linear-gradient(110deg,#edd792,#fff3c6);color:#765310;border:1px solid #ddc47b;padding:2px 7px;border-radius:6px;font-size:10px;font-weight:850;letter-spacing:.3px;margin-left:6px;vertical-align:middle;white-space:nowrap}
+.fikra-admin-tag{display:inline-flex;align-items:center;background:#eae6ff;color:#5c46d3;padding:2px 6px;border-radius:6px;font-size:10px;font-weight:800;margin-left:4px}
+.avatar.fikra-has-photo{overflow:hidden;background:var(--purple-light);padding:0}.avatar.fikra-has-photo img{display:block;width:100%;height:100%;object-fit:cover}
+.fikra-feature-page{padding:20px 24px 50px}
+.fikra-feature-hero{background:linear-gradient(138deg,#33236e,#6954d9 62%,#9a80f8);border-radius:23px;padding:35px 28px;color:#fff;margin-bottom:20px;position:relative;overflow:hidden}
+.fikra-feature-hero h2{font-size:clamp(25px,4vw,39px);letter-spacing:-1px;margin:12px 0}
+.fikra-feature-hero p{font-size:14px;max-width:460px;line-height:1.75;color:#e8e5ff;margin-bottom:0}
+.fikra-feature-hero .crown{font-size:30px}
+.fikra-benefits{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.fikra-benefit{background:var(--hover);border:1px solid var(--line);border-radius:15px;padding:17px}
+.fikra-benefit strong{font-size:14px;display:block;margin:4px 0}
+.fikra-benefit p{font-size:12px;color:var(--sub);line-height:1.5;margin:0}
+.fikra-admin-wrap{padding:22px 24px 60px}
+.fikra-admin-card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:19px;margin-bottom:14px}
+.fikra-admin-card h3{margin:0 0 12px;font-size:17px}
+.fikra-admin-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.fikra-admin-wrap input,.fikra-admin-wrap textarea{display:block;width:100%;border:1px solid var(--line);background:var(--bg);color:var(--text);border-radius:10px;padding:11px 12px;min-width:0}
+.fikra-admin-wrap label{display:block;font-size:12px;font-weight:730;color:var(--sub);margin:10px 0 5px}
+.fikra-admin-wrap textarea{resize:vertical;min-height:75px}
+.fikra-admin-wrap .inline-setting{display:flex;gap:10px;align-items:center}
+.fikra-admin-wrap .inline-setting input{width:auto}
+.fikra-admin-row{display:flex;gap:9px;align-items:center;justify-content:space-between;border-top:1px solid var(--line);padding:12px 0;min-width:0}
+.fikra-admin-row>div{min-width:0}.fikra-admin-row strong{display:block;overflow-wrap:anywhere}.fikra-admin-row small{font-size:11px;color:var(--sub);overflow-wrap:anywhere}
+.fikra-admin-actions{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}
+.fikra-admin-actions button{font-size:12px;font-weight:750;padding:8px 11px;border-radius:9px;background:var(--purple-light);color:var(--purple)}
+.fikra-admin-actions .danger{color:#bd3554;background:#feeaf0}
+.fikra-avatar-button{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:750;border:1px solid var(--line);padding:9px 12px;border-radius:10px}
+.fikra-premium-nav{color:#aa8433!important}
+@media(max-width:670px){.fikra-corner-ad{bottom:76px;right:10px;width:min(292px,calc(100vw - 20px));padding:13px 15px}.fikra-benefits,.fikra-admin-grid{grid-template-columns:1fr}.fikra-feature-page,.fikra-admin-wrap{padding:15px 14px 45px}.fikra-feature-hero{padding:26px 21px}.fikra-admin-row{align-items:flex-start;flex-direction:column}}
+
+</style>
+</head>
+<body>
+<svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden" xmlns="http://www.w3.org/2000/svg">
+<symbol id="i-home" viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/></symbol>
+<symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7.5"/><path d="m17 17 4.2 4.2"/></symbol>
+<symbol id="i-bell" viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/></symbol>
+<symbol id="i-bookmark" viewBox="0 0 24 24"><path d="M6 3h12v18l-6-4-6 4z"/></symbol>
+<symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
+<symbol id="i-pen" viewBox="0 0 24 24"><path d="m15 5 4 4M4 20l5-.9L20 8a2.8 2.8 0 0 0-4-4L5 15z"/></symbol>
+<symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8" r="1.5"/><path d="m3 17 6-6 5 5 3-3 4 4"/></symbol>
+<symbol id="i-heart" viewBox="0 0 24 24"><path d="M20.5 5.8c-2.3-2.4-5.6-1.5-8.5 1.5-2.9-3-6.2-3.9-8.5-1.5-2.3 2.5-.6 5.6.9 7.1L12 21l7.6-8.1c1.5-1.5 3.2-4.6.9-7.1z"/></symbol>
+<symbol id="i-message" viewBox="0 0 24 24"><path d="M20.5 11.5a8.5 8.5 0 0 1-12.8 7.3L3 20l1.2-4.6A8.5 8.5 0 1 1 20.5 11.5z"/></symbol>
+<symbol id="i-repeat" viewBox="0 0 24 24"><path d="M4 7h14l-3-3m3 3-3 3M20 17H6l3 3m-3-3 3-3"/></symbol>
+<symbol id="i-share" viewBox="0 0 24 24"><path d="M12 16V3m0 0L7 8m5-5 5 5M5 13v7h14v-7"/></symbol>
+<symbol id="i-more" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></symbol>
+<symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 15a8.5 8.5 0 0 1-11-11A8.5 8.5 0 1 0 20 15z"/></symbol>
+<symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+<symbol id="i-x" viewBox="0 0 24 24"><path d="M5 5l14 14M19 5 5 19"/></symbol>
+<symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+<symbol id="i-spark" viewBox="0 0 24 24"><path d="m12 2 2.5 7.5L22 12l-7.5 2.5L12 22l-2.5-7.5L2 12l7.5-2.5z"/></symbol>
+<symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 6h16m-14 0 1 15h10l1-15M9 6V3h6v3M10 10v7m4-7v7"/></symbol>
+</svg>
+<div id="app" class="app">
+<aside class="left" id="left"></aside>
+<main class="main" id="main"></main>
+<aside class="right" id="right"></aside>
+</div>
+<div id="mobileNav" class="mobile-nav"></div>
+<button class="fab" data-act="compose" aria-label="Yangi post"><svg class="icon"><use href="#i-pen"/></svg></button>
+<div id="authGate" class="auth-gate" role="dialog" aria-label="FIKRAga kirish" aria-modal="true">
+  <div class="auth-shell">
+    <section class="auth-feature">
+      <div class="auth-identity"><span class="brand-logo">f.</span><span>fikra.</span></div>
+      <div><div class="auth-kicker" style="color:#dfdbff">O‘Z FIKRINGNI ULASH</div>
+      <h2>Har bir fikrning <span>o‘z ovozi</span> bor.</h2>
+      <p>Post yozing, do‘stlarni kuzating va yangi g‘oyalarni FIKRA bilan kashf eting.</p>
+      <div class="auth-pillrow"><span>✦ Postlar</span><span>♡ Layklar</span><span>◈ Fikrlar</span></div></div>
+      <small>© 2026 FIKRA — O‘zbekiston uchun ijtimoiy platforma</small>
+    </section>
+    <section class="auth-panel">
+      <div class="auth-inner">
+        <div class="auth-kicker">FIKRA HAMJAMIYATI</div>
+        <h1 id="authHeading">Xush kelibsiz!</h1>
+        <p class="auth-description" id="authDescription">Google akkauntingiz yordamida tez va xavfsiz kiring.</p>
+        <div class="auth-switch" role="tablist" aria-label="Kirish turi">
+          <button type="button" class="selected" id="authLoginTab" data-auth="mode-login" role="tab" aria-selected="true">Kirish</button>
+          <button type="button" id="authRegisterTab" data-auth="mode-register" role="tab" aria-selected="false">Ro‘yxatdan o‘tish</button>
+        </div>
+        <p id="authError" class="auth-status" hidden></p>
+        <button id="authGoogle" class="auth-google" data-auth="google" type="button">
+          <svg class="google-mark" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M21.35 12.2c0-.72-.07-1.4-.2-2.08H12v3.93h5.23a4.48 4.48 0 0 1-1.95 2.93v2.42h3.16c1.84-1.7 2.91-4.2 2.91-7.2"/><path fill="#34A853" d="M12 21.7c2.62 0 4.82-.87 6.44-2.35l-3.16-2.42c-.87.6-1.97.94-3.28.94-2.53 0-4.68-1.7-5.44-4.01H3.32v2.49A9.74 9.74 0 0 0 12 21.7"/><path fill="#FBBC05" d="M6.56 13.86A5.86 5.86 0 0 1 6.25 12c0-.64.1-1.26.31-1.85V7.66H3.32a9.72 9.72 0 0 0 0 8.68z"/><path fill="#EA4335" d="M12 6.13c1.43 0 2.72.5 3.74 1.47l2.8-2.79C16.82 3.18 14.63 2.3 12 2.3a9.74 9.74 0 0 0-8.68 5.36l3.24 2.49c.76-2.31 2.91-4.02 5.44-4.02"/></svg>
+          <span id="authGoogleLabel">Google bilan kirish</span>
+        </button>
+        <div class="auth-divider">yoki</div>
+        <button class="auth-guest" data-auth="guest" type="button">Mehmon sifatida ko‘rish →</button>
+        <div class="auth-note"><strong>Bilishingiz kerak:</strong> Google orqali yangi foydalanuvchi birinchi kirishda avtomatik ro‘yxatdan o‘tadi. FIKRA Google parolingizni saqlamaydi.</div>
+        <div class="auth-foot">Kirish orqali platforma qoidalariga rioya qilishga rozilik bildirasiz.</div>
+      </div>
+    </section>
+  </div>
+</div>
+<div id="overlay"></div><div id="toast" class="toast hide" role="status" aria-live="polite"></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.4/dist/umd/supabase.min.js"></script>
+<script>
+(function(){
+'use strict';
+var $=function(id){return document.getElementById(id)};
+var icon=function(n){return '<svg class="icon" aria-hidden="true"><use href="#i-'+n+'"></use></svg>'};
+var esc=function(v){return String(v==null?'':v).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})};
+var now=Date.now();
+var people={
+dilshoda:{name:'Dilshoda Karimova',handle:'dilshoda',av:'DK',cls:'a1',verified:true,bio:'Dizayn va ijod ✨'},
+bekdev:{name:'BekDev',handle:'bekdev',av:'BD',cls:'a2',verified:true,bio:'Dasturlash, yangi loyihalar'},
+shahlo:{name:'Shahlo',handle:'shahlo',av:'SH',cls:'a3',verified:false,bio:'Kitoblar va hayot'},
+aziz:{name:'Aziz Creative',handle:'aziz',av:'AZ',cls:'a4',verified:false,bio:'Foto va texnologiya'}
+};
+var seeds=[
+{id:'p1',who:'dilshoda',text:'Katta g‘oyalar har doim kichik bir fikrdan boshlanadi. Bugun yangi narsani boshlash uchun eng yaxshi kun! ✨\n\n#Ilhom #Ijod',created:now-720000,likes:248,reposts:34,liked:false,reposted:false,comments:[{who:'bekdev',text:'Ajoyib fikr! 🔥'}],cover:true},
+{id:'p2',who:'bekdev',text:'Dasturlashni o‘rganayotganlar uchun maslahat: mukammal loyiha kutmang. Kichkina, lekin ishlaydigan narsani yarating. Har kuni 1% rivojlanish ham natija beradi. 💻\n\n#Dasturlash #Startap',created:now-2560000,likes:181,reposts:27,liked:false,reposted:false,comments:[]},
+{id:'p3',who:'shahlo',text:'Sizningcha, O‘zbekistonda keyingi katta ijtimoiy platforma qanday bo‘lishi kerak? 🤔 Menimcha, sodda, tezkor va foydali kontentga boy.',created:now-6700000,likes:97,reposts:12,liked:false,reposted:false,comments:[{who:'dilshoda',text:'Eng muhimi — hamma uchun qulay bo‘lsin.'}]},
+{id:'p4',who:'aziz',text:'Bir piyola choy, yangi g‘oyalar va ajoyib suhbat. Dam olish kuningiz qanday o‘tyapti? ☕\n\n#Kayfiyat',created:now-17800000,likes:62,reposts:7,liked:false,reposted:false,comments:[]},
+{id:'p5',who:'bekdev',text:'Mahalliy mahsulotlarimizni qo‘llab-quvvatlaylik. Bugun kichik loyiha — ertaga katta kompaniya bo‘lishi mumkin. 🚀',created:now-83100000,likes:139,reposts:19,liked:false,reposted:false,comments:[]}
+];
+function initial(){return {posts:seeds,following:['dilshoda'],bookmarks:[],notifications:[{text:'FIKRA demosiga xush kelibsiz! O‘z fikringizni boshqalar bilan bo‘lishing.',created:now}],profile:{name:'Mening profilim',handle:'men',bio:'Salom! Men FIKRAdaman.'},theme:'light'}}
+var state;
+try{var parsed=JSON.parse(localStorage.getItem('fikra-demo-v1')||'null');state=parsed&&Array.isArray(parsed.posts)&&parsed.profile?parsed:initial()}catch(e){state=initial()}
+state.following=Array.isArray(state.following)?state.following:[];state.bookmarks=Array.isArray(state.bookmarks)?state.bookmarks:[];state.notifications=Array.isArray(state.notifications)?state.notifications:[];
+var view='home',tab='all',search='',showThreads={},draft={text:'',image:''},modalDraft={text:'',image:''},modalOpen='',timer;
+function save(){try{localStorage.setItem('fikra-demo-v1',JSON.stringify(state));return true}catch(e){notify('Brauzer xotirasi to‘ldi. Kichikroq rasm tanlang.');return false}}
+function notify(message){var t=$('toast');t.textContent=message;t.classList.remove('hide');clearTimeout(timer);timer=setTimeout(function(){t.classList.add('hide')},2800)}
+function userFor(handle){return handle==='men'?{name:state.profile.name,handle:state.profile.handle||'men',av:(state.profile.name||'M').trim().slice(0,2).toUpperCase(),cls:'mine',bio:state.profile.bio}:people[handle]||{name:handle,handle:handle,av:'?',cls:'a2'}}
+function avatar(handle,big){var u=userFor(handle);return '<span class="avatar '+esc(u.cls)+(big?' big':'')+'">'+esc(u.av)+'</span>'}
+function time(ts){var d=Math.max(0,Date.now()-ts);if(d<60000)return 'hozir';if(d<3600000)return Math.floor(d/60000)+' daq';if(d<86400000)return Math.floor(d/3600000)+' soat';return Math.floor(d/86400000)+' kun'}
+function formatText(t){return esc(t).replace(/(^|[\s])#([\p{L}\p{N}_]+)/gu,function(_,before,tag){return before+'<span class="hashtag">#'+tag+'</span>'})}
+function navButton(key,label,ic){return '<button class="nav-item '+(view===key?'active':'')+'" data-act="nav" data-view="'+key+'">'+icon(ic)+'<span>'+label+'</span></button>'}
+function renderLeft(){
+$('left').innerHTML='<div class="brand"><span class="brand-logo">f.</span><span class="brand-name">fikra<span>.</span></span></div>'+
+'<nav class="nav-list" aria-label="Asosiy bo‘limlar">'+navButton('home','Bosh sahifa','home')+navButton('explore','Kashf etish','search')+navButton('notifications','Bildirishnomalar','bell')+navButton('bookmarks','Saqlanganlar','bookmark')+navButton('profile','Profilim','user')+'</nav>'+
+'<button class="new-post" data-act="compose">'+icon('pen')+' Post yaratish</button>'+
+'<button class="profile-mini" data-act="nav" data-view="profile">'+avatar('men')+'<span><strong>'+esc(state.profile.name)+'</strong><small>@'+esc(state.profile.handle)+'</small></span>'+icon('more')+'</button>';
+}
+function renderRight(){
+var trends=[['#Texnologiya','1 284 post'],['#Uzbekistan','962 post'],['#Startap','731 post'],['#Dasturlash','604 post'],['#Kitoblar','392 post']];
+$('right').innerHTML='<label class="right-search">'+icon('search')+'<input id="rightSearch" placeholder="FIKRAda qidirish" aria-label="Qidirish"></label>'+
+'<section class="sidecard"><h3>Hozir mashhur <span style="float:right">'+icon('spark')+'</span></h3>'+trends.map(function(t){return '<button class="trend" data-act="trend" data-tag="'+esc(t[0])+'"><small>Trend • O‘zbekiston</small><strong>'+esc(t[0])+'</strong><small>'+t[1]+'</small></button>'}).join('')+'</section>'+
+'<section class="sidecard"><h3>Kimlarni kuzatish mumkin?</h3>'+Object.keys(people).filter(function(k){return !state.following.includes(k)}).slice(0,3).map(function(k){var u=people[k];return '<div class="suggestion">'+avatar(k)+'<span class="who"><strong>'+esc(u.name)+'</strong><small>@'+esc(u.handle)+'</small></span><button class="follow" data-act="follow" data-who="'+k+'">Kuzatish</button></div>'}).join('')+(state.following.length===Object.keys(people).length?'<p style="padding:8px 16px;color:var(--sub)">Barchasini kuzatyapsiz!</p>':'')+'</section>'+
+'<section class="sidecard" style="padding:17px"><span class="status-pill">DEMO VERSIYA</span><p style="font-size:13px;color:var(--sub);margin-bottom:2px">Postlar va o‘zgarishlar hozircha faqat shu brauzerda saqlanadi. Haqiqiy odamlar bilan ulashish uchun server kerak.</p></section>'+
+'<div class="side-foot">FIKRA © 2026 · Fikrlar uchrashadigan joy<br>Made for Uzbek communities ✦</div>';
+}
+function renderMobile(){
+var entries=[['home','home'],['explore','search'],['notifications','bell'],['bookmarks','bookmark'],['profile','user']];
+$('mobileNav').innerHTML=entries.map(function(x){return '<button aria-label="'+x[0]+'" data-act="nav" data-view="'+x[0]+'" class="'+(view===x[0]?'active':'')+'">'+icon(x[1])+'</button>'}).join('');
+}
+function head(title,desc){return '<header class="mainhead"><div><h1>'+title+'</h1>'+(desc?'<div class="subhead">'+desc+'</div>':'')+'</div><div class="main-actions"><button class="round-action" data-act="theme" aria-label="Tungi rejim">'+icon(state.theme==='dark'?'sun':'moon')+'</button><button class="round-action" data-act="compose" aria-label="Post yaratish">'+icon('pen')+'</button></div></header>'}
+function draftTools(kind){return '<div class="toolbox"><button title="Rasm qo‘shish" aria-label="Rasm qo‘shish" class="toolbutton" data-act="pick-image" data-kind="'+kind+'">'+icon('image')+'</button></div><span class="post-send"><small class="count" id="'+kind+'Count">0/280</small><button class="btn-main" data-act="submit" data-kind="'+kind+'">Postlash</button></span>'}
+function draftPreview(kind){var d=kind==='inline'?draft:modalDraft;return d.image?'<div class="image-preview"><img alt="Tanlangan rasm" src="'+d.image+'"><button class="remove-image" data-act="remove-image" data-kind="'+kind+'" aria-label="Rasmni o‘chirish">×</button></div>':''}
+function compose(){return '<div class="compose">'+avatar('men')+'<div class="compose-content"><textarea id="inlineText" maxlength="281" aria-label="Post matni" placeholder="Nima haqida o‘ylayapsiz?">'+esc(draft.text)+'</textarea><div id="inlinePreview">'+draftPreview('inline')+'</div><div class="compose-tools">'+draftTools('inline')+'</div></div></div>'}
+function postHTML(p){
+var u=userFor(p.who), own=p.who==='men', comments=p.comments||[],saved=state.bookmarks.includes(p.id);
+return '<article class="post-card" id="post-'+esc(p.id)+'">'+avatar(p.who)+'<div class="post-content">'+
+'<div class="post-top"><strong>'+esc(u.name)+'</strong>'+(u.verified?'<span class="verified" title="Tasdiqlangan">✦</span>':'')+'<span class="muted">@'+esc(u.handle)+'</span><span class="time-dot">·</span><span class="muted">'+time(p.created)+'</span><button class="post-more" data-act="'+(own?'delete':'report')+'" data-id="'+esc(p.id)+'" title="'+(own?'Postni o‘chirish':'Shikoyat bildirish')+'">'+icon(own?'trash':'more')+'</button></div>'+
+'<div class="post-text">'+formatText(p.text)+'</div>'+
+(p.cover?'<div class="promo-art"><strong>Har bir fikr<br>muhim. ✦</strong><span class="orb"></span></div>':'')+
+(p.image?'<img class="post-media" alt="Post rasmi" src="'+p.image+'">':'')+
+'<div class="post-actions">'+
+'<button class="engage" data-act="thread" data-id="'+esc(p.id)+'" title="Izohlar">'+icon('message')+'<span>'+comments.length+'</span></button>'+
+'<button class="engage '+(p.reposted?'reposted':'')+'" data-act="repost" data-id="'+esc(p.id)+'" title="Repost">'+icon('repeat')+'<span>'+p.reposts+'</span></button>'+
+'<button class="engage '+(p.liked?'liked':'')+'" data-act="like" data-id="'+esc(p.id)+'" title="Layk">'+icon('heart')+'<span>'+p.likes+'</span></button>'+
+'<button class="engage '+(saved?'saved':'')+'" data-act="bookmark" data-id="'+esc(p.id)+'" title="Saqlash">'+icon('bookmark')+'</button>'+
+'<button class="engage" data-act="share" data-id="'+esc(p.id)+'" title="Ulashish">'+icon('share')+'</button></div>'+
+(showThreads[p.id]?'<div class="thread"><div class="thread-title">Izohlar ('+comments.length+')</div>'+comments.map(function(c){var cu=userFor(c.who);return '<div class="comment">'+avatar(c.who)+'<div><strong>'+esc(cu.name)+'</strong><span class="muted">@'+esc(cu.handle)+'</span><p>'+formatText(c.text)+'</p></div></div>'}).join('')+'<form class="reply-box" data-form="reply" data-id="'+esc(p.id)+'"><input name="reply" maxlength="280" required placeholder="Izoh yozing..." aria-label="Izoh yozish"><button type="submit">Yuborish</button></form></div>':'')+
+'</div></article>'
+}
+function listPosts(){var out=state.posts.slice();if(view==='home'&&tab==='following')out=out.filter(function(p){return p.who==='men'||state.following.includes(p.who)});if(view==='profile')out=out.filter(function(p){return p.who==='men'});if(view==='bookmarks')out=out.filter(function(p){return state.bookmarks.includes(p.id)});if(view==='explore'&&search.trim()){var q=search.toLocaleLowerCase('uz');out=out.filter(function(p){var u=userFor(p.who);return (p.text+' '+u.name+' @'+u.handle).toLocaleLowerCase('uz').includes(q)})}return out.sort(function(a,b){return b.created-a.created})}
+function emptyView(){var data=view==='bookmarks'?['bookmark','Hozircha saqlangan post yo‘q','Yoqtirgan postlaringizni xatcho‘p tugmasi bilan saqlang.']:view==='profile'?['pen','Birinchi postingizni yarating','O‘z fikringizni yozing va profilingiz shu yerda shakllansin.']:view==='explore'?['search','Hech narsa topilmadi','Boshqa so‘z yoki hashtag bilan qidiring.']:['spark','Hozircha post yo‘q','Kuzatayotgan odamlardan postlar shu yerda chiqadi.'];return '<div class="empty">'+icon(data[0])+'<strong>'+data[1]+'</strong><p>'+data[2]+'</p>'+(view==='home'?'<button class="btn-main" data-act="nav" data-view="explore">Odamlarni kashf etish</button>':'')+'</div>'}
+function feedBody(){var items=listPosts();return items.length?items.map(postHTML).join(''):emptyView()}
+function renderFeedBody(){var node=$('feedList');if(node)node.innerHTML=feedBody()}
+function renderMain(){
+var out='',name=state.profile.name;
+if(view==='home'){
+out=head('Bosh sahifa','Fikrlar uchrashadigan joy')+
+'<div class="intro"><p class="intro-hey">Xush kelibsiz 👋</p><h2>Bugun nima <em>yangilik?</em></h2></div>'+compose()+
+'<div class="tabs"><button class="tab '+(tab==='all'?'active':'')+'" data-act="tab" data-tab="all">Siz uchun</button><button class="tab '+(tab==='following'?'active':'')+'" data-act="tab" data-tab="following">Kuzatilyapti</button></div><div id="feedList">'+feedBody()+'</div>';
+}else if(view==='explore'){
+out=head('Kashf etish','Yangi fikrlar va mavzular')+'<label class="searchbig">'+icon('search')+'<input id="exploreSearch" placeholder="Post, odam yoki hashtag qidiring..." value="'+esc(search)+'"></label><h3 class="block-title">'+(search?'Qidiruv natijalari':'So‘nggi postlar')+'</h3><div id="feedList">'+feedBody()+'</div>';
+}else if(view==='bookmarks'){out=head('Saqlangan postlar','Keyinroq o‘qish uchun')+'<div id="feedList">'+feedBody()+'</div>'}
+else if(view==='profile'){
+out=head('Profil','@'+esc(state.profile.handle))+'<div class="profile-cover"></div><div class="profile-area"><div class="profile-row">'+avatar('men',true)+'<button class="edit-btn" data-act="edit">Profilni tahrirlash</button></div><h2>'+esc(name)+'</h2><div class="muted">@'+esc(state.profile.handle)+'</div><p>'+esc(state.profile.bio)+'</p><div class="profile-stat"><span><strong>'+state.posts.filter(function(p){return p.who==='men'}).length+'</strong> post</span><span><strong>'+state.following.length+'</strong> kuzatilmoqda</span></div></div><h3 class="block-title" style="border-top:1px solid var(--line)">Postlarim</h3><div id="feedList">'+feedBody()+'</div>'
+}else{
+out=head('Bildirishnomalar','So‘nggi yangiliklar')+(state.notifications.length?state.notifications.slice().reverse().map(function(n){return '<div class="notif">'+icon('bell')+'<div><p>'+esc(n.text)+'</p><small>'+time(n.created)+'</small></div></div>'}).join(''):'<div class="empty">'+icon('bell')+'<strong>Yangiliklar yo‘q</strong><p>Faollik haqida bildirishnomalar shu yerda bo‘ladi.</p></div>');
+}
+$('main').innerHTML=out;
+updateCounter('inline'); 
+}
+function render(){document.body.classList.toggle('dark',state.theme==='dark');renderLeft();renderRight();renderMobile();renderMain()}
+function updateCounter(kind){var field=$(kind==='inline'?'inlineText':'modalText'),counter=$(kind+'Count');if(field&&counter){counter.textContent=field.value.length+'/280';counter.classList.toggle('bad',field.value.length>280);var b=field.closest('.compose-content,.modal').querySelector('[data-act="submit"]');if(b)b.disabled=field.value.length>280}}
+function openModal(type){
+modalOpen=type;
+if(type==='compose'){modalDraft={text:'',image:''};$('overlay').innerHTML='<div class="overlay" data-act="overlay"><div class="modal" role="dialog" aria-modal="true" aria-label="Yangi post"><div class="modal-head"><h2>Yangi post ✨</h2><button class="modal-close" data-act="close" aria-label="Yopish">'+icon('x')+'</button></div><div style="display:flex;gap:13px">'+avatar('men')+'<div style="flex:1;min-width:0"><textarea id="modalText" maxlength="281" autofocus placeholder="Fikringizni erkin yozing..."></textarea><div id="modalPreview"></div></div></div><div class="modal-foot">'+draftTools('modal')+'</div><p class="hint">280 tagacha belgi. Rasm qo‘shish mumkin.</p></div></div>'}
+if(type==='edit'){$('overlay').innerHTML='<div class="overlay" data-act="overlay"><form class="modal" id="editForm"><div class="modal-head"><h2>Profilni tahrirlash</h2><button type="button" data-act="close" class="modal-close">'+icon('x')+'</button></div><label class="field-label">Ismingiz</label><input class="field" name="name" maxlength="40" required value="'+esc(state.profile.name)+'"><label class="field-label">Foydalanuvchi nomi</label><input class="field" name="handle" maxlength="18" required pattern="[a-zA-Z0-9_]+" value="'+esc(state.profile.handle)+'"><label class="field-label">Bio</label><textarea class="field" style="min-height:90px" name="bio" maxlength="150">'+esc(state.profile.bio)+'</textarea><p class="hint">Hozircha profil faqat ushbu brauzerda saqlanadi.</p><button class="btn-main" style="margin-top:15px;width:100%">Saqlash</button></form></div>'}
+if(type==='compose'){updateCounter('modal');setTimeout(function(){var f=$('modalText');if(f)f.focus()},0)}
+}
+function closeModal(){modalOpen='';$('overlay').innerHTML=''}
+function addNotification(t){state.notifications.push({text:t,created:Date.now()});state.notifications=state.notifications.slice(-35)}
+function addPost(kind){
+var d=kind==='modal'?modalDraft:draft;
+var input=$(kind==='modal'?'modalText':'inlineText');
+if(input)d.text=input.value;
+if(!d.text.trim()&&!d.image){notify('Postga matn yoki rasm qo‘shing.');return}
+if(d.text.length>280){notify('Post 280 belgidan oshmasligi kerak.');return}
+var p={id:'mine-'+Date.now()+'-'+Math.random().toString(36).slice(2,6),who:'men',text:d.text.trim(),image:d.image||'',created:Date.now(),likes:0,reposts:0,liked:false,reposted:false,comments:[]};
+state.posts.unshift(p);
+if(!save()){state.posts.shift();return}
+draft={text:'',image:''};modalDraft={text:'',image:''};closeModal();view='home';tab='all';render();window.scrollTo({top:0,behavior:'smooth'});notify('Postingiz yaratildi! 🎉');
+}
+function useImage(kind,file){
+if(!file)return;
+if(!file.type.startsWith('image/')){notify('Faqat rasm faylini tanlang.');return}
+if(file.size>6*1024*1024){notify('Rasm 6 MB dan kichik bo‘lsin.');return}
+var reader=new FileReader();
+reader.onerror=function(){notify('Rasm o‘qilmadi.')};
+reader.onload=function(){var img=new Image();img.onerror=function(){notify('Rasmni ochib bo‘lmadi.')};img.onload=function(){var canvas=document.createElement('canvas'),scale=Math.min(1,1100/Math.max(img.width,img.height));canvas.width=Math.max(1,Math.round(img.width*scale));canvas.height=Math.max(1,Math.round(img.height*scale));canvas.getContext('2d').drawImage(img,0,0,canvas.width,canvas.height);var data=canvas.toDataURL('image/jpeg',.75);var d=kind==='modal'?modalDraft:draft;d.image=data;var target=$(kind+'Preview');if(target)target.innerHTML=draftPreview(kind);notify('Rasm qo‘shildi')};img.src=reader.result};reader.readAsDataURL(file)
+}
+function postById(id){return state.posts.find(function(p){return p.id===id})}
+document.addEventListener('input',function(e){if(e.target.id==='inlineText'){draft.text=e.target.value;updateCounter('inline')}if(e.target.id==='modalText'){modalDraft.text=e.target.value;updateCounter('modal')}if(e.target.id==='exploreSearch'){search=e.target.value;renderFeedBody()}if(e.target.id==='rightSearch'&&e.target.value.length>0){search=e.target.value;view='explore';renderMain();renderLeft();renderMobile();var field=$('exploreSearch');if(field){field.focus();field.setSelectionRange(field.value.length,field.value.length)}}});
+document.addEventListener('click',function(e){
+var btn=e.target.closest('[data-act]');if(!btn)return;
+var a=btn.dataset.act,id=btn.dataset.id,p=id?postById(id):null;
+if(a==='overlay'){if(e.target===btn)closeModal();return}
+if(a==='close'){closeModal();return}
+if(a==='nav'){view=btn.dataset.view;search='';render();window.scrollTo(0,0);return}
+if(a==='tab'){tab=btn.dataset.tab;renderMain();return}
+if(a==='compose'){openModal('compose');return}
+if(a==='edit'){openModal('edit');return}
+if(a==='theme'){state.theme=state.theme==='dark'?'light':'dark';save();render();return}
+if(a==='trend'){view='explore';search=btn.dataset.tag;render();window.scrollTo(0,0);return}
+if(a==='follow'){var who=btn.dataset.who;if(state.following.includes(who)){state.following=state.following.filter(function(k){return k!==who})}else{state.following.push(who);addNotification('@'+who+' kuzatuvlar ro‘yxatiga qo‘shildi.')}save();renderLeft();renderRight();if(view==='home'&&tab==='following')renderFeedBody();return}
+if(a==='pick-image'){var kind=btn.dataset.kind;var f=document.createElement('input');f.type='file';f.accept='image/*';f.onchange=function(){useImage(kind,f.files[0])};f.click();return}
+if(a==='remove-image'){var k=btn.dataset.kind,d=k==='modal'?modalDraft:draft;d.image='';$(k+'Preview').innerHTML='';return}
+if(a==='submit'){addPost(btn.dataset.kind);return}
+if(a==='thread'&&p){showThreads[id]=!showThreads[id];renderFeedBody();return}
+if(a==='like'&&p){p.liked=!p.liked;p.likes+=p.liked?1:-1;save();renderFeedBody();return}
+if(a==='repost'&&p){p.reposted=!p.reposted;p.reposts+=p.reposted?1:-1;save();renderFeedBody();notify(p.reposted?'Repost qilindi':'Repost bekor qilindi');return}
+if(a==='bookmark'&&p){if(state.bookmarks.includes(id)){state.bookmarks=state.bookmarks.filter(function(x){return x!==id})}else{state.bookmarks.push(id)}save();renderFeedBody();notify(state.bookmarks.includes(id)?'Post saqlandi':'Saqlanganlardan olib tashlandi');return}
+if(a==='delete'&&p&&p.who==='men'){if(confirm('Ushbu postni o‘chirasizmi?')){state.posts=state.posts.filter(function(x){return x.id!==id});state.bookmarks=state.bookmarks.filter(function(x){return x!==id});save();renderMain();notify('Post o‘chirildi')}return}
+if(a==='report'){notify('Demo rejimida shikoyat moderatorga yuborilmaydi.');return}
+if(a==='share'&&p){var text=p.text||'FIKRA posti';if(navigator.share){navigator.share({title:'FIKRA posti',text:text}).catch(function(){})}else if(navigator.clipboard){navigator.clipboard.writeText(text).then(function(){notify('Post matni nusxalandi')}).catch(function(){notify('Nusxalash imkoni bo‘lmadi')})}else notify('Ulashish hozircha qo‘llab-quvvatlanmaydi');return}
+});
+document.addEventListener('submit',function(e){
+if(e.target.dataset.form==='reply'){e.preventDefault();var p=postById(e.target.dataset.id),input=e.target.elements.reply;if(!p||!input.value.trim())return;p.comments=p.comments||[];p.comments.push({who:'men',text:input.value.trim().slice(0,280)});save();renderFeedBody();notify('Izoh qo‘shildi');return}
+if(e.target.id==='editForm'){e.preventDefault();var el=e.target;state.profile.name=el.elements.name.value.trim().slice(0,40);state.profile.handle=el.elements.handle.value.trim().slice(0,18);state.profile.bio=el.elements.bio.value.trim().slice(0,150);if(!state.profile.name||!state.profile.handle){notify('Ism va foydalanuvchi nomini kiriting');return}save();closeModal();render();notify('Profil yangilandi')}
+});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal();if((e.ctrlKey||e.metaKey)&&e.key==='Enter'){if(modalOpen==='compose')addPost('modal');else if(view==='home'&&document.activeElement===$('inlineText'))addPost('inline')}});
+
+/* FIKRA cloud: Google OAuth, server posts and sponsored feed */
+var cloud=null,cu=null,adRows=[],cloudPeople=[],cloudBusy=false,cloudOffset=0,cloudMore=false,cloudErr='';
+state.posts=[];state.following=[];state.bookmarks=[];state.notifications=[];state.profile={name:'Mehmon',handle:'mehmon',bio:''};
+save=function(){return true};
+function online(){return !!(cloud&&cu)}
+function guard(){if(online())return false;notify('Post va layk uchun Google bilan kiring');return true}
+function fail(ex){cloudErr=ex?.message||String(ex);notify(cloudErr)}
+function whoFor(p){
+ var id=p.id===cu?.id?'men':p.id;
+ if(id!=='men')people[id]={name:p.display_name||'Foydalanuvchi',handle:p.username||'user',av:(p.display_name||'F').slice(0,2).toUpperCase(),cls:'a2',verified:false};
+ return id;
+}
+async function getMyProfile(){
+ if(!cu)return;
+ var r=await cloud.from('fikra_profiles').select('id,username,display_name,bio,avatar_url').eq('id',cu.id).maybeSingle();
+ if(r.error)throw r.error;
+ var p=r.data;
+ if(!p){
+  var name=(cu.user_metadata?.full_name||'FIKRA foydalanuvchisi').slice(0,60);
+  var add=await cloud.from('fikra_profiles').insert({id:cu.id,username:'u'+cu.id.replace(/-/g,'').slice(0,17),display_name:name}).select('id,username,display_name,bio,avatar_url').single();
+  if(add.error)throw add.error;p=add.data;
+ }
+ state.profile={name:p.display_name,handle:p.username,bio:p.bio||'',avatar_url:p.avatar_url||''}
+}
+async function cloudLoad(reset){
+ if(!cloud||cloudBusy)return;
+ cloudBusy=true;if(reset)cloudOffset=0;
+ try{
+  var pr=await cloud.from('fikra_posts').select('id,author_id,content,image_path,created_at').order('created_at',{ascending:false}).range(cloudOffset,cloudOffset+9);
+  if(pr.error)throw pr.error;
+  var raw=pr.data||[],ids=raw.map(function(p){return p.id}),profs=[],likes=[],comments=[],reposts=[],marks=[];
+  if(ids.length){
+   var r=await Promise.all([
+    cloud.from('fikra_comments').select('post_id,author_id,content,created_at').in('post_id',ids).order('created_at',{ascending:false}).limit(100),
+    cloud.from('fikra_likes').select('post_id,user_id').in('post_id',ids).limit(1000),
+    cloud.from('fikra_reposts').select('post_id,user_id').in('post_id',ids).limit(1000),
+    online()?cloud.from('fikra_bookmarks').select('post_id').eq('user_id',cu.id).in('post_id',ids):Promise.resolve({data:[]})
+   ]);
+   r.forEach(function(a){if(a.error)throw a.error});
+   comments=r[0].data||[];likes=r[1].data||[];reposts=r[2].data||[];marks=r[3].data||[];
+   var uids=Array.from(new Set(raw.map(function(x){return x.author_id}).concat(comments.map(function(x){return x.author_id}))));
+   var ps=await cloud.from('fikra_profiles').select('id,username,display_name,bio,avatar_url').in('id',uids).limit(100);
+   if(ps.error)throw ps.error;profs=ps.data||[];
+  }
+  var map={};profs.forEach(function(p){map[p.id]=p;whoFor(p)});
+  var posts=raw.map(function(p){
+   var ps=likes.filter(function(x){return x.post_id===p.id}),rs=reposts.filter(function(x){return x.post_id===p.id});
+   var c=comments.filter(function(x){return x.post_id===p.id}).reverse().map(function(x){return {who:whoFor(map[x.author_id]||{id:x.author_id,display_name:'Foydalanuvchi',username:'user'}),text:x.content}});
+   return {id:p.id,who:whoFor(map[p.author_id]||{id:p.author_id,display_name:'Foydalanuvchi',username:'user'}),author_id:p.author_id,text:p.content,image:p.image_path?cloud.storage.from('fikra-media').getPublicUrl(p.image_path).data.publicUrl:'',image_path:p.image_path,created:new Date(p.created_at).getTime(),likes:ps.length,liked:ps.some(function(x){return x.user_id===cu?.id}),reposts:rs.length,reposted:rs.some(function(x){return x.user_id===cu?.id}),comments:c};
+  });
+  state.posts=reset?posts:state.posts.concat(posts);
+  state.bookmarks=reset?marks.map(function(x){return x.post_id}):state.bookmarks.concat(marks.map(function(x){return x.post_id}));
+  cloudOffset+=raw.length;cloudMore=raw.length===10;
+  if(reset){
+   var extra=await Promise.all([
+    cloud.from('fikra_ads').select('id,headline,description,sponsor,cta_url,cta_text').eq('active',true).limit(5),
+    cloud.from('fikra_profiles').select('id,username,display_name,bio,avatar_url').order('created_at',{ascending:false}).limit(16),
+    online()?cloud.from('fikra_follows').select('following_id').eq('follower_id',cu.id).limit(100):Promise.resolve({data:[]})
+   ]);
+   extra.forEach(function(x){if(x.error)throw x.error});
+   adRows=extra[0].data||[];cloudPeople=(extra[1].data||[]).filter(function(x){return x.id!==cu?.id});
+   state.following=(extra[2].data||[]).map(function(x){return x.following_id})
+  }
+  cloudErr='';render();
+ }catch(e){fail(e);render()}finally{cloudBusy=false}
+}
+async function initCloud(){
+ try{
+  if(!window.supabase?.createClient)throw Error('Internet yoki Supabase kutubxonasi mavjud emas');
+  cloud=window.supabase.createClient('https://zzucygzvoritdasjrfoh.supabase.co','sb_publishable_IKyCX9aBuzVNzQtBSiKoBQ_l21FfKma',{auth:{persistSession:true,detectSessionInUrl:true,autoRefreshToken:true}});
+  var s=await cloud.auth.getSession();if(s.error)throw s.error;
+  cu=s.data.session?.user||null;if(cu)await getMyProfile();await cloudLoad(true);
+  cloud.auth.onAuthStateChange(function(event,session){
+   var next=session?.user||null;if((next?.id||'')===(cu?.id||''))return;
+   cu=next;state.profile={name:'Mehmon',handle:'mehmon',bio:''};state.posts=[];state.bookmarks=[];
+   setTimeout(async function(){try{if(cu)await getMyProfile();await cloudLoad(true)}catch(e){fail(e)}},0)
+  })
+ }catch(e){fail(e);render()}
+}
+async function task(fn,update){
+ if(guard())return;try{await fn();if(update!==false)await cloudLoad(true)}catch(e){fail(e)}
+}
+function sponsored(ad){
+ return '<article class="post-card fikra-sponsored"><span class="avatar mine" style="border-radius:12px">Ad</span><div class="post-content"><div class="post-top"><strong>'+esc(ad.sponsor)+'</strong><span class="status-pill" style="margin-left:auto">Homiylik reklamasi</span></div><strong style="font-size:17px">'+esc(ad.headline)+'</strong><p style="font-size:14px;color:var(--sub)">'+esc(ad.description||'')+'</p>'+(ad.cta_url?'<a class="btn-main" target="_blank" rel="noopener noreferrer sponsored" href="'+esc(ad.cta_url)+'">'+esc(ad.cta_text||'Batafsil')+'</a>':'<span class="status-pill">Reklama joyi</span>')+'</div></article>'
+}
+feedBody=function(){
+ var rows=listPosts();if(!rows.length)return emptyView();
+ var html=rows.map(postHTML).join('');
+ if(view==='home'&&tab==='all'&&cloudMore)html+='<div style="text-align:center;padding:20px"><button class="edit-btn" data-act="more-cloud">Yana ko‘rish ↓</button></div>';
+ return html
+};
+var originalMain=renderMain;renderMain=function(){
+ originalMain();var h=$('main').querySelector('.mainhead');if(!h)return;
+ h.insertAdjacentHTML('afterend','<div class="fikra-cloudbar"><span style="font-size:12px;color:var(--sub)">'+(online()?'● '+esc(state.profile.name)+' · Google':'FIKRA · Barcha postlar ochiq')+'</span><span style="display:flex;gap:7px"><button class="edit-btn" data-act="refresh-cloud" title="Yangilash">'+icon('repeat')+'</button><button class="btn-main" data-act="'+(online()?'logout-cloud':'login-cloud')+'" style="padding:8px 12px;font-size:12px">'+(online()?'Chiqish':'Google bilan kirish')+'</button></span></div>');
+ if(cloudErr)h.insertAdjacentHTML('afterend','<p class="fikra-error">'+esc(cloudErr)+'</p>')
+};
+var originalLeft=renderLeft;renderLeft=function(){originalLeft();var nav=$('left').querySelector('.nav-list');if(nav)nav.insertAdjacentHTML('afterend','<button class="nav-item" data-act="'+(online()?'logout-cloud':'login-cloud')+'">'+icon('user')+'<span>'+(online()?'Hisobdan chiqish':'Google login')+'</span></button>')};
+renderRight=function(){
+ var top={};state.posts.forEach(function(p){(p.text.match(/#[\p{L}\p{N}_]+/gu)||[]).forEach(function(k){top[k]=(top[k]||0)+1})});
+ var tags=Object.keys(top).sort(function(a,b){return top[b]-top[a]}).slice(0,5);
+ $('right').innerHTML='<label class="right-search">'+icon('search')+'<input id="rightSearch" placeholder="Qidirish"></label>'+
+ '<section class="sidecard"><h3>Mavzular</h3>'+(tags.length?tags.map(function(k){return '<button class="trend" data-act="trend" data-tag="'+esc(k)+'"><strong>'+esc(k)+'</strong><small>'+top[k]+' post</small></button>'}).join(''):'<p class="hint" style="padding:8px 17px">Hashtaglar hozircha yo‘q</p>')+'</section>'+
+ '<section class="sidecard"><h3>Kuzatish uchun</h3>'+cloudPeople.slice(0,6).map(function(p){whoFor(p);var yes=state.following.includes(p.id);return '<div class="suggestion">'+avatar(p.id)+'<span class="who"><strong>'+esc(p.display_name)+'</strong><small>@'+esc(p.username)+'</small></span><button class="follow" data-act="follow" data-who="'+esc(p.id)+'">'+(yes?'Kuzatilyapti':'Kuzatish')+'</button></div>'}).join('')+'</section>'+
+ '<section class="sidecard" style="padding:16px"><span class="status-pill">BEPUL BAZA</span><p class="hint">6 post/kun • 25 izoh/kun • 20 rasm • 350 KB/rasm. Avtomatik qayta yuklash yo‘q.</p></section>'
+};
+useImage=function(kind,file){
+ if(!file||!file.type.startsWith('image/')){notify('Rasm fayli kerak');return}
+ if(file.size>8*1024*1024){notify('8 MB dan kichik rasm tanlang');return}
+ var r=new FileReader();r.onload=function(){var i=new Image();i.onload=function(){var c=document.createElement('canvas'),s=Math.min(1,900/Math.max(i.width,i.height));c.width=Math.max(1,Math.round(i.width*s));c.height=Math.max(1,Math.round(i.height*s));c.getContext('2d').drawImage(i,0,0,c.width,c.height);var out=c.toDataURL('image/jpeg',.6);if(out.length>455000){notify('350 KB dan kichikroq rasm kerak');return}(kind==='modal'?modalDraft:draft).image=out;$(kind+'Preview').innerHTML=draftPreview(kind);notify('Rasm siqib qo‘shildi')};i.src=r.result};r.readAsDataURL(file)
+};
+document.addEventListener('click',function(e){
+ var b=e.target.closest('[data-act]');if(!b)return;
+ var a=b.dataset.act,p=b.dataset.id?postById(b.dataset.id):null;
+ if(['login-cloud','logout-cloud','refresh-cloud','more-cloud'].includes(a)){
+  e.preventDefault();e.stopImmediatePropagation();
+  if(a==='login-cloud'){if(!cloud){notify('Kirish xizmati yuklanmadi');return}cloud.auth.signInWithOAuth({provider:'google',options:{redirectTo:location.origin+location.pathname}}).then(function(x){if(x.error)fail(x.error)})}
+  if(a==='logout-cloud')cloud.auth.signOut().then(function(x){if(x.error)fail(x.error);else{cu=null;state.profile={name:'Mehmon',handle:'mehmon',bio:''};cloudLoad(true)}});
+  if(a==='refresh-cloud')cloudLoad(true);
+  if(a==='more-cloud')cloudLoad(false);
+  return
+ }
+ if(['submit','like','bookmark','repost','delete','follow','edit'].includes(a)&&guard()){e.preventDefault();e.stopImmediatePropagation();return}
+ if(!cloud)return;
+ if(a==='submit'){
+  e.preventDefault();e.stopImmediatePropagation();
+  var kind=b.dataset.kind,field=$(kind==='modal'?'modalText':'inlineText'),val=(field?.value||'').trim(),d=kind==='modal'?modalDraft:draft;
+  if(val.length>280||(!val&&!d.image)){notify('Postga matn yoki rasm yozing (280 belgi)');return}
+  task(async function(){
+   var path=null;
+   try{
+    if(d.image){var blob=await (await fetch(d.image)).blob();if(blob.size>350000)throw Error('Rasm 350 KB dan katta');path=cu.id+'/'+Date.now()+'-'+Math.random().toString(36).slice(2)+'.jpg';var up=await cloud.storage.from('fikra-media').upload(path,blob,{contentType:'image/jpeg'});if(up.error)throw up.error}
+    var ins=await cloud.from('fikra_posts').insert({author_id:cu.id,content:val,image_path:path});if(ins.error)throw ins.error;
+    draft={text:'',image:''};modalDraft={text:'',image:''};closeModal();view='home';tab='all';notify('Post saqlandi')
+   }catch(ex){if(path)await cloud.storage.from('fikra-media').remove([path]);throw ex}
+  });return
+ }
+ if(['like','bookmark','repost'].includes(a)&&p){
+  e.preventDefault();e.stopImmediatePropagation();
+  task(async function(){
+   var tbl=a==='like'?'fikra_likes':a==='bookmark'?'fikra_bookmarks':'fikra_reposts';
+   var active=a==='like'?p.liked:a==='repost'?p.reposted:state.bookmarks.includes(p.id);
+   var q=cloud.from(tbl),res=active?await q.delete().eq('post_id',p.id).eq('user_id',cu.id):await q.insert({post_id:p.id,user_id:cu.id});if(res.error)throw res.error;
+   if(a==='like'){p.liked=!active;p.likes+=active?-1:1}
+   if(a==='repost'){p.reposted=!active;p.reposts+=active?-1:1}
+   if(a==='bookmark')state.bookmarks=active?state.bookmarks.filter(function(x){return x!==p.id}):state.bookmarks.concat(p.id);
+   renderFeedBody()
+  },false);return
+ }
+ if(a==='follow'){
+  e.preventDefault();e.stopImmediatePropagation();var uid=b.dataset.who;
+  if(!/^[a-f0-9-]{36}$/i.test(uid))return;
+  task(async function(){
+   var yes=state.following.includes(uid),q=cloud.from('fikra_follows'),r=yes?await q.delete().eq('follower_id',cu.id).eq('following_id',uid):await q.insert({follower_id:cu.id,following_id:uid});if(r.error)throw r.error;
+   state.following=yes?state.following.filter(function(x){return x!==uid}):state.following.concat(uid);renderRight();if(view==='home'&&tab==='following')renderFeedBody()
+  },false);return
+ }
+ if(a==='delete'&&p){
+  e.preventDefault();e.stopImmediatePropagation();if(!confirm('Postni o‘chirasizmi?'))return;
+  task(async function(){var r=await cloud.from('fikra_posts').delete().eq('id',p.id).eq('author_id',cu.id);if(r.error)throw r.error;if(p.image_path)await cloud.storage.from('fikra-media').remove([p.image_path]);notify('Post o‘chirildi')});return
+ }
+},true);
+document.addEventListener('submit',function(e){
+ if(e.target.dataset.form==='reply'){
+  e.preventDefault();e.stopImmediatePropagation();if(guard())return;
+  var id=e.target.dataset.id,v=e.target.elements.reply.value.trim();if(!v)return;
+  task(async function(){var r=await cloud.from('fikra_comments').insert({post_id:id,author_id:cu.id,content:v.slice(0,280)});if(r.error)throw r.error;notify('Izoh saqlandi')});return
+ }
+ if(e.target.id==='editForm'){
+  e.preventDefault();e.stopImmediatePropagation();if(guard())return;
+  var f=e.target,n=f.elements.name.value.trim(),h=f.elements.handle.value.trim().toLowerCase(),bio=f.elements.bio.value.trim();
+  if(!n||!/^[a-z0-9_]{3,24}$/.test(h)){notify('Login: 3–24 lotin belgisi, raqam yoki _');return}
+  task(async function(){var r=await cloud.from('fikra_profiles').update({display_name:n,username:h,bio:bio.slice(0,180)}).eq('id',cu.id);if(r.error)throw r.error;state.profile={name:n,handle:h,bio:bio,avatar_url:state.profile.avatar_url||''};closeModal();notify('Profil saqlandi')});return
+ }
+},true);
+
+/* FIKRA Auth landing: both sign-up and sign-in use one Google OAuth identity */
+var authMode='login',authGuest=false,authPending=false;
+function renderAuthGate(){
+ var gate=$('authGate');if(!gate)return;
+ var visible=!online()&&!authGuest;
+ gate.hidden=!visible;
+ if(!visible)return;
+ var register=authMode==='register';
+ var heading=$('authHeading'),description=$('authDescription'),label=$('authGoogleLabel'),err=$('authError'),google=$('authGoogle');
+ if(heading)heading.textContent=register?'FIKRAga qo‘shiling!':'Xush kelibsiz!';
+ if(description)description.textContent=register?'Birinchi marta Google orqali kirganingizda FIKRA akkauntingiz yaratiladi.':'Google akkauntingiz yordamida tez va xavfsiz kiring.';
+ if(label)label.textContent=authPending?'Google ochilmoqda...':(register?'Google bilan ro‘yxatdan o‘tish':'Google bilan kirish');
+ if(google)google.disabled=authPending||!cloud;
+ ['authLoginTab','authRegisterTab'].forEach(function(id){var b=$(id);if(!b)return;var selected=(id==='authRegisterTab')===register;b.classList.toggle('selected',selected);b.setAttribute('aria-selected',selected?'true':'false')});
+ var params=new URLSearchParams(location.hash.replace(/^#/,'')),reason=params.get('error_description')||params.get('error');
+ if(err){err.hidden=!(reason||cloudErr);err.textContent=reason?decodeURIComponent(reason):cloudErr}
+ var loginBtn=document.querySelector('.fikra-cloudbar [data-act="login-cloud"]');
+ if(loginBtn)loginBtn.dataset.act='auth-show';
+ var sideLogin=document.querySelector('.left [data-act="login-cloud"]');
+ if(sideLogin)sideLogin.dataset.act='auth-show';
+}
+var baseFikraRender=render;
+render=function(){baseFikraRender();renderAuthGate()};
+document.addEventListener('click',function(event){
+ var btn=event.target.closest('[data-auth],[data-act="auth-show"]');
+ if(!btn)return;
+ event.preventDefault();event.stopImmediatePropagation();
+ var act=btn.dataset.auth||'show';
+ if(act==='guest'){authGuest=true;renderAuthGate();return}
+ if(act==='show'){authGuest=false;authMode='login';renderAuthGate();return}
+ if(act==='mode-register'){authMode='register';renderAuthGate();return}
+ if(act==='mode-login'){authMode='login';renderAuthGate();return}
+ if(act==='google'){
+  if(!cloud||authPending){notify('Google xizmati hozircha yuklanmadi');return}
+  authPending=true;renderAuthGate();
+  cloud.auth.signInWithOAuth({provider:'google',options:{redirectTo:location.origin+location.pathname}}).then(function(r){
+   authPending=false;if(r.error){fail(r.error);renderAuthGate()}
+  }).catch(function(e){authPending=false;fail(e);renderAuthGate()});
+ }
+},true);
+
+
+/* FIKRA v5 modules: secure owner permissions, premium preview, avatar upload and one corner sponsor */
+var fikraAdmin=false,fikraPremium=new Set(),fikraAdminAds=[],fikraAdminUsers=[],fikraAdminBusy=false,fikraAdminLoaded=false,fikraAdDismissed=false,fikraExtraAvatar=false;
+function fikraPremiumOn(){return !!(cu&&fikraPremium.has(cu.id))}
+function fikraPremiumTag(who){var id=who==='men'?cu?.id:who;return (id&&fikraPremium.has(id))?'<span class="fikra-premium-tag" title="FIKRA Premium">✦ PREMIUM</span>':''}
+function fikraAdminTag(who){return who==='men'&&fikraAdmin?'<span class="fikra-admin-tag">ADMIN</span>':''}
+function fikraValidPhoto(s){return typeof s==='string'&&/^https:\/\/zzucygzvoritdasjrfoh\.supabase\.co\/storage\/v1\/object\/public\/fikra-avatars\/[a-z0-9/-]+\.jpg(?:\?v=[0-9]+)?$/i.test(s)}
+var fikraOldWho=whoFor;
+whoFor=function(p){var id=fikraOldWho(p);if(p.avatar_url&&id!=='men'&&people[id])people[id].avatar_url=p.avatar_url;return id};
+avatar=function(handle,big){var u=userFor(handle),url=handle==='men'?state.profile.avatar_url:u.avatar_url;
+ return fikraValidPhoto(url)?'<span class="avatar fikra-has-photo '+esc(u.cls)+(big?' big':'')+'"><img src="'+esc(url)+'" loading="lazy" alt="'+esc(u.name)+' rasmi"></span>':'<span class="avatar '+esc(u.cls)+(big?' big':'')+'">'+esc(u.av)+'</span>'};
+var fikraOldPostHTML=postHTML;
+postHTML=function(p){var out=fikraOldPostHTML(p),u=userFor(p.who),needle='<div class="post-top"><strong>'+esc(u.name)+'</strong>';return out.replace(needle,needle+fikraPremiumTag(p.who)+fikraAdminTag(p.who))};
+var fikraOldLeft=renderLeft;
+renderLeft=function(){fikraOldLeft();var nav=$('left').querySelector('.nav-list');if(!nav)return;
+ nav.insertAdjacentHTML('beforeend','<button class="nav-item fikra-premium-nav '+(view==='premium'?'active':'')+'" data-v5="open-premium">'+icon('spark')+'<span>FIKRA Premium</span></button>'+(fikraAdmin?'<button class="nav-item '+(view==='admin'?'active':'')+'" data-v5="open-admin">'+icon('settings')+'<span>Admin panel</span></button>':''))};
+var fikraOldMobile=renderMobile;
+renderMobile=function(){fikraOldMobile();if(fikraAdmin){var bar=$('mobileNav');bar.insertAdjacentHTML('beforeend','<button aria-label="Admin panel" data-v5="open-admin">'+icon('settings')+'</button>')}};
+function fikraPremiumPage(){
+ return head('FIKRA Premium','Boshqacha tajriba')+'<section class="fikra-feature-page"><div class="fikra-feature-hero"><span class="crown">✦</span><h2>Fikrlaring yanada porlasin.</h2><p>Reklamasiz foydalaning va profil hamda postlarda ajralib turing. Premium to‘lovlari hozircha yoqilmagan.</p></div><div class="fikra-benefits"><div class="fikra-benefit"><span>🛡️</span><strong>Reklamasiz FIKRA</strong><p>O‘ng pastki burchakdagi reklama oynasi ko‘rsatilmaydi.</p></div><div class="fikra-benefit"><span>✦</span><strong>Oltin Premium belgisi</strong><p>Profilingiz va postlaringiz maxsus belgi bilan ajralib turadi.</p></div><div class="fikra-benefit"><span>🎨</span><strong>Ajralib turuvchi profil</strong><p>Premium belgisini hamma ko‘radi.</p></div><div class="fikra-benefit"><span>⏳</span><strong>To‘lov keyinroq</strong><p>Hozircha xarid yoki haqiqiy pul yechish funksiyasi mavjud emas.</p></div></div><p class="hint" style="padding:20px 2px">'+(fikraPremiumOn()?'✦ Sizda Premium faol.':'Hozircha Premium faqat admin tomonidan faollashtiriladi.')+'</p></section>'
+}
+function fikraAdminPage(){
+ if(!fikraAdmin)return head('Kirish taqiqlangan','Admin huquqi yo‘q')+'<p class="hint" style="padding:25px">Admin panel faqat tasdiqlangan egaga ochiladi.</p>';
+ return head('Admin panel','FIKRA boshqaruvi')+'<section class="fikra-admin-wrap"><div class="fikra-feature-hero"><div class="auth-kicker" style="color:#e6dfff">FIKRA CONTROL</div><h2>Platforma nazorati</h2><p>Reklama kartalari va Premium a’zolikni boshqaring. Tashqi reklama skriptlari bu yerda ishga tushirilmaydi.</p></div>'+
+ '<div class="fikra-admin-card"><h3>Yangi reklama kartasi</h3><form id="fikraAdForm"><div class="fikra-admin-grid"><div><label>Homiy nomi</label><input name="sponsor" maxlength="70" required placeholder="FIKRA"></div><div><label>Sarlavha</label><input name="headline" maxlength="120" required placeholder="Yangi taklif"></div></div><label>Qisqa ta’rif</label><textarea name="description" maxlength="350" placeholder="Foydali taklif haqida..."></textarea><div class="fikra-admin-grid"><div><label>Havola (https://)</label><input name="cta_url" type="url" placeholder="https://example.com"></div><div><label>Tugma matni</label><input name="cta_text" maxlength="35" value="Batafsil"></div></div><label class="inline-setting"><input type="checkbox" name="active" checked> Faol reklama</label><button type="submit" class="btn-main" style="margin-top:15px">Reklamani qo‘shish</button></form></div>'+
+ '<div class="fikra-admin-card"><h3>Reklamalar</h3>'+(fikraAdminBusy?'<p class="hint">Yuklanmoqda...</p>':fikraAdminAds.length?fikraAdminAds.map(function(a){return '<div class="fikra-admin-row"><div><strong>'+esc(a.headline)+'</strong><small>'+esc(a.sponsor)+' · '+(a.active?'Faol':'O‘chirilgan')+'</small></div><div class="fikra-admin-actions"><button data-v5="toggle-ad" data-id="'+esc(a.id)+'">'+(a.active?'O‘chirish':'Yoqish')+'</button><button class="danger" data-v5="remove-ad" data-id="'+esc(a.id)+'">O‘chirish</button></div></div>'}).join(''):'<p class="hint">Reklamalar ro‘yxati hozircha bo‘sh</p>')+'</div>'+
+ '<div class="fikra-admin-card"><h3>Premium a’zolar</h3><p class="hint">To‘lovsiz. A’zolik faqat admin tomonidan beriladi.</p>'+(fikraAdminUsers.length?fikraAdminUsers.map(function(u){var active=fikraPremium.has(u.id);return '<div class="fikra-admin-row"><div><strong>'+esc(u.display_name)+ (active?'<span class="fikra-premium-tag">✦ PREMIUM</span>':'')+'</strong><small>@'+esc(u.username)+'</small></div><div class="fikra-admin-actions"><button data-v5="toggle-premium" data-id="'+esc(u.id)+'">'+(active?'Premiumni olish':'Premium berish')+'</button></div></div>'}).join(''):'<p class="hint">Foydalanuvchilar ro‘yxati yuklanmoqda.</p>')+'<div class="fikra-admin-actions" style="margin-top:10px"><button data-v5="refresh-admin">Ro‘yxatni yangilash</button></div></div>'+
+ '</section>';
+}
+var fikraPrevMain=renderMain;
+renderMain=function(){
+ if(view==='premium'||view==='admin'){$('main').innerHTML=view==='premium'?fikraPremiumPage():fikraAdminPage();return}
+ fikraPrevMain();
+ if(view==='profile'){
+  var row=document.querySelector('.profile-area .profile-row');
+  if(row&&!row.querySelector('[data-v5="pick-avatar"]'))row.insertAdjacentHTML('beforeend','<button type="button" class="fikra-avatar-button" data-v5="pick-avatar">'+icon('image')+' Rasm yuklash</button><input id="fikraAvatarFile" type="file" accept="image/png,image/jpeg,image/webp" hidden>');
+  var h=document.querySelector('.profile-area h2');if(h&&!h.querySelector('.fikra-premium-tag'))h.insertAdjacentHTML('beforeend',fikraPremiumTag('men')+fikraAdminTag('men'));
+  var hint=document.querySelector('.profile-area .muted');if(hint)hint.insertAdjacentHTML('afterend','<p class="hint">Profil rasmi barcha postlaringizda ko‘rinadi.</p>')
+ }
+};
+function fikraEnsureAd(){var box=$('fikraCornerAd');if(!box){box=document.createElement('aside');box.id='fikraCornerAd';box.className='fikra-corner-ad';box.setAttribute('aria-label','Homiylik reklamasi');document.body.appendChild(box)}return box}
+function fikraCorner(){var box=fikraEnsureAd(),ad=adRows.filter(function(r){return r&&r.headline&&r.sponsor})[0];
+ if(!ad||fikraAdDismissed||fikraPremiumOn()){box.hidden=true;return}
+ box.hidden=false;
+ var href=String(ad.cta_url||'').trim();if(!/^https:\/\/[^ ]+$/i.test(href))href='';
+ box.innerHTML='<div class="corner-top"><span class="corner-mark"><span class="corner-dot">Ad</span> HOMIYLIK REKLAMASI</span><button class="corner-close" data-v5="close-ad" aria-label="Reklamani yopish" title="Yopish">×</button></div><div class="corner-small">'+esc(ad.sponsor)+'</div><h3>'+esc(ad.headline)+'</h3><p>'+esc(ad.description||'')+'</p>'+(href?'<a class="corner-link" href="'+esc(href)+'" target="_blank" rel="noopener noreferrer sponsored">'+esc(ad.cta_text||'Batafsil')+' →</a>':'<span class="corner-small">Reklama joyi</span>') ;
+}
+var fikraOldRender=render;
+render=function(){fikraOldRender();fikraCorner()};
+var fikraPrevCloud=cloudLoad;
+cloudLoad=async function(reset){
+ await fikraPrevCloud(reset);
+ if(reset&&cloud){
+  try{
+   var checks=await Promise.all([
+    cloud.from('fikra_premium_memberships').select('user_id').eq('active',true).limit(300),
+    online()?cloud.rpc('fikra_is_admin'):Promise.resolve({data:false})
+   ]);
+   checks.forEach(function(x){if(x.error)throw x.error});
+   fikraPremium=new Set((checks[0].data||[]).map(function(x){return x.user_id}));
+   fikraAdmin=!!checks[1].data;
+   if(!fikraAdmin&&view==='admin')view='home';
+  }catch(e){fikraAdmin=false;fikraPremium=new Set();console.warn('Premium ma’lumoti yuklanmadi',e?.message)}
+  render();
+ }
+};
+async function fikraAdminFetch(){
+ if(!fikraAdmin||!cloud)return;
+ fikraAdminBusy=true;renderMain();
+ try{
+  var res=await Promise.all([
+    cloud.from('fikra_ads').select('id,headline,description,sponsor,cta_url,cta_text,active').order('created_at',{ascending:false}).limit(30),
+    cloud.from('fikra_profiles').select('id,username,display_name,avatar_url').order('created_at',{ascending:false}).limit(40)
+  ]);
+  res.forEach(function(x){if(x.error)throw x.error});
+  fikraAdminAds=res[0].data||[];fikraAdminUsers=res[1].data||[];fikraAdminLoaded=true;
+ }catch(e){fail(e)}
+ finally{fikraAdminBusy=false;if(view==='admin')renderMain()}
+}
+async function fikraUpdateAvatar(file){
+ if(!online())return notify('Avval Google orqali kiring');
+ if(!file||!/^image\/(jpeg|png|webp)$/.test(file.type))return notify('JPG, PNG yoki WebP rasm tanlang');
+ if(file.size>5*1024*1024)return notify('5 MB dan kichik rasm tanlang');
+ try{
+  var url=URL.createObjectURL(file),im=new Image();
+  await new Promise(function(ok,no){im.onload=ok;im.onerror=no;im.src=url});
+  URL.revokeObjectURL(url);
+  var cv=document.createElement('canvas');cv.width=240;cv.height=240;var ctx=cv.getContext('2d');
+  var side=Math.min(im.width,im.height),sx=(im.width-side)/2,sy=(im.height-side)/2;
+  ctx.drawImage(im,sx,sy,side,side,0,0,240,240);
+  var quality=.82,blob=await new Promise(function(ok){cv.toBlob(ok,'image/jpeg',quality)});
+  if(blob?.size>180000)blob=await new Promise(function(ok){cv.toBlob(ok,'image/jpeg',.58)});
+  if(!blob||blob.size>180000)throw Error('Rasmni siqib bo‘lmadi');
+  var key=cu.id+'/avatar.jpg',a=await cloud.storage.from('fikra-avatars').upload(key,blob,{contentType:'image/jpeg',upsert:true,cacheControl:'3600'});
+  if(a.error)throw a.error;
+  var publicUrl=cloud.storage.from('fikra-avatars').getPublicUrl(key).data.publicUrl+'?v='+Date.now();
+  var r=await cloud.from('fikra_profiles').update({avatar_url:publicUrl}).eq('id',cu.id);
+  if(r.error)throw r.error;
+  state.profile.avatar_url=publicUrl;notify('Profil rasmi saqlandi');render();
+ }catch(e){fail(e)}
+}
+document.addEventListener('click',function(event){
+ var b=event.target.closest('[data-v5]');if(!b)return;
+ event.preventDefault();event.stopImmediatePropagation();
+ var action=b.dataset.v5;
+ if(action==='close-ad'){fikraAdDismissed=true;fikraCorner();return}
+ if(action==='open-premium'){view='premium';render();window.scrollTo(0,0);return}
+ if(action==='open-admin'){if(!fikraAdmin){notify('Admin ruxsati yo‘q');return}view='admin';render();window.scrollTo(0,0);if(!fikraAdminLoaded)fikraAdminFetch();return}
+ if(action==='pick-avatar'){if(!online()){notify('Google bilan kiring');return}var inp=$('fikraAvatarFile');if(inp)inp.click();return}
+ if(action==='refresh-admin'){fikraAdminFetch();return}
+ if(!fikraAdmin||!cloud)return;
+ var id=b.dataset.id;
+ if(action==='toggle-premium'){
+  var current=fikraPremium.has(id);
+  (async function(){var r=await cloud.from('fikra_premium_memberships').upsert({user_id:id,active:!current,granted_by:cu.id,updated_at:new Date().toISOString()},{onConflict:'user_id'});if(r.error)throw r.error;
+   if(current)fikraPremium.delete(id);else fikraPremium.add(id);render();notify(current?'Premium olib tashlandi':'Premium yoqildi')
+  })().catch(fail);return
+ }
+ if(action==='toggle-ad'||action==='remove-ad'){
+  var row=fikraAdminAds.find(function(x){return x.id===id});if(!row)return;
+  if(action==='remove-ad'&&!confirm('Reklamani o‘chirasizmi?'))return;
+  (async function(){var r=action==='remove-ad'?await cloud.from('fikra_ads').delete().eq('id',id):await cloud.from('fikra_ads').update({active:!row.active}).eq('id',id);if(r.error)throw r.error;await fikraAdminFetch();await cloudLoad(true);notify('Reklama yangilandi')})().catch(fail);
+ }
+},true);
+document.addEventListener('change',function(event){if(event.target?.id==='fikraAvatarFile'){var f=event.target.files?.[0];if(f)fikraUpdateAvatar(f);event.target.value=''}},true);
+document.addEventListener('submit',function(event){
+ if(event.target?.id!=='fikraAdForm')return;
+ event.preventDefault();event.stopImmediatePropagation();
+ if(!fikraAdmin||!online())return notify('Ruxsat yo‘q');
+ var f=event.target,url=f.elements.cta_url.value.trim();
+ if(url&&!/^https:\/\/[^\s]+$/i.test(url))return notify('Havola https:// bilan boshlanishi kerak');
+ var ad={sponsor:f.elements.sponsor.value.trim().slice(0,70),headline:f.elements.headline.value.trim().slice(0,120),description:f.elements.description.value.trim().slice(0,350),cta_url:url||null,cta_text:f.elements.cta_text.value.trim().slice(0,35)||'Batafsil',active:f.elements.active.checked};
+ (async function(){var r=await cloud.from('fikra_ads').insert(ad);if(r.error)throw r.error;await fikraAdminFetch();await cloudLoad(true);notify('Reklama saqlandi')})().catch(fail);
+},true);
+
+render();
+initCloud();
+
+})();
+</script>
+</body>
+</html>
