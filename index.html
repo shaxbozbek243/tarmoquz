@@ -468,6 +468,29 @@ body.dark .post-card{box-shadow:none}
 .fikra-reels-toolbar .fikra-all-shorts:disabled{opacity:.55;cursor:wait}
 .fikra-yt-share-label{margin-bottom:5px}
 
+
+/* FIKRA v25 — automatic public YouTube Shorts feed */
+.fikra-autofeed-source{display:inline-flex;align-items:center;gap:5px;border:1px solid #ffffff30;background:#181424a6;color:#f1edff;border-radius:8px;padding:4px 8px;font-size:11px;font-weight:800;margin-bottom:8px;max-width:100%}
+.fikra-autofeed-source .icon{width:13px;height:13px}
+.fikra-autofeed-source strong{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:190px}
+.fikra-autofeed-status{padding:10px 14px;margin:9px 13px;border:1px solid var(--line);background:var(--panel);border-radius:13px;display:flex;align-items:center;gap:10px;color:var(--sub);font-size:12px}
+.fikra-autofeed-status .icon{height:18px;width:18px;flex:none;color:var(--purple)}
+.fikra-auto-label{font-size:10px;background:var(--purple-light);color:var(--purple);border-radius:7px;padding:4px 8px;white-space:nowrap}
+.fikra-youtube-open{background:#fff;color:#241c49;border:1px solid #ffffffba;display:inline-flex;align-items:center;justify-content:center;gap:5px;border-radius:11px;font-weight:800;font-size:11px;padding:8px 9px;text-shadow:none;text-decoration:none}
+.fikra-youtube-open .icon{width:15px;height:15px}
+.fikra-reel-auto .fikra-reel-info{right:83px}
+.fikra-reel-auto .fikra-reel-actions{bottom:52px}
+.fikra-reel-auto .fikra-reel-title{font-size:13px;line-height:1.5;font-weight:650;max-height:6em;overflow:hidden}
+.fikra-autofeed-toolbar{display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding:2px 0}
+.fikra-autofeed-toolbar button{background:var(--purple-light);color:var(--purple);border-radius:10px;padding:8px 10px;font-size:11px}
+.fikra-reels-toolbar .fikra-all-shorts{margin-left:0}
+@media(max-width:680px){
+ .fikra-reel-auto .fikra-reel-info{left:13px;right:80px}
+ .fikra-reel-auto .fikra-reel-title{font-size:12px}
+ .fikra-autofeed-status{margin:6px 8px;padding:9px 11px}
+ .fikra-autofeed-source strong{max-width:135px}
+}
+
 </style>
 </head>
 <body>
@@ -2413,6 +2436,112 @@ postHTML=function(p){
  if(spent>0)html=html.replace('Boost</span>','Boost · '+fikraFmtNumber(spent)+' coin</span>');
  return html;
 };
+
+
+/* FIKRA v25: Automatically discover public embeddable YouTube short videos.
+   Metadata is cached by a server-side Edge Function; users' manually shared Shorts remain intact.
+   No YouTube videos are downloaded or impersonated as FIKRA user posts. */
+var fikraAutoShorts=[],fikraAutoShortsState='idle',fikraAutoShortsLastTry=0,fikraAutoShortsInFlight=false;
+var fikraAutoShortsConfigured=false;
+function fikraAutoShortHTML(row){
+ if(!fikraYTvalid(row?.youtube_id))return '';
+ var yt=row.youtube_id;
+ var title=String(row.title||'YouTube Shorts').slice(0,160);
+ var channel=String(row.channel||'YouTube').slice(0,80);
+ return '<article class="fikra-reel fikra-reel-auto" data-ytid="'+yt+'" aria-label="'+esc(title)+'">'+
+  '<div class="fikra-reel-yt"><div class="fikra-reel-fallback">'+
+  '<img loading="lazy" src="'+fikraYTthumb(yt)+'" alt="">'+
+  '<span class="fikra-play-placeholder">'+icon('play')+'</span></div></div>'+
+  '<div class="fikra-reel-info">'+
+  '<div class="fikra-autofeed-source">'+icon('play')+' YouTube · <strong>'+esc(channel)+'</strong></div>'+
+  '<p class="fikra-reel-title">'+esc(title)+'</p></div>'+
+  '<div class="fikra-reel-actions"><a class="fikra-youtube-open" href="https://www.youtube.com/shorts/'+yt+'" target="_blank" rel="noopener noreferrer" aria-label="Shorts YouTube’da">'+icon('external')+' YouTube</a></div>'+
+ '</article>';
+}
+function fikraAutoShortsStatus(){
+ if(fikraAutoShortsState==='loading')return '<div class="fikra-autofeed-status">'+icon('repeat')+' YouTube Shorts izlanmoqda...</div>';
+ if(fikraAutoShortsState==='missing_key')return '<div class="fikra-autofeed-status">'+icon('play')+' Avtomatik YouTube manbasi sozlanmoqda. Hozircha FIKRA’da ulashilgan Shortslar ochiq.</div>';
+ if(fikraAutoShortsState==='error')return '<div class="fikra-autofeed-status">'+icon('shield')+' Avtomatik qidiruv vaqtincha ishlamayapti. FIKRA Shortslar mavjud.</div>';
+ return '';
+}
+function fikraMixedReels(){
+ var own=fikraReels.slice().sort(function(a,b){
+  return fikraCoinBoostAmount('reel',b.id)-fikraCoinBoostAmount('reel',a.id);
+ });
+ var external=fikraAutoShorts.slice();
+ var used=new Set(own.map(function(r){return r.youtube_id}).filter(Boolean));
+ external=external.filter(function(r){return !used.has(r.youtube_id)});
+ var result=[],i=0,j=0;
+ while(result.length<72&&(i<external.length||j<own.length)){
+  for(var k=0;k<2&&i<external.length&&result.length<72;k++){
+   result.push({kind:'auto',item:external[i++]});
+  }
+  if(j<own.length&&result.length<72)result.push({kind:'community',item:own[j++]});
+  if(i>=external.length&&j<own.length)result.push({kind:'community',item:own[j++]});
+ }
+ return result;
+}
+fikraReelsPage=function(){
+ var merged=fikraMixedReels();
+ var cards=merged.map(function(row){
+  return row.kind==='auto'?fikraAutoShortHTML(row.item):fikraReelHTML(row.item);
+ }).join('');
+ var source='<div class="fikra-autofeed-toolbar"><span class="fikra-auto-label">'+icon('play')+' YouTube Shorts</span>'+
+  '<button type="button" data-v25-auto="refresh" title="Videolarni yangilash">'+icon('repeat')+'</button></div>';
+ return head('Shorts','YouTube va FIKRA')+
+  '<div class="fikra-reels-toolbar">'+source+
+  '<button type="button" data-short="upload" title="Shorts ulashish">'+icon('plus')+'</button>'+
+  (fikraReels.length>=fikraReelsPageLimit?'<button type="button" data-v23-reels-more="1" class="fikra-all-shorts" title="Yana Shorts">'+icon('chevron')+'</button>':'')+
+  '</div>'+fikraAutoShortsStatus()+
+  (cards?'<div id="fikraReelsScroll" class="fikra-reels-scroll">'+cards+'</div>':
+  '<div class="fikra-reel-empty">'+icon('play')+'<h3>Shorts yuklanmoqda</h3><p>YouTube Shorts lentasi tayyorlanmoqda.</p></div>');
+};
+async function fikraLoadAutomaticShorts(force){
+ if(!cloud||fikraAutoShortsInFlight)return;
+ var now=Date.now();
+ if(!force&&fikraAutoShortsLastTry&&now-fikraAutoShortsLastTry<15*60*1000)return;
+ fikraAutoShortsLastTry=now;fikraAutoShortsInFlight=true;fikraAutoShortsState='loading';
+ if(view==='reels')renderMain();
+ try{
+  var result=await cloud.functions.invoke('fikra-youtube-shorts',{body:{version:1}});
+  if(result.error)throw result.error;
+  var payload=result.data||{};
+  var input=Array.isArray(payload.items)?payload.items:[];
+  var seen=new Set();
+  fikraAutoShorts=input.filter(function(x){
+   if(!fikraYTvalid(x?.youtube_id)||seen.has(x.youtube_id))return false;
+   seen.add(x.youtube_id);return true;
+  }).slice(0,32).map(function(x){
+   return {youtube_id:x.youtube_id,title:String(x.title||'Shorts').slice(0,160),
+   channel:String(x.channel||'YouTube').slice(0,80)};
+  });
+  fikraAutoShortsConfigured=!!payload.enabled;
+  fikraAutoShortsState=!payload.enabled?'missing_key':fikraAutoShorts.length?'ready':'empty';
+ }catch(e){
+  console.warn('FIKRA Auto Shorts',e?.message||String(e));
+  fikraAutoShortsState='error';
+ }finally{
+  fikraAutoShortsInFlight=false;
+  if(view==='reels')renderMain();
+ }
+}
+var fikraBeforeAutoShortRenderMain=renderMain;
+renderMain=function(){
+ fikraBeforeAutoShortRenderMain();
+ if(view==='reels'&&!fikraAutoShortsInFlight&&
+    (!fikraAutoShortsLastTry||Date.now()-fikraAutoShortsLastTry>15*60*1000)){
+  Promise.resolve().then(function(){if(view==='reels')fikraLoadAutomaticShorts(false)});
+ }
+};
+document.addEventListener('click',function(e){
+ var b=e.target.closest('[data-v25-auto]');if(!b)return;
+ e.preventDefault();e.stopImmediatePropagation();
+ if(b.dataset.v25Auto==='refresh'){
+  if(fikraAutoShortsInFlight)return;
+  fikraAutoShortsLastTry=0;
+  fikraLoadAutomaticShorts(true);
+ }
+},true);
 
 render();
 initCloud();
