@@ -335,6 +335,93 @@ body.dark .post-card{box-shadow:none}
 .brand-logo.fikra-personal-mark{background:transparent!important;box-shadow:none!important;border-radius:12px;display:grid;place-items:center;padding:0}
 .brand-logo.fikra-personal-mark img{width:100%;height:100%;object-fit:contain;display:block}
 
+
+/* FIKRA 18 — clean responsive layout and comment threading */
+.brand-logo.fikra-personal-mark{background:transparent!important;box-shadow:none!important}
+.brand-logo.fikra-personal-mark img{object-fit:contain;transform:scale(1.03)}
+.mainhead{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:9px;min-width:0}
+.mainhead .main-actions{min-width:0;flex-wrap:nowrap;display:flex;justify-content:flex-end;gap:3px}
+.mainhead .main-actions .round-action{display:grid;place-items:center;flex-shrink:0}
+.fikra-comment,.fikra-comment-body,.fikra-comment-head{min-width:0;max-width:100%}
+.fikra-comment{display:flex;overflow:visible}
+.fikra-comment-head{flex-wrap:wrap;gap:5px;line-height:1.3}
+.fikra-comment-head .fikra-click-profile{white-space:normal;overflow-wrap:anywhere;text-align:left}
+.fikra-comment-text{overflow-wrap:anywhere;word-break:break-word}
+.fikra-comment-actions{display:flex;gap:6px 11px;flex-wrap:wrap}
+.fikra-comment-actions button{display:flex;gap:4px;align-items:center;white-space:nowrap;flex-shrink:0}
+.fikra-comment-send{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:start;gap:8px}
+.fikra-comment-send textarea{min-width:0;width:100%;margin:0}
+.fikra-comment-send button{height:43px;white-space:nowrap}
+.fikra-comment-editor,.fikra-inline-comment-editor{max-width:100%;min-width:0;overflow-wrap:anywhere}
+.fikra-comment-editor textarea{display:block}
+.fikra-comment.depth-1{margin-left:12px}.fikra-comment.depth-2{margin-left:20px}
+.fikra-reel-info{bottom:22px;right:83px}.fikra-reel-actions{right:11px;bottom:60px}
+.fikra-reel-info p{max-height:90px;overflow:auto}
+.fikra-premium-tag{vertical-align:middle}
+.fikra-boost-mark{display:inline-flex;align-items:center;gap:3px;color:#885d12;background:#fdf1ca;padding:3px 7px;border-radius:7px;font-size:10px;font-weight:850}
+.fikra-boost-mark .icon{width:12px;height:12px}
+.fikra-boost-btn{color:#7d5bbd!important;white-space:nowrap}.fikra-boost-btn .icon{height:17px;width:17px}
+.fikra-boost-btn:disabled{opacity:.5}
+.fikra-reel-boost{position:absolute;right:14px;bottom:12px;z-index:4;border:1px solid #fff8;color:#fff;background:#171126ab;border-radius:12px;padding:6px 11px;font-size:11px;display:flex;align-items:center;gap:5px}
+.fikra-reel-boost .icon{width:15px;height:15px}
+.fikra-coin-panel{margin:15px;padding:20px;border:1px solid var(--line);border-radius:19px;background:var(--panel);min-width:0}
+.fikra-coin-balance{font-size:34px;font-weight:900;color:var(--purple);letter-spacing:-1px;display:flex;gap:7px;align-items:center}
+.fikra-coin-balance .icon{height:27px;width:27px}
+.fikra-coin-panel p{font-size:12px;color:var(--sub);line-height:1.6;margin:8px 0}
+.fikra-coin-field{display:flex;gap:7px;margin:13px 0}
+.fikra-coin-field input{flex:1;width:0;min-width:0;border:1px solid var(--line);background:var(--hover);color:var(--text);padding:11px;border-radius:11px;font-size:12px}
+.fikra-coin-panel button,.fikra-coin-field button{background:var(--purple);color:#fff;padding:10px 12px;border-radius:11px;font-size:12px;font-weight:800;display:flex;align-items:center;gap:7px}
+.fikra-coin-panel button .icon{width:16px;height:16px}
+.fikra-coin-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin:13px 0}
+.fikra-coin-grid>div{padding:14px;border-radius:14px;border:1px solid var(--line);background:var(--hover)}
+.fikra-coin-grid strong{font-size:18px;display:block}.fikra-coin-grid small{font-size:11px;color:var(--sub)}
+.fikra-short-tools{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:10px}
+.fikra-short-tools button{display:flex;align-items:center;gap:5px;padding:8px 12px;border-radius:9px;background:var(--purple-light);color:var(--purple);font-size:11px;font-weight:800}
+.fikra-short-tools .icon{height:15px;width:15px}
+.fikra-upload-meta{display:flex;gap:9px;align-items:center;flex-wrap:wrap;color:var(--sub);font-size:11px;padding:10px 0}
+.fikra-upload-meta .icon{height:14px;width:14px}
+.fikra-compact-nav{font-size:11px}
+#mobileNav button{min-width:0!important}
+@media(max-width:680px){
+ .mainhead{padding:11px 9px;gap:4px}
+ .mainhead .main-actions{gap:0}
+ .mainhead .main-actions .round-action{width:33px;height:36px}
+ .mainhead h1{font-size:16px;max-width:125px}
+ .mainhead .main-actions .icon{width:17px;height:17px}
+ .fikra-comment-actions{gap:6px 9px}
+ .fikra-comment-actions button{font-size:10px}
+ .fikra-comment{gap:6px;padding:10px 7px}
+ .fikra-comment.depth-1{margin-left:8px}
+ .fikra-comment.depth-2{margin-left:12px}
+ .fikra-comment .avatar{width:26px;height:26px}
+ .fikra-coin-panel{margin:10px;padding:15px}
+ .fikra-coin-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .fikra-coin-field{flex-wrap:wrap}
+ .fikra-coin-field input{flex:1 1 100%}
+ .fikra-coin-field button{width:100%;justify-content:center}
+ .fikra-reel-actions{right:9px;bottom:60px}
+ .fikra-reel-boost{right:8px;bottom:8px}
+}
+
+
+/* Final v22 layout bounds: interaction rows may wrap instead of overlapping. */
+.post-card,.post-content,.fikra-comment-body{min-width:0;max-width:100%}
+.post-actions{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px;width:100%;max-width:100%}
+.post-actions .engage{min-width:34px;flex:0 0 auto}
+.fikra-comment-send>div{display:flex;justify-content:flex-end;gap:6px;align-items:center}
+.fikra-comment-send button{max-width:100%}
+.fikra-admin-card,.fikra-admin-row{min-width:0}
+.fikra-admin-row{flex-wrap:wrap}
+.fikra-admin-card input,.fikra-admin-card textarea{max-width:100%}
+@media(max-width:420px){
+ .post-actions .engage{min-width:29px;padding:5px 2px;gap:3px}
+ .post-actions .engage .icon{height:15px;width:15px}
+ .post-actions .engage span{font-size:10px}
+ .fikra-comment-head small{font-size:10px}
+ .fikra-comment-send{grid-template-columns:minmax(0,1fr)}
+ .fikra-comment-send>div{justify-content:flex-end}
+}
+
 </style>
 </head>
 <body>
@@ -352,6 +439,10 @@ body.dark .post-card{box-shadow:none}
 <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></symbol>
 <symbol id="i-volume" viewBox="0 0 24 24"><path d="M4 10v4h4l5 4V6l-5 4H4zM17 9c2 1 2 5 0 6m2-9c4 3 4 9 0 12"/></symbol>
 <symbol id="i-volume-off" viewBox="0 0 24 24"><path d="M4 10v4h4l5 4V6l-5 4H4zM17 9l5 6m0-6-5 6"/></symbol>
+<symbol id="i-rocket" viewBox="0 0 24 24"><path d="M5 16c-1 2-1 4-1 4s2 0 4-1l3-3"/><path d="M7 13l4 4c5-2 9-7 9-13-6 0-11 4-13 9z"/><path d="m5 12-2 1-1 4 5-2m7 4-2 3-4-1 1-3"/><circle cx="15.5" cy="8.5" r="1.5"/></symbol>
+<symbol id="i-coins" viewBox="0 0 24 24"><circle cx="8" cy="9" r="6"/><path d="M12 5c5-1 9 3 9 8 0 4-3 7-7 7-3 0-5-1-6-3"/><path d="M8 5v8m-2-2h4m-4-4h4"/></symbol>
+<symbol id="i-gift" viewBox="0 0 24 24"><rect x="3" y="10" width="18" height="11" rx="2"/><path d="M2 7h20v4H2zm10 0v14"/><path d="M12 7C5 7 5 1 9 2c2 .5 3 5 3 5s1-4.5 4-5c4-1 4 5-4 5z"/></symbol>
+<symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="13" height="13" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/></symbol>
 <symbol id="i-home" viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/></symbol>
 <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7.5"/><path d="m17 17 4.2 4.2"/></symbol>
 <symbol id="i-bell" viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/></symbol>
@@ -1792,7 +1883,7 @@ postHTML=function(p){
 
 
 /* Original supplied FIKRA artwork optimized to 56px for the app header. */
-var fikraOriginalMark='data:image/webp;base64,UklGRsIEAABXRUJQVlA4WAoAAAAQAAAAJwAAJwAAQUxQSFQCAAABoERtmyHJ+iIix7Zt28aOS1vXtm3btm3btq22uyPy//NbZFbe8ToiJgB7+QZN28PsBMY0f/uHVjA7LsIK/tHCuMjtABtFUdQYN3IdGmMHWotM8/ujiDDrprObbCcLjD3k8isPn4gNbYHTyKI228diyGPK9AtD0fRWVt3eH/mNsdZa4zC9lKG2rrZBmKxo+8T+/QGbw0QOBTv+zQaSTMQr5yK/dQDQaej4cUO7m0NZx6+3Lb+ygRL4Q5MjPvziqcFZDui+6c4vyoQM1ZeezfqGEQBmV4kELppzx9e/TM9wGHBtGUkmIsKiVdWs7dK4URMcR++TK1DYYf9KMoRYRFUDXz3yQ16MRs4ODOr5kG0CGAAO5zLxooVj/nPboxWHI0LHMjbwXjikHfahF80dk5VF3AozwCcNPA1Rypqe1RLr/5RAanUfHE4fJ+NgUxHOotftGTizY7HW80E4pI39PIm3hyS/L/yInn90szZl0b2Gsn1++o+ef42GRdaoRLczGbR0CBwKDNNkO4mo1g2zNsugdRElS/LEoqoaOAcuCxZPJV5VRfOToiqs6ghTwGERU6qSQ/jazxStL94Ah8IWD7E+pVJAkv96P/JPkF9nwSGnsW3eZQhaUCT2cW338/6s9x8OcTYPDFrdRqbEh1hJ0i875NPfk+9aGZMLBlj4ooh4ktSST2/f2t92e1rKj3UWuY1xjdGmKpD/XLJq7rAOyB7aBfmNAwC3lCw6ozMyXWRhALh8QNR30iic/MkhXYHIOWuQbQ1ymwGnf1hNuattq2aIDPbiAVZQOCBIAgAAUAwAnQEqKAAoAD7dYKZOqKWjIiq6rAEQG4lsAL2H1vmfIkuv1jvUBtp/MB9gHvo+g3/X74tvEv7kftIlFBnfx7mPQ+whkHIw+FBMcEX0f+cV+grWOvCtTkUCDBeorkapw/EBx23FsIxuCgAA/v5KEaS2vmr/NRaoIxfCLzR2a4rKTprG2oZhbrvz4k3rOH7iMKSoSzMIfTnX+LciqwL8vsIjq3T5pW107jz4HyVrPC0FjCtymoDqmnmVdmPUzl2V72N5z0dN57kpUCRdmAOHTqjwzWqaW3bTGyOUgS9GW+UwO6jPFofxD+/0LoBfIkjFeq8erR4Yy61/KlBTn8IxwhqOBbF/5wPEgDlmwi0pv+Jt39F4v+Kphmv9vazAZcm0FNgvuFLoJFIKYlGn0AeOKpszceFo6U896Hss6ULQLKRcLTapn/ZBuQn32Yv5aBM2qUJCgSDGfXXJYL8JXVm3qj+IUEvQ+Az5ffqta87ukrdUsUoaHeLDmb//BKZTecGbgINWDAEd3OAZkQa3wp+mbXwWaLTA3gLM+vfm5tJRu/7sG49WOurgEAiV7wWTjciJSVQO0NGax+OJSpQzBSUuFnRqS7Mqnu3qaru0oc2XOff6mB7xjx0OC2NIl3XBjKO8e/vbFKPjaYCVGDhdoiIdJMl/HcP/mrAlHet4+JUC0xZQxiJ3VgIU4jPAZ6a61t9Web10qU8y56faK/dtx/OyYLzf2162HNDFne8/DNu/l+XuYz/t/xufeCwLA7n4182WPkUnHneAAAA=';
+var fikraOriginalMark='data:image/webp;base64,UklGRpAEAABXRUJQVlA4WAoAAAAQAAAAPwAAPwAAQUxQSF0CAAABoAPbtmnbms+2bdu2bftFtm07t237vW/btm3MMUewufaO/o8iYgLk/5v5M6eszp0i0TIkKeekr/+tHC25uRsueYX8s0YCshUqX6N+k5at2rRr36Fjpy7deg0aM3XVnlvv/0MafynvKFe7VVde//KXP/+BMboB4Ed5nJRd8Sb9LTRghkDeEoc5Fn9FGmINtcRBzUdJOLe/6sbX+jMiTgswP17OEFuzbwm35rG/mkvcpd4nHJoFcKvEnfE0EWwxwMyHN3PGNoDQIAAKaBQDjA8KS9xZn6aqBqgirPkAMPJAfom9myGEKrwGC0uSLwwVh/uoikAFo+svbx3un10c5nqPCFbw75vzB3Xr0qVzpw4d2rdv17Z1y4blc4jbuv+YjwIAH20piR9I+CvAU7kl+dMDVMHn8kgKl/mpwv7tLGlc7aNQ8NlMnix1Bk2ePXv2nDlzZs+ZM3vW7JkDi7pZ4+PlbhEptvDFvxj5475OVgcouFBk4kckEWzw5Q8VXawJADgj12ESUQ0AONnFxjAbLtMQ0zwXW0PgdyJms7YutocxABqH8VwmFzvCAApfRr1eRFzuDKV+/P215557/oUXnn/hheeff/L48CzidFcY9eOp2lkzZsyYKVPGTJkyZhTnMfB2Fkn0zjCAQmHdJdmbwgHgr+UTNiXaD6UT1hwGwEKVSliO14jwyZOpqcvxkCmTCq/T/NTzfYnESdmLJOlRgJ8XSJ5k6HXywz9JAgCfzZQCEclTc/DhPwkFt0h6+/9uar9WT5HsJ7hK0jyWPJstVeN4Ko+kesaqzJLurPIfKQBWUDggDAIAAFAOAJ0BKkAAQAA+hTaXR6UjIiEx9V7YoBCJbADJt/x7pxl29ng/g+DbQn9wB5gP1r/YD3sdMA3jb9x8Io/l4bjPvihvCNnG16CP6w4vta0DSPjTu1aRpz2sEaEtjPMfSIMkHIGOCU5DZJltKSwpfpLAol9ocjdVlnLMQAD+/K0UMELxv0+NpyWLiUdAfHMDzs/25v9C17ZpJPdvS6d+ngbuWdL6cReG45SH80sQC9eXVHlxx2X8hxeRyv+6fn4luDiVzDOIMGbgcQ5Ka3wpRiyn8I2Q9y36ex/41UPMf/6eV+MUKG0P552ksipkJe5YPFhEyaty9bhvHSvGbD9ML81SYePPOk7GU21L1fyThWJO8SL+FxHCL9P+BlW5DPeSWd7dfUAMG34h/4QEeVSaPLbWjL36nMea83iVUtj35jNoAjiUe33tAh3XzSweruofOnsfcgIBpjFSSIu4uVs62J2aeY59jgpgl9zXpWMpVjeogqLwaB/6r2+T2fRW2AhQq9derhE9ecXuov72b7JUJ23xbCHIrbZdjI9dT3Z4ks/p+AQczeb8+g8NE+TGyEH5fyTI+JHXIcvTbCrWrhE372kNXLoARGd9Yed//RK9wXPe/YG6ChnEp6vhNTSZb9pnVbGKW0SfjjqhB+3+xh6Vz/xJi3kUZmkkhzYLPX55ud7PwidZ+KOZUY8pQAAA';
 function fikraUseArtwork(){
  document.querySelectorAll('.brand-logo').forEach(function(node){
   node.classList.add('fikra-personal-mark');
@@ -1827,6 +1918,307 @@ fikraDirectoryLoad=async function(){
  if(fikraProfileDirectory.length&&Date.now()-fikraCacheStamp.people<120000)return;
  fikraCacheStamp.people=Date.now();
  await fikraRealDirectoryLoad();
+};
+
+
+/* FIKRA 19: referral coin economy, visible boosts, five Shorts/day, admin awards */
+var fikraCoinBalance=0,fikraCoinRefs=0,fikraCoinPending=false,fikraCoinLoading=false;
+var fikraBoostRows=[],fikraBoostLoadedAt=0,fikraBoostBusy=false;
+var fikraReferralAttempted=false,fikraCachedReferral='';
+try{
+ var fikraReferralInUrl=new URLSearchParams(location.search).get('ref')||'';
+ if(fikraIsUuid(fikraReferralInUrl))localStorage.setItem('fikra-pending-ref',fikraReferralInUrl);
+ fikraCachedReferral=localStorage.getItem('fikra-pending-ref')||'';
+}catch(e){}
+function fikraOwnReferralUrl(){
+ return location.origin+location.pathname+'?ref='+(cu?.id||'');
+}
+function fikraBoosted(kind,id){return fikraBoostRows.some(function(x){return x.target_type===kind&&x.target_id===id&&new Date(x.expires_at).getTime()>Date.now()})}
+async function fikraCoinsLoad(refresh){
+ if(!online()||fikraCoinLoading)return;
+ fikraCoinLoading=true;
+ try{
+  var data=await Promise.all([
+   cloud.from('fikra_wallets').select('balance').eq('user_id',cu.id).maybeSingle(),
+   cloud.from('fikra_referrals').select('referred_id',{count:'exact',head:true}).eq('referrer_id',cu.id)
+  ]);
+  data.forEach(function(a){if(a.error)throw a.error});
+  fikraCoinBalance=data[0].data?.balance||0;fikraCoinRefs=data[1].count||0;
+ }catch(e){console.warn('FIKRA Coin',e?.message)}
+ finally{fikraCoinLoading=false;if(refresh&&(view==='coins'||view==='settings'))renderMain()}
+}
+async function fikraMaybeClaimReferral(){
+ if(!online()||fikraReferralAttempted||!fikraIsUuid(fikraCachedReferral))return;
+ fikraReferralAttempted=true;
+ try{localStorage.removeItem('fikra-pending-ref')}catch(e){}
+ if(fikraCachedReferral===cu.id)return;
+ try{
+  var r=await cloud.rpc('fikra_claim_referral',{p_referrer:fikraCachedReferral});
+  if(r.error)throw r.error;
+  notify('Taklif tasdiqlandi! Do‘stingizga 500 coin berildi.');
+ }catch(e){console.info('Referal bonus:',e.message)}
+}
+async function fikraBoostsLoad(force){
+ if(!cloud||fikraBoostBusy||(!force&&Date.now()-fikraBoostLoadedAt<90000))return;
+ fikraBoostBusy=true;
+ try{
+  var out=await cloud.from('fikra_boosts').select('target_type,target_id,expires_at')
+    .gt('expires_at',new Date().toISOString()).order('expires_at',{ascending:false}).limit(120);
+  if(out.error)throw out.error;
+  fikraBoostRows=out.data||[];
+  fikraBoostLoadedAt=Date.now();
+  if(view==='home'||view==='reels'||view==='profile')renderMain();
+ }catch(e){console.warn('Boostlar:',e.message)}
+ finally{fikraBoostBusy=false}
+}
+function fikraCoinPage(){
+ var href=online()?fikraOwnReferralUrl():'';
+ return head('FIKRA Coin','Referal va boost')+
+  '<section class="fikra-coin-panel"><div class="fikra-coin-balance">'+icon('coins')+' '+fikraCoinBalance+'</div>'+
+  '<p>Coin faqat FIKRA ichida ishlaydi. Uni pulga aylantirib bo‘lmaydi.</p>'+
+  '<div class="fikra-coin-grid"><div><strong>500</strong><small>1 yangi taklif uchun</small></div>'+
+  '<div><strong>'+fikraCoinRefs+'</strong><small>Qabul qilingan takliflar</small></div></div>'+
+  '<h3 style="font-size:15px;margin:15px 0 7px">Do‘st taklif qilish</h3>'+
+  '<p>Yangi foydalanuvchi havola orqali Google bilan birinchi marta ro‘yxatdan o‘tsa, sizga 500 coin beriladi.</p>'+
+  (online()?'<div class="fikra-coin-field"><input id="fikraInviteUrl" readonly value="'+esc(href)+'" aria-label="Referal havola">'+
+  '<button data-fikra-coin="copy">'+icon('copy')+' Nusxalash</button></div>':'<button data-fikra-coin="login">'+icon('user')+' Google bilan kirish</button>')+
+  '<h3 style="font-size:15px;margin:19px 0 7px">Boost narxlari</h3><div class="fikra-coin-grid">'+
+  '<div><strong>100 coin</strong><small>'+icon('rocket')+' Post · 24 soat</small></div>'+
+  '<div><strong>200 coin</strong><small>'+icon('play')+' Shorts · 24 soat</small></div></div>'+
+  '<p>O‘z postingiz yoki Shortsingiz ostidagi '+icon('rocket')+' tugmasini bosing. Boost faol bo‘lsa, o‘sha kontent ko‘proq ko‘zga tashlanadi, lekin ko‘rishlar kafolatlanmaydi.</p>'+
+  '<button data-fikra-coin="refresh">'+icon('repeat')+' Balansni yangilash</button></section>';
+}
+var fikraCoinPriorMain=renderMain;
+renderMain=function(){
+ if(view==='coins'){$('main').innerHTML=fikraCoinPage();return}
+ fikraCoinPriorMain();
+ if(view==='settings'){
+  var exitBtn=document.querySelector('.fikra-settings .settings-logout');
+  if(exitBtn){
+   exitBtn.insertAdjacentHTML('beforebegin','<div class="settings-block">'+
+   '<h3 class="settings-heading">'+icon('coins')+' Coin va takliflar</h3>'+
+   '<button class="settings-row" data-fikra-coin="open"><span class="settings-ico">'+icon('gift')+'</span>'+
+   '<span class="settings-copy"><strong>'+fikraCoinBalance+' coin</strong><small>Referal · Boost · Sovg‘a</small></span>'+icon('chevron')+'</button></div>');
+  }
+ }
+ if(view==='admin'&&fikraAdmin){
+  var root=document.querySelector('.fikra-admin-wrap');
+  if(root&&!root.querySelector('#fikraCoinAdmin')){
+   var profiles=(fikraAdminUsers||[]).slice(0,40);
+   root.insertAdjacentHTML('beforeend','<div id="fikraCoinAdmin" class="fikra-admin-card"><h3>'+icon('coins')+' Coin nazorati</h3>'+
+   '<p class="hint">Faqat admin 500 coin berishi mumkin. Sovg‘alar bazada qayd etiladi.</p>'+
+   (profiles.length?profiles.map(function(u){
+    return '<div class="fikra-admin-row"><div><strong>'+esc(u.display_name)+'</strong><small>@'+esc(u.username)+'</small></div>'+
+    '<div class="fikra-admin-actions"><button data-fikra-admincoin="'+esc(u.id)+'">'+icon('plus')+' 500 coin</button></div></div>';
+   }).join(''):'<p class="hint">Foydalanuvchi ro‘yxati yuklanmoqda.</p>')+'</div>');
+  }
+ }
+};
+var fikraCoinPriorPost=postHTML;
+postHTML=function(p){
+ var h=fikraCoinPriorPost(p);
+ if(!fikraIsUuid(p.id)||!fikraIsUuid(p.author_id))return h;
+ if(fikraBoosted('post',p.id)){
+  h=h.replace('<div class="post-top">','<div class="post-top"><span class="fikra-boost-mark">'+icon('rocket')+' Boost</span>');
+ }
+ if(p.author_id===cu?.id){
+  h=h.replace('<div class="post-actions">','<div class="post-actions">'+
+   '<button type="button" class="engage fikra-boost-btn" data-fikra-boost="post" data-target="'+esc(p.id)+'" title="100 coin · 24 soat" aria-label="Postni boost qilish">'+icon('rocket')+'</button>');
+ }
+ return h;
+};
+var fikraCoinPriorReel=fikraReelHTML;
+fikraReelHTML=function(r){
+ var h=fikraCoinPriorReel(r);
+ if(!h)return h;
+ if(r.author_id===cu?.id)
+  h=h.replace('</article>','<button class="fikra-reel-boost" data-fikra-boost="reel" data-target="'+esc(r.id)+'">'+icon('rocket')+' '+(fikraBoosted('reel',r.id)?'Faol':'200 coin')+'</button></article>');
+ if(fikraBoosted('reel',r.id)){
+  h=h.replace('<div class="fikra-reel-info">','<div class="fikra-reel-info"><span class="fikra-boost-mark">'+icon('rocket')+' Boost</span>');
+ }
+ return h;
+};
+var fikraCoinPriorList=listPosts;
+listPosts=function(){
+ var out=fikraCoinPriorList();
+ if(view!=='home'||tab!=='all')return out;
+ var boosted=out.filter(function(p){return fikraBoosted('post',p.id)}).slice(0,2);
+ return boosted.concat(out.filter(function(p){return !boosted.includes(p)}));
+};
+var fikraCoinPriorReelsPage=fikraReelsPage;
+fikraReelsPage=function(){
+ var original=fikraReels,boosted=original.filter(function(r){return fikraBoosted('reel',r.id)}),
+ rest=original.filter(function(r){return !fikraBoosted('reel',r.id)});
+ fikraReels=boosted.concat(rest);
+ var out=fikraCoinPriorReelsPage();
+ fikraReels=original;
+ return out.replace('Vertikal videolar · 60 soniyagacha · kuniga 1 ta','YouTube Shorts · kuniga 5 ta');
+};
+var fikraCoinOldModal=fikraShortsModal;
+fikraShortsModal=function(){
+ fikraCoinOldModal();
+ var panel=document.querySelector('.fikra-shorts-modal');
+ if(!panel)return;
+ var status=$('fikraYoutubeStatus');
+ if(status)status.textContent='Kuniga 5 ta · YouTube Shorts havolasini kiriting.';
+ var field=$('fikraYoutubeLink');
+ if(field)field.placeholder='https://youtube.com/shorts/XXXXXXXXXXX';
+ var foot=document.createElement('div');foot.className='fikra-upload-meta';
+ foot.innerHTML=icon('shield')+' Supabase video faylini saqlamaydi. '+icon('play')+' YouTube orqali.';
+ var source=panel.querySelector('.fikra-youtube-panel');
+ if(source)source.insertAdjacentElement('afterend',foot);
+};
+var fikraCoinPriorYT=fikraYTid;
+fikraYTid=function(s){
+ if(typeof s!=='string')return '';
+ s=s.trim();
+ if(/^[a-zA-Z0-9_-]{11}$/.test(s))return s;
+ if(/^((?:www|m)\.)?(?:youtube\.com|youtu\.be)\//i.test(s))s='https://'+s;
+ return fikraCoinPriorYT(s);
+};
+var fikraCoinPriorCloud=cloudLoad;
+cloudLoad=async function(reset){
+ await fikraCoinPriorCloud(reset);
+ if(reset&&cloud){
+  await fikraBoostsLoad(false);
+  if(cu){
+   await Promise.all([fikraCoinsLoad(false),fikraMaybeClaimReferral()]);
+   if(view==='coins'||view==='settings')renderMain();
+  }else{fikraCoinBalance=0;fikraCoinRefs=0}
+ }
+};
+document.addEventListener('click',function(event){
+ var coinBtn=event.target.closest('[data-fikra-coin]');
+ var boostBtn=event.target.closest('[data-fikra-boost]');
+ var grantBtn=event.target.closest('[data-fikra-admincoin]');
+ if(!coinBtn&&!boostBtn&&!grantBtn)return;
+ event.preventDefault();event.stopImmediatePropagation();
+ if(coinBtn){
+  var action=coinBtn.dataset.fikraCoin;
+  if(action==='open'){view='coins';render();window.scrollTo(0,0);fikraCoinsLoad(true);return}
+  if(action==='login'){authGuest=false;renderAuthGate();return}
+  if(action==='copy'){
+   var url=fikraOwnReferralUrl();
+   if(navigator.clipboard?.writeText)navigator.clipboard.writeText(url).then(function(){notify('Referal havola nusxalandi')}).catch(function(){notify('Havolani qo‘lda nusxalang')});
+   else{var inp=$('fikraInviteUrl');if(inp){inp.focus();inp.select();notify('Havolani belgilang va nusxalang')}}
+   return;
+  }
+  if(action==='refresh'){fikraCoinsLoad(true);return}
+ }
+ if(boostBtn){
+  if(!online())return notify('Google bilan kiring');
+  var kind=boostBtn.dataset.fikraBoost,target=boostBtn.dataset.target;
+  if(!fikraIsUuid(target)||!['post','reel'].includes(kind))return;
+  var price=kind==='post'?100:200;
+  if(!confirm('24 soatga '+price+' coin evaziga boost qilasizmi?'))return;
+  if(fikraCoinPending)return;
+  fikraCoinPending=true;boostBtn.disabled=true;
+  (async function(){
+   var r=await cloud.rpc('fikra_boost_content',{p_kind:kind,p_target:target});
+   if(r.error)throw r.error;
+   await Promise.all([fikraCoinsLoad(false),fikraBoostsLoad(true)]);
+   render();notify('Boost 24 soatga yoqildi');
+  })().catch(fail).finally(function(){fikraCoinPending=false;boostBtn.disabled=false});
+  return;
+ }
+ if(grantBtn){
+  if(!fikraAdmin||!online())return notify('Faqat admin');
+  var uid=grantBtn.dataset.fikraAdmincoin;if(!fikraIsUuid(uid))return;
+  if(!confirm('Foydalanuvchiga 500 coin berilsinmi?'))return;
+  grantBtn.disabled=true;
+  cloud.rpc('fikra_admin_award_coins',{p_user:uid,p_amount:500}).then(function(r){
+   if(r.error)throw r.error;
+   notify('500 coin berildi');fikraCoinsLoad(false);
+  }).catch(fail).finally(function(){grantBtn.disabled=false});
+ }
+},true);
+
+
+/* v20 video share links, daily quota display and boosted older posts */
+var fikraOldShortModal=fikraShortsModal;
+fikraShortsModal=function(){
+ fikraOldShortModal();
+ var input=$('fikraYoutubeLink');
+ if(input){
+  input.type='text';input.autocapitalize='off';input.autocomplete='off';input.spellcheck=false;
+  input.placeholder='YouTube Shorts URL yoki 11 belgili video kodi';
+ }
+ var target=$('fikraYoutubeStatus');
+ if(target)target.textContent='YouTube havolasini joylang · bugun 5 tagacha.';
+ if(cloud&&cu){
+  cloud.from('fikra_reel_daily_counts').select('uploads').eq('author_id',cu.id).eq('day_key',fikraUzDay()).maybeSingle()
+  .then(function(r){if(r.error)return;
+   var n=Number(r.data?.uploads||0);
+   var status=$('fikraYoutubeStatus');if(status)status.textContent='Bugun: '+n+'/5 Shorts · '+(n<5?'Yana '+(5-n)+' ta mumkin':'Ertaga yana urinib ko‘ring');
+  });
+ }
+};
+var fikraOriginalYTParse=fikraYTid;
+fikraYTid=function(text){
+ if(typeof text!=='string')return '';
+ var t=text.trim();
+ if(/^[A-Za-z0-9_-]{11}$/.test(t))return t;
+ if(t.startsWith('youtube.com/')||t.startsWith('youtu.be/')||t.startsWith('www.youtube.com/')||t.startsWith('m.youtube.com/'))t='https://'+t;
+ return fikraOriginalYTParse(t);
+};
+async function fikraRestoreActiveBoostPosts(){
+ if(!cloud||!fikraBoostRows.length)return;
+ var missing=fikraBoostRows.filter(function(b){return b.target_type==='post'&&!state.posts.some(function(p){return p.id===b.target_id})})
+ .slice(0,2).map(function(x){return x.target_id});
+ if(!missing.length)return;
+ try{
+  var result=await cloud.from('fikra_posts').select('id,author_id,content,image_path,created_at').in('id',missing).limit(2);
+  if(result.error)throw result.error;
+  var raw=result.data||[],ids=[...new Set(raw.map(function(r){return r.author_id}))];
+  if(!raw.length)return;
+  var data=await Promise.all([
+   cloud.from('fikra_profiles').select('id,username,display_name,bio,avatar_url,created_at').in('id',ids),
+   cloud.from('fikra_likes').select('post_id,user_id').in('post_id',missing).limit(500),
+   cloud.from('fikra_reposts').select('post_id,user_id').in('post_id',missing).limit(500),
+   cloud.from('fikra_comments').select('id,post_id,parent_id,author_id,content,created_at,edited_at').in('post_id',missing).limit(150)
+  ]);
+  data.forEach(function(x){if(x.error)throw x.error});
+  var profiles=Object.fromEntries((data[0].data||[]).map(function(x){return [x.id,x]}));
+  (data[0].data||[]).forEach(whoFor);
+  var cm=data[3].data||[],commenters=[...new Set(cm.map(function(x){return x.author_id}).filter(function(x){return !profiles[x]}))];
+  if(commenters.length){
+   var more=await cloud.from('fikra_profiles').select('id,username,display_name,avatar_url').in('id',commenters).limit(40);
+   if(!more.error)(more.data||[]).forEach(whoFor);
+  }
+  raw.forEach(function(item){
+   if(state.posts.some(function(p){return p.id===item.id}))return;
+   var l=(data[1].data||[]).filter(function(x){return x.post_id===item.id}),
+       r=(data[2].data||[]).filter(function(x){return x.post_id===item.id});
+   var creator=profiles[item.author_id]||{};
+   state.posts.push({
+    id:item.id,who:item.author_id===cu?.id?'men':item.author_id,author_id:item.author_id,
+    text:item.content,image:item.image_path?cloud.storage.from('fikra-media').getPublicUrl(item.image_path).data.publicUrl:'',
+    image_path:item.image_path,created:new Date(item.created_at).getTime(),
+    likes:l.length,liked:l.some(function(x){return x.user_id===cu?.id}),
+    reposts:r.length,reposted:r.some(function(x){return x.user_id===cu?.id}),
+    isNewCreator:!!(creator.created_at&&Date.now()-new Date(creator.created_at).getTime()<10*86400000),
+    comments:cm.filter(function(x){return x.post_id===item.id}).map(function(x){return {
+     id:x.id,parent_id:x.parent_id,author_id:x.author_id,who:x.author_id===cu?.id?'men':x.author_id,
+     text:x.content,created:new Date(x.created_at).getTime(),edited_at:x.edited_at
+    }})
+   });
+  });
+  if(view==='home')renderMain();
+ }catch(e){console.warn('FIKRA boosted post:',e.message)}
+}
+var fikraBoostOldCloud=cloudLoad;
+cloudLoad=async function(reset){
+ await fikraBoostOldCloud(reset);
+ if(reset&&cloud)await fikraRestoreActiveBoostPosts();
+};
+
+
+/* Keep the corner ad out of the vertical-video action area. */
+var fikraLastCorner=fikraCorner;
+fikraCorner=function(){
+ fikraLastCorner();
+ var el=$('fikraCornerAd');
+ if(el&&(view==='reels'||view==='admin'||view==='coins'))el.hidden=true;
 };
 
 render();
