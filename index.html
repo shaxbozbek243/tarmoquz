@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#f8f9fd">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://zzucygzvoritdasjrfoh.supabase.co; connect-src 'self' https://zzucygzvoritdasjrfoh.supabase.co wss://zzucygzvoritdasjrfoh.supabase.co; font-src 'self' data:; media-src 'self' blob: https://zzucygzvoritdasjrfoh.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://zzucygzvoritdasjrfoh.supabase.co https://i.ytimg.com; connect-src 'self' https://zzucygzvoritdasjrfoh.supabase.co wss://zzucygzvoritdasjrfoh.supabase.co; font-src 'self' data:; media-src 'self' blob: https://zzucygzvoritdasjrfoh.supabase.co; frame-src https://www.youtube-nocookie.com https://www.youtube.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>FIKRA — Fikrlar uchrashadigan joy</title>
 <style>
@@ -278,6 +278,63 @@ body.dark .post-card{box-shadow:none}
 .profile-area .profile-stat{display:none}
 @media(max-width:680px){.fikra-comment{padding:10px 8px}.fikra-comment.depth-1{margin-left:12px}.fikra-comment.depth-2{margin-left:20px}.fikra-public-area{padding:0 12px 14px}.fikra-public-heading{gap:8px}.fikra-user-directory{margin:10px}.fikra-profile-stats{grid-template-columns:repeat(4,minmax(0,1fr))}.fikra-profile-stat{padding:10px 3px}.fikra-profile-stat strong{font-size:15px}.fikra-profile-stat small{font-size:10px}}
 
+
+/* v13: YouTube Shorts embed replaces uploaded MP4; feed prioritizes reading and icons */
+.fikra-reel-yt{height:100%;width:100%;position:absolute;inset:0;background:#080811}
+.fikra-reel-yt iframe{width:100%;height:100%;display:block;border:0}
+.fikra-reel-fallback{position:absolute;inset:0;display:grid;place-items:center;background:#121020;color:white;text-align:center}
+.fikra-reel-fallback img{width:100%;height:100%;object-fit:cover;filter:brightness(.48);position:absolute;inset:0}
+.fikra-reel-fallback .fikra-play-placeholder{position:relative;display:grid;place-items:center;width:58px;height:58px;border-radius:50%;background:#000a;border:1px solid #fff7;color:#fff}
+.fikra-reel-fallback .icon{width:30px;height:30px}
+.fikra-reels-toolbar p{font-size:11px}
+.fikra-reel-actions{bottom:50px}.fikra-reel-action span{width:41px;height:41px}
+.fikra-youtube-panel{border:1px solid var(--line);border-radius:15px;background:var(--hover);padding:18px}
+.fikra-youtube-panel label{font-size:12px;font-weight:800;display:block;margin-bottom:8px}
+.fikra-youtube-panel input{border:1px solid var(--line);border-radius:12px;background:var(--panel);color:var(--text);width:100%;font-size:13px;padding:12px}
+.fikra-youtube-panel small{font-size:11px;color:var(--sub);display:block;margin-top:7px}
+.fikra-reel-thumb img{width:100%;height:100%;object-fit:cover}
+.fikra-short-link{position:absolute;z-index:3;top:14px;right:14px;color:white;background:#0009;border-radius:10px;padding:9px;font-size:11px}
+.fikra-notif-pill{position:absolute;top:1px;right:1px;min-width:15px;height:15px;border-radius:9px;background:#e74a75;color:white;font-size:9px;font-weight:900;display:grid;place-items:center;padding:0 3px}
+.mainhead [data-v7="notifications"]{position:relative}
+.fikra-activity-list{padding:12px;display:grid;gap:8px}
+.fikra-activity-row{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:13px 14px;display:flex;align-items:center;gap:11px;width:100%;text-align:left}
+.fikra-activity-row.unread{border-color:#aa9cec;background:var(--purple-light)}
+.fikra-activity-row>.icon{width:20px;height:20px;color:var(--purple);flex:none}
+.fikra-activity-row strong{font-size:13px;display:block}
+.fikra-activity-row small{font-size:11px;color:var(--sub)}
+.fikra-presence-section{margin:13px 17px;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:14px 16px}
+.fikra-presence-title{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.fikra-presence-title strong{display:flex;align-items:center;gap:7px;font-size:13px}
+.fikra-presence-title strong .icon{width:18px;height:18px;color:var(--purple)}
+.fikra-presence-count{font-size:11px;color:var(--sub)}
+.fikra-online-avatar{display:flex;align-items:center;gap:8px;width:100%;padding:9px 2px;text-align:left}
+.fikra-online-avatar:hover{background:var(--hover)}
+.fikra-online-avatar .avatar{width:32px;height:32px;font-size:10px}
+.fikra-online-avatar strong{font-size:12px}
+.fikra-online-avatar small{font-size:10px;color:var(--sub)}
+.fikra-online-dot{width:8px;height:8px;background:#27b37e;border-radius:50%;margin-left:auto}
+.fikra-presence-optin{display:flex;gap:11px;align-items:center;font-size:12px;color:var(--sub);margin-top:12px}
+.fikra-presence-optin input{accent-color:var(--purple)}
+.fikra-newcreator{font-size:10px;display:inline-flex;align-items:center;gap:3px;margin-left:6px;padding:3px 7px;border-radius:7px;background:#e8defd;color:#5c36b7;font-weight:850}
+.fikra-newcreator .icon{width:12px;height:12px}
+@media(max-width:680px){.fikra-presence-section{margin:10px}.fikra-reel-yt iframe{min-width:200px}}
+
+
+@media(min-width:681px){
+ .app{grid-template-columns:86px minmax(0,920px) minmax(180px,250px);gap:16px;max-width:1490px}
+ .left{padding:22px 6px}.left .brand{justify-content:center;margin:0 0 25px}
+ .left .brand-name,.left .nav-item>span,.left .profile-mini>span,.left .profile-mini>.icon{display:none}
+ .left .nav-list{gap:9px}
+ .left .nav-item{display:flex;justify-content:center;align-items:center;padding:13px 7px;width:58px;height:54px;margin:0 auto;border-radius:15px}
+ .left .nav-item .icon{height:23px;width:23px}
+ .left .new-post{font-size:0;width:57px;height:56px;margin:16px auto 0;padding:13px;display:flex;align-items:center;justify-content:center;border-radius:16px}
+ .left .new-post .icon{height:24px;width:24px}
+ .left .profile-mini{justify-content:center;width:58px;margin:0 auto;padding:9px 0}
+ .left .profile-mini .avatar{width:39px;height:39px}
+}
+.brand-logo.fikra-personal-mark{background:transparent!important;box-shadow:none!important;border-radius:12px;display:grid;place-items:center;padding:0}
+.brand-logo.fikra-personal-mark img{width:100%;height:100%;object-fit:contain;display:block}
+
 </style>
 </head>
 <body>
@@ -547,14 +604,14 @@ async function cloudLoad(reset){
    r.forEach(function(a){if(a.error)throw a.error});
    comments=r[0].data||[];likes=r[1].data||[];reposts=r[2].data||[];marks=r[3].data||[];
    var uids=Array.from(new Set(raw.map(function(x){return x.author_id}).concat(comments.map(function(x){return x.author_id}))));
-   var ps=await cloud.from('fikra_profiles').select('id,username,display_name,bio,avatar_url').in('id',uids).limit(100);
+   var ps=await cloud.from('fikra_profiles').select('id,username,display_name,bio,avatar_url,created_at').in('id',uids).limit(100);
    if(ps.error)throw ps.error;profs=ps.data||[];
   }
   var map={};profs.forEach(function(p){map[p.id]=p;whoFor(p)});
   var posts=raw.map(function(p){
    var ps=likes.filter(function(x){return x.post_id===p.id}),rs=reposts.filter(function(x){return x.post_id===p.id});
    var c=comments.filter(function(x){return x.post_id===p.id}).reverse().map(function(x){return {id:x.id,parent_id:x.parent_id,author_id:x.author_id,who:whoFor(map[x.author_id]||{id:x.author_id,display_name:'Foydalanuvchi',username:'user'}),text:x.content,created:new Date(x.created_at).getTime(),edited_at:x.edited_at}});
-   return {id:p.id,who:whoFor(map[p.author_id]||{id:p.author_id,display_name:'Foydalanuvchi',username:'user'}),author_id:p.author_id,text:p.content,image:p.image_path?cloud.storage.from('fikra-media').getPublicUrl(p.image_path).data.publicUrl:'',image_path:p.image_path,created:new Date(p.created_at).getTime(),likes:ps.length,liked:ps.some(function(x){return x.user_id===cu?.id}),reposts:rs.length,reposted:rs.some(function(x){return x.user_id===cu?.id}),comments:c};
+   return {id:p.id,who:whoFor(map[p.author_id]||{id:p.author_id,display_name:'Foydalanuvchi',username:'user'}),author_id:p.author_id,text:p.content,image:p.image_path?cloud.storage.from('fikra-media').getPublicUrl(p.image_path).data.publicUrl:'',image_path:p.image_path,created:new Date(p.created_at).getTime(),isNewCreator:!!(map[p.author_id]?.created_at&&Date.now()-new Date(map[p.author_id].created_at).getTime()<10*86400000),likes:ps.length,liked:ps.some(function(x){return x.user_id===cu?.id}),reposts:rs.length,reposted:rs.some(function(x){return x.user_id===cu?.id}),comments:c};
   });
   state.posts=reset?posts:state.posts.concat(posts);
   state.bookmarks=reset?marks.map(function(x){return x.post_id}):state.bookmarks.concat(marks.map(function(x){return x.post_id}));
@@ -1315,7 +1372,7 @@ async function fikraOpenProfile(uid){
    cloud.from('fikra_profiles').select('id,username,display_name,bio,avatar_url').eq('id',uid).maybeSingle(),
    cloud.rpc('fikra_profile_stats',{p_uid:uid}),
    cloud.from('fikra_posts').select('id,author_id,content,image_path,created_at').eq('author_id',uid).order('created_at',{ascending:false}).limit(30),
-   cloud.from('fikra_reels').select('id,author_id,caption,video_path,views_count,created_at').eq('author_id',uid).order('created_at',{ascending:false}).limit(30)
+   cloud.from('fikra_reels').select('id,author_id,caption,youtube_id,created_at').eq('author_id',uid).order('created_at',{ascending:false}).limit(30)
   ]);
   results.forEach(function(x){if(x.error)throw x.error});
   if(uid!==fikraPublicUid)return;
@@ -1451,8 +1508,8 @@ document.addEventListener('click',function(e){
  var short=e.target.closest('[data-fikra-public-reel]');
  if(short){e.preventDefault();e.stopImmediatePropagation();
   var reel=fikraPublicReels.find(function(r){return r.id===short.dataset.fikraPublicReel});if(!reel)return;
-  var url=fikraSafeReelUrl(reel.video_path);if(!url)return;
-  $('overlay').innerHTML='<div class="overlay" data-fikra-comment="video-overlay"><div class="modal" style="max-width:400px;background:#111;color:white"><div class="modal-head"><h3>Reels</h3><button class="modal-close" data-fikra-comment="video-close">'+icon('x')+'</button></div><video controls autoplay playsinline style="width:100%;max-height:70dvh" src="'+esc(url)+'"></video></div></div>';return;
+  if(!fikraYTvalid(reel.youtube_id))return;
+  $('overlay').innerHTML='<div class="overlay" data-fikra-comment="video-overlay"><div class="modal" style="max-width:400px;background:#111;color:white"><div class="modal-head"><h3>Shorts</h3><button class="modal-close" data-fikra-comment="video-close">'+icon('x')+'</button></div><iframe allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen title="YouTube Shorts" style="width:100%;aspect-ratio:9/16;border:0;max-height:70dvh" src="'+fikraYTembed(reel.youtube_id)+'"></iframe></div></div>';return;
  }
  var btn=e.target.closest('[data-fikra-comment]');if(!btn)return;
  e.preventDefault();e.stopImmediatePropagation();
@@ -1479,6 +1536,298 @@ document.addEventListener('click',function(e){
   })().catch(fail).finally(function(){btn.disabled=false});
  }
 },true);
+
+
+/* v13 Shorts: a YouTube ID, not video bytes, is stored. */
+function fikraYTid(s){
+ if(typeof s!=='string'||s.length>300)return '';
+ try{
+  var u=new URL(s.trim());
+  if(u.protocol!=='https:')return '';
+  var host=u.hostname.toLowerCase(),id='';
+  if(['www.youtube.com','youtube.com','m.youtube.com'].includes(host)){
+   var path=u.pathname.split('/').filter(Boolean);
+   if(path[0]==='shorts'||path[0]==='embed')id=path[1]||'';
+   else if(path[0]==='watch')id=u.searchParams.get('v')||'';
+  }else if(['youtu.be','www.youtu.be'].includes(host))id=u.pathname.slice(1).split('/')[0];
+  return /^[a-zA-Z0-9_-]{11}$/.test(id)?id:'';
+ }catch(e){return ''}
+}
+function fikraYTembed(id){return 'https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&mute=1&playsinline=1&rel=0'}
+function fikraYTthumb(id){return 'https://i.ytimg.com/vi/'+id+'/hqdefault.jpg'}
+function fikraYTvalid(id){return typeof id==='string'&&/^[a-zA-Z0-9_-]{11}$/.test(id)}
+function fikraReelTile(r,handler){
+ var id=r.youtube_id;if(!fikraYTvalid(id))return '';
+ return '<button class="fikra-reel-thumb" type="button" '+handler+'="'+esc(r.id)+'">'+
+ '<img loading="lazy" src="'+fikraYTthumb(id)+'" alt="Shorts rasmi">'+
+ '<span class="thumb-play">'+icon('play')+'</span></button>';
+}
+fikraProfileReelTiles=function(){
+ var rows=fikraReels.filter(function(r){return r.author_id===cu?.id&&fikraYTvalid(r.youtube_id)});
+ return rows.length?'<div class="fikra-profile-reels">'+rows.map(function(r){return fikraReelTile(r,'data-short="open-reel" data-id')}).join('')+'</div>':
+  '<div class="fikra-reel-empty">'+icon('play')+'<p>Shorts hali yo‘q.</p><button data-short="upload" class="btn-main">'+icon('plus')+'</button></div>';
+};
+fikraPublicReelsHTML=function(){
+ var rows=fikraPublicReels.filter(function(r){return fikraYTvalid(r.youtube_id)});
+ return rows.length?'<div class="fikra-profile-reels">'+rows.map(function(r){return fikraReelTile(r,'data-fikra-public-reel')}).join('')+'</div>':
+  '<div class="fikra-reel-empty">'+icon('play')+'</div>';
+};
+fikraReelHTML=function(r){
+ if(!fikraYTvalid(r.youtube_id))return '';
+ var u=userFor(r.who),mine=r.author_id===cu?.id,following=state.following.includes(r.author_id);
+ return '<article class="fikra-reel" data-reel="'+esc(r.id)+'" data-ytid="'+esc(r.youtube_id)+'">'+
+ '<div class="fikra-reel-yt"><div class="fikra-reel-fallback"><img loading="lazy" src="'+fikraYTthumb(r.youtube_id)+'" alt="">'+
+ '<span class="fikra-play-placeholder">'+icon('play')+'</span></div></div>'+
+ '<a class="fikra-short-link" href="https://www.youtube.com/shorts/'+r.youtube_id+'" target="_blank" rel="noopener noreferrer" title="YouTube saytida ko‘rish">'+icon('arrow')+'</a>'+
+ '<div class="fikra-reel-info"><div class="fikra-reel-who">'+
+ '<button data-fikra-profile="'+esc(r.author_id)+'" class="fikra-click-profile" style="gap:8px;color:white">'+avatar(r.who)+'<strong>'+esc(u.name)+'</strong></button>'+fikraPremiumTag(r.who)+'</div>'+
+ '<p>'+esc(r.caption||'')+'</p></div>'+
+ '<div class="fikra-reel-actions"><button class="fikra-reel-action '+(r.liked?'liked':'')+'" data-short="like" data-id="'+esc(r.id)+'"><span>'+icon('heart')+'</span>'+fikraFmtNumber(r.likes)+'</button>'+
+ (!mine?'<button class="fikra-reel-follow '+(following?'following':'')+'" data-short="follow" data-id="'+esc(r.author_id)+'">'+(following?'Kuzatilmoqda':'+ Obuna')+'</button>':'')+
+ '</div></article>';
+};
+fikraVideoObserver=function(){
+ if(fikraReelObserver){fikraReelObserver.disconnect();fikraReelObserver=null}
+ var wrap=$('fikraReelsScroll');if(!wrap)return;
+ var cards=[...wrap.querySelectorAll('.fikra-reel')];if(!cards.length)return;
+ if(fikraReelSelected>0&&fikraReelSelected<cards.length)cards[fikraReelSelected].scrollIntoView({block:'start'});
+ fikraReelObserver=new IntersectionObserver(function(entries){
+  entries.forEach(function(entry){
+   var card=entry.target,slot=card.querySelector('.fikra-reel-yt'),id=card.dataset.ytid;
+   if(!slot||!fikraYTvalid(id))return;
+   if(entry.isIntersecting&&entry.intersectionRatio>=.6){
+    if(!slot.querySelector('iframe'))slot.innerHTML='<iframe loading="eager" src="'+fikraYTembed(id)+'" title="YouTube Shorts" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>';
+   }else{
+    var frame=slot.querySelector('iframe');
+    if(frame)slot.innerHTML='<div class="fikra-reel-fallback"><img src="'+fikraYTthumb(id)+'" alt="">'+icon('play')+'</div>';
+   }
+  });
+ },{root:wrap,threshold:[0,.6]});
+ cards.forEach(function(card){fikraReelObserver.observe(card)});
+};
+fikraShortsModal=function(){
+ if(!online()){authGuest=false;renderAuthGate();return}
+ $('overlay').innerHTML='<div class="overlay" data-short="overlay"><form id="fikraYoutubeForm" class="modal fikra-shorts-modal">'+
+ '<div class="modal-head"><h2>'+icon('play')+' Shorts</h2><button type="button" class="modal-close" data-short="close">'+icon('x')+'</button></div>'+
+ '<div class="fikra-youtube-panel"><label for="fikraYoutubeLink">YouTube Shorts havolasi</label>'+
+ '<input id="fikraYoutubeLink" name="youtube_url" inputmode="url" type="url" required placeholder="https://www.youtube.com/shorts/..." maxlength="300">'+
+ '<small>Video avval YouTube’da ochiq bo‘lishi kerak. FIKRA video faylini saqlamaydi.</small></div>'+
+ '<label class="field-label">Izoh</label><textarea class="field" maxlength="280" name="caption" placeholder="Qisqa izoh..." style="min-height:68px"></textarea>'+
+ '<p id="fikraYoutubeStatus" class="fikra-shorts-status">Kuniga 1 ta Shorts havolasi.</p>'+
+ '<button type="submit" id="fikraYoutubeSend" class="btn-main" style="width:100%">'+icon('plus')+' Joylash</button></form></div>';
+};
+var fikraYTbusy=false;
+document.addEventListener('submit',function(e){
+ if(e.target?.id!=='fikraYoutubeForm')return;
+ e.preventDefault();e.stopImmediatePropagation();
+ if(fikraYTbusy||!online())return;
+ var f=e.target,id=fikraYTid(f.elements.youtube_url.value),caption=f.elements.caption.value.trim();
+ var status=$('fikraYoutubeStatus'),send=$('fikraYoutubeSend');
+ if(!id){if(status)status.textContent='YouTube Shorts havolasini to‘g‘ri kiriting.';return}
+ fikraYTbusy=true;if(send)send.disabled=true;
+ (async function(){
+  var r=await cloud.from('fikra_reels').insert({author_id:cu.id,caption:caption,youtube_id:id});
+  if(r.error)throw r.error;
+  $('overlay').innerHTML='';fikraReelSelected=0;view='reels';fikraReelsLoaded=false;
+  await fikraLoadReels();fikraLoadStats();notify('Shorts qo‘shildi');
+ })().catch(function(err){if(status)status.textContent=err.message||String(err);fail(err)})
+ .finally(function(){fikraYTbusy=false;if(send)send.disabled=false});
+},true);
+fikraLoadReels=async function(){
+ if(!cloud||fikraReelsBusy)return;
+ fikraReelsBusy=true;
+ try{
+  var a=await cloud.from('fikra_reels').select('id,author_id,caption,youtube_id,created_at').not('youtube_id','is',null)
+   .order('created_at',{ascending:false}).limit(24);
+  if(a.error)throw a.error;
+  var raw=a.data||[],ids=[...new Set(raw.map(function(x){return x.author_id}))],rid=raw.map(function(x){return x.id});
+  var profiles=ids.length?await cloud.from('fikra_profiles').select('id,username,display_name,avatar_url').in('id',ids):{data:[]};
+  if(profiles.error)throw profiles.error;
+  var peopleMap={};(profiles.data||[]).forEach(function(p){peopleMap[p.id]=p;whoFor(p)});
+  var likes=rid.length?await cloud.from('fikra_reel_likes').select('reel_id,user_id').in('reel_id',rid).limit(2000):{data:[]};
+  if(likes.error)throw likes.error;
+  var all=likes.data||[];
+  fikraReels=raw.map(function(r){var l=all.filter(function(x){return x.reel_id===r.id});
+   return Object.assign({},r,{who:whoFor(peopleMap[r.author_id]||{id:r.author_id,display_name:'FIKRA',username:'user'}),likes:l.length,liked:l.some(function(x){return x.user_id===cu?.id})});
+  });
+  fikraReelsLoaded=true;
+ }catch(e){fail(e)}
+ finally{fikraReelsBusy=false;if(view==='reels'||view==='profile')render()}
+};
+var fikraYTMain=renderMain;
+renderMain=function(){fikraYTMain();if(view==='reels'){
+ var t=document.querySelector('.fikra-reels-toolbar p');if(t)t.textContent='YouTube Shorts · FIKRA’da tomosha';
+ var v=document.querySelector('.fikra-reels-toolbar button');if(v)v.innerHTML=icon('plus');
+}};
+
+
+/* FIKRA v14 — Notifications, consent-based presence, new authors boost */
+var fikraAlerts=[],fikraUnread=0,fikraAlertBusy=false, fikraLive=[],fikraPresenceBusy=false,fikraPresenceStarted=false,fikraPresenceOptin=false;
+try{fikraPresenceOptin=localStorage.getItem('fikra-visible')==='1'}catch(e){}
+function fikraBadge(){
+ document.querySelectorAll('[data-v7="notifications"]').forEach(function(btn){
+  var old=btn.querySelector('.fikra-notif-pill');
+  if(fikraUnread){if(!old){old=document.createElement('span');old.className='fikra-notif-pill';btn.appendChild(old)}old.textContent=fikraUnread>9?'9+':fikraUnread}
+  else if(old)old.remove();
+ });
+}
+function fikraNotifPage(){
+ return head('Xabarlar','Layklar va javoblar')+'<section class="fikra-activity-list">'+
+ (fikraAlerts.length?fikraAlerts.map(function(x){
+  var message=x.kind==='comment_reply'?'izohingizga javob yozdi':x.kind==='comment_post'?'postingizga izoh yozdi':'postingizni yoqtirdi';
+  return '<button class="fikra-activity-row '+(!x.seen?'unread':'')+'" data-fikra-alert="'+esc(x.id)+'">'+icon(x.kind.includes('like')?'heart':'message')+
+   '<span><strong>'+esc(x.actor?.display_name||'Foydalanuvchi')+' '+esc(message)+'</strong><small>'+time(new Date(x.created_at).getTime())+'</small></span></button>';
+ }).join(''):'<div class="fikra-reel-empty">'+icon('bell')+'<p>Hozircha xabar yo‘q.</p></div>')+'</section>';
+}
+async function fikraReadAlerts(){
+ if(!online()||fikraAlertBusy)return;
+ fikraAlertBusy=true;
+ try{
+  var n=await cloud.from('fikra_notifications').select('id,actor_id,kind,post_id,reel_id,seen,created_at').eq('recipient_id',cu.id).order('created_at',{ascending:false}).limit(25);
+  if(n.error)throw n.error;
+  var ids=[...new Set((n.data||[]).map(function(x){return x.actor_id}))];
+  var ps=ids.length?await cloud.from('fikra_profiles').select('id,display_name').in('id',ids):{data:[]};
+  if(ps.error)throw ps.error;
+  var map=Object.fromEntries((ps.data||[]).map(function(x){return [x.id,x]}));
+  fikraAlerts=(n.data||[]).map(function(x){return Object.assign({},x,{actor:map[x.actor_id]||{}})});
+  fikraUnread=fikraAlerts.filter(function(x){return !x.seen}).length;
+ }catch(e){console.warn('FIKRA notifications:',e?.message)}
+ finally{fikraAlertBusy=false;fikraBadge();if(view==='notifications')renderMain()}
+}
+function fikraOnlineMarkup(){
+ return '<section class="fikra-presence-section"><div class="fikra-presence-title"><strong>'+icon('users')+' Onlayn</strong><small class="muted">'+fikraLive.length+'</small></div>'+
+ (fikraLive.length?fikraLive.slice(0,8).map(function(x){
+  var photo=fikraValidPhoto(x.avatar_url)?'<span class="avatar fikra-has-photo"><img src="'+esc(x.avatar_url)+'" alt=""></span>':'<span class="avatar mine">'+esc(x.display_name.slice(0,2))+'</span>';
+  return '<button class="fikra-online-avatar" data-fikra-profile="'+esc(x.id)+'">'+photo+'<span><strong>'+esc(x.display_name)+'</strong><small>@'+esc(x.username)+'</small></span><span class="fikra-online-dot"></span></button>';
+ }).join(''):'<p class="hint">Hozir onlayn a’zo ko‘rinmayapti.</p>')+
+ (online()?'<label class="fikra-presence-optin"><input type="checkbox" data-fikra-visibility="1" '+(fikraPresenceOptin?'checked':'')+'> Onlayn holatim ko‘rinsin</label>':'')+'</section>';
+}
+function fikraDrawPresence(){var e=$('fikraPresence');if(e)e.innerHTML=fikraOnlineMarkup()}
+async function fikraLoadPresence(){
+ if(!online()||fikraPresenceBusy||document.visibilityState==='hidden')return;
+ fikraPresenceBusy=true;
+ try{
+  var result=await cloud.from('fikra_presence').select('user_id').eq('visible',true).gte('last_seen_at',new Date(Date.now()-240000).toISOString()).limit(16);
+  if(result.error)throw result.error;
+  var ids=(result.data||[]).map(function(x){return x.user_id});
+  var profiles=ids.length?await cloud.from('fikra_profiles').select('id,display_name,username,avatar_url').in('id',ids):{data:[]};
+  if(profiles.error)throw profiles.error;
+  var map=Object.fromEntries((profiles.data||[]).map(function(x){return [x.id,x]}));
+  fikraLive=ids.map(function(uid){return map[uid]}).filter(Boolean);
+ }catch(e){console.warn('FIKRA presence:',e?.message)}
+ finally{fikraPresenceBusy=false;fikraDrawPresence()}
+}
+async function fikraPresenceTick(){
+ if(!online()||document.visibilityState==='hidden')return;
+ if(fikraPresenceOptin){
+  var r=await cloud.from('fikra_presence').upsert({user_id:cu.id,visible:true},{onConflict:'user_id'});
+  if(r.error)console.warn(r.error.message);
+ }
+ await fikraLoadPresence();
+}
+function fikraPresenceInit(){
+ if(fikraPresenceStarted)return;
+ fikraPresenceStarted=true;
+ setInterval(function(){if(online()&&document.visibilityState!=='hidden'){fikraPresenceTick();fikraReadAlerts()}},120000);
+ document.addEventListener('visibilitychange',function(){
+  if(!online())return;
+  if(document.visibilityState==='visible'){fikraPresenceTick();fikraReadAlerts()}
+  else if(fikraPresenceOptin)cloud.from('fikra_presence').update({visible:false}).eq('user_id',cu.id).then(function(){});
+ });
+}
+document.addEventListener('change',function(event){
+ if(!event.target?.dataset?.fikraVisibility)return;
+ fikraPresenceOptin=event.target.checked;
+ try{localStorage.setItem('fikra-visible',fikraPresenceOptin?'1':'0')}catch(e){}
+ if(!online())return;
+ cloud.from('fikra_presence').upsert({user_id:cu.id,visible:fikraPresenceOptin},{onConflict:'user_id'})
+ .then(function(r){if(r.error)fail(r.error);else fikraLoadPresence()});
+},true);
+var fikraPreNotificationMain=renderMain;
+renderMain=function(){
+ if(view==='notifications'){$('main').innerHTML=fikraNotifPage();return}
+ fikraPreNotificationMain();
+ if(view==='explore'){
+  var dir=$('fikraDirectory');
+  if(dir&&!$('fikraPresence'))dir.insertAdjacentHTML('afterend','<div id="fikraPresence"></div>');
+  fikraDrawPresence();
+ }
+};
+var fikraPreNotificationRender=render;
+render=function(){fikraPreNotificationRender();fikraBadge()};
+var fikraPreNotificationCloud=cloudLoad;
+cloudLoad=async function(reset){
+ await fikraPreNotificationCloud(reset);
+ if(reset&&cloud&&cu){await Promise.all([fikraReadAlerts(),fikraPresenceTick()]);fikraPresenceInit()}
+};
+document.addEventListener('click',function(e){
+ var b=e.target.closest('[data-fikra-alert]');if(!b)return;
+ e.preventDefault();e.stopImmediatePropagation();
+ var x=fikraAlerts.find(function(i){return i.id===b.dataset.fikraAlert});if(!x)return;
+ if(!x.seen){x.seen=true;fikraUnread=Math.max(0,fikraUnread-1);fikraBadge();
+  cloud.from('fikra_notifications').update({seen:true}).eq('id',x.id).eq('recipient_id',cu.id).then(function(){});
+ }
+ var post=state.posts.find(function(p){return p.id===x.post_id});
+ if(post){view='home';showThreads[post.id]=true;render();requestAnimationFrame(function(){document.getElementById('post-'+post.id)?.scrollIntoView({block:'center'})})}
+ else if(x.actor_id)fikraOpenProfile(x.actor_id);
+},true);
+var fikraOldFeedList=listPosts;
+listPosts=function(){
+ var rows=fikraOldFeedList();
+ if(view!=='home'||tab!=='all')return rows;
+ var selected=new Set(),boost=[],rest=[];
+ rows.forEach(function(p){
+  if(boost.length<2&&p.isNewCreator&&p.author_id&&!selected.has(p.author_id)&&p.created>Date.now()-3*86400000){
+   selected.add(p.author_id);boost.push(p)
+  }else rest.push(p);
+ });
+ return boost.concat(rest);
+};
+var fikraBeforeNewBadge=postHTML;
+postHTML=function(p){
+ var markup=fikraBeforeNewBadge(p);
+ if(p.isNewCreator&&p.author_id)markup=markup.replace('<div class="post-top">','<div class="post-top"><span class="fikra-newcreator">'+icon('spark')+' Yangi muallif</span>');
+ return markup;
+};
+
+
+/* Original supplied FIKRA artwork optimized to 56px for the app header. */
+var fikraOriginalMark='data:image/webp;base64,UklGRsIEAABXRUJQVlA4WAoAAAAQAAAAJwAAJwAAQUxQSFQCAAABoERtmyHJ+iIix7Zt28aOS1vXtm3btm3btq22uyPy//NbZFbe8ToiJgB7+QZN28PsBMY0f/uHVjA7LsIK/tHCuMjtABtFUdQYN3IdGmMHWotM8/ujiDDrprObbCcLjD3k8isPn4gNbYHTyKI228diyGPK9AtD0fRWVt3eH/mNsdZa4zC9lKG2rrZBmKxo+8T+/QGbw0QOBTv+zQaSTMQr5yK/dQDQaej4cUO7m0NZx6+3Lb+ygRL4Q5MjPvziqcFZDui+6c4vyoQM1ZeezfqGEQBmV4kELppzx9e/TM9wGHBtGUkmIsKiVdWs7dK4URMcR++TK1DYYf9KMoRYRFUDXz3yQ16MRs4ODOr5kG0CGAAO5zLxooVj/nPboxWHI0LHMjbwXjikHfahF80dk5VF3AozwCcNPA1Rypqe1RLr/5RAanUfHE4fJ+NgUxHOotftGTizY7HW80E4pI39PIm3hyS/L/yInn90szZl0b2Gsn1++o+ef42GRdaoRLczGbR0CBwKDNNkO4mo1g2zNsugdRElS/LEoqoaOAcuCxZPJV5VRfOToiqs6ghTwGERU6qSQ/jazxStL94Ah8IWD7E+pVJAkv96P/JPkF9nwSGnsW3eZQhaUCT2cW338/6s9x8OcTYPDFrdRqbEh1hJ0i875NPfk+9aGZMLBlj4ooh4ktSST2/f2t92e1rKj3UWuY1xjdGmKpD/XLJq7rAOyB7aBfmNAwC3lCw6ozMyXWRhALh8QNR30iic/MkhXYHIOWuQbQ1ymwGnf1hNuattq2aIDPbiAVZQOCBIAgAAUAwAnQEqKAAoAD7dYKZOqKWjIiq6rAEQG4lsAL2H1vmfIkuv1jvUBtp/MB9gHvo+g3/X74tvEv7kftIlFBnfx7mPQ+whkHIw+FBMcEX0f+cV+grWOvCtTkUCDBeorkapw/EBx23FsIxuCgAA/v5KEaS2vmr/NRaoIxfCLzR2a4rKTprG2oZhbrvz4k3rOH7iMKSoSzMIfTnX+LciqwL8vsIjq3T5pW107jz4HyVrPC0FjCtymoDqmnmVdmPUzl2V72N5z0dN57kpUCRdmAOHTqjwzWqaW3bTGyOUgS9GW+UwO6jPFofxD+/0LoBfIkjFeq8erR4Yy61/KlBTn8IxwhqOBbF/5wPEgDlmwi0pv+Jt39F4v+Kphmv9vazAZcm0FNgvuFLoJFIKYlGn0AeOKpszceFo6U896Hss6ULQLKRcLTapn/ZBuQn32Yv5aBM2qUJCgSDGfXXJYL8JXVm3qj+IUEvQ+Az5ffqta87ukrdUsUoaHeLDmb//BKZTecGbgINWDAEd3OAZkQa3wp+mbXwWaLTA3gLM+vfm5tJRu/7sG49WOurgEAiV7wWTjciJSVQO0NGax+OJSpQzBSUuFnRqS7Mqnu3qaru0oc2XOff6mB7xjx0OC2NIl3XBjKO8e/vbFKPjaYCVGDhdoiIdJMl/HcP/mrAlHet4+JUC0xZQxiJ3VgIU4jPAZ6a61t9Web10qU8y56faK/dtx/OyYLzf2162HNDFne8/DNu/l+XuYz/t/xufeCwLA7n4182WPkUnHneAAAA=';
+function fikraUseArtwork(){
+ document.querySelectorAll('.brand-logo').forEach(function(node){
+  node.classList.add('fikra-personal-mark');
+  node.innerHTML='<img src="'+fikraOriginalMark+'" width="56" height="56" alt="FIKRA logotipi" decoding="async">';
+ });
+ var f=document.querySelector('link[rel="icon"]');
+ if(!f){f=document.createElement('link');f.rel='icon';document.head.appendChild(f)}
+ f.type='image/webp';f.href=fikraOriginalMark;
+}
+var fikraBeforeBrandRender=render;
+render=function(){fikraBeforeBrandRender();fikraUseArtwork();
+ document.querySelectorAll('#left .nav-item,#left .new-post').forEach(function(btn){btn.setAttribute('title',btn.textContent.trim());btn.setAttribute('aria-label',btn.textContent.trim())});
+};
+
+
+/* Free-tier budget: cache noncritical lists for a short time between writes. */
+var fikraCacheStamp={reels:0,people:0,stats:0};
+var fikraRealLoadReels=fikraLoadReels;
+fikraLoadReels=async function(){
+ if(fikraReelsLoaded&&Date.now()-fikraCacheStamp.reels<75000)return;
+ fikraCacheStamp.reels=Date.now();
+ await fikraRealLoadReels();
+};
+var fikraRealLoadStats=fikraLoadStats;
+fikraLoadStats=async function(){
+ if(Date.now()-fikraCacheStamp.stats<90000)return;
+ fikraCacheStamp.stats=Date.now();
+ await fikraRealLoadStats();
+};
+var fikraRealDirectoryLoad=fikraDirectoryLoad;
+fikraDirectoryLoad=async function(){
+ if(fikraProfileDirectory.length&&Date.now()-fikraCacheStamp.people<120000)return;
+ fikraCacheStamp.people=Date.now();
+ await fikraRealDirectoryLoad();
+};
 
 render();
 initCloud();
