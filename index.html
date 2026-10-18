@@ -4,6 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#f8f9fd">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://zzucygzvoritdasjrfoh.supabase.co; connect-src 'self' https://zzucygzvoritdasjrfoh.supabase.co wss://zzucygzvoritdasjrfoh.supabase.co; font-src 'self' data:; media-src 'self' blob: https://zzucygzvoritdasjrfoh.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <title>FIKRA — Fikrlar uchrashadigan joy</title>
 <style>
 :root{--bg:#f7f8fc;--panel:#fff;--text:#1e2433;--sub:#80879b;--line:#edf0f6;--purple:#6655ed;--purple-dark:#5042c8;--purple-light:#f0edff;--hover:#f5f6fb;--shadow:0 16px 50px rgba(29,36,78,.055)}
@@ -129,6 +131,48 @@ body.dark{--bg:#0f1220;--panel:#191d2e;--text:#f2f3fa;--sub:#a2a7bb;--line:#2a30
 .intro-hey .icon{width:16px;height:16px;vertical-align:-3px;margin-right:5px;color:var(--purple)}
 @media(max-width:640px){.fikra-settings{padding:16px 14px 110px}.fikra-profile-settings{font-size:11px}.fikra-settings .settings-logout{margin-bottom:12px}}
 
+
+/* FIKRA v7 — reader-first layout, minimal top navigation, safer cards */
+.app{max-width:1540px;grid-template-columns:205px minmax(0,850px) minmax(210px,255px);gap:17px;padding:0 17px}
+.left{padding-top:20px}.brand{margin-left:9px;margin-bottom:25px}.brand-logo{width:42px;height:42px;border-radius:13px}.brand-name{font-size:25px}
+.nav-list{gap:8px}.nav-item{padding:14px 13px;font-size:14px}.nav-item .icon{height:21px;width:21px}
+.new-post{display:flex;align-items:center;justify-content:center;gap:9px;margin-top:18px}
+.fikra-wide-posts{padding:17px 17px 35px;background:var(--bg)}
+.post-card{margin:0 0 13px;border:1px solid var(--line);border-radius:19px;background:var(--panel);padding:21px 22px 16px;box-shadow:0 7px 28px #10173309;gap:14px;isolation:isolate}
+.post-card:hover{box-shadow:0 12px 32px #10173312;background:var(--panel)}
+.post-top{margin-bottom:11px;gap:7px}.post-top strong{font-size:15px;letter-spacing:-.25px}
+.post-text{font-size:16px;line-height:1.76;margin:7px 0 17px}
+.post-media{max-height:540px;object-fit:contain;background:var(--bg)}
+.post-actions{margin-top:12px}.main{border:0;background:var(--bg)}
+.mainhead{position:sticky;top:0;z-index:20;gap:10px;padding:14px 19px;background:color-mix(in srgb,var(--panel) 95%,transparent);box-shadow:0 1px 0 var(--line)}
+.mainhead h1{font-size:19px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mainhead .main-actions{gap:5px;align-items:center;flex-shrink:0}
+.mainhead .round-action{width:39px;height:39px;border-radius:12px;color:var(--sub)}
+.mainhead .round-action:hover{background:var(--purple-light);color:var(--purple)}
+.mainhead .round-action.active{background:var(--purple-light);color:var(--purple)}
+.mainhead .round-action .icon{width:20px;height:20px}
+.mainhead .fikra-premium-top{color:#89702d;background:#faf2d6}
+.mainhead .fikra-premium-top.member{color:#b48a16;background:#ffe5a0;box-shadow:0 0 0 1px #d7b050 inset}
+.mainhead .fikra-plus-top{background:var(--purple);color:#fff}.mainhead .fikra-plus-top:hover{background:var(--purple-dark);color:#fff}
+.fikra-feed-header{display:flex;align-items:center;justify-content:space-between;padding:9px 5px 20px}
+.fikra-feed-header strong{font-size:15px}.fikra-feed-header small{font-size:11px;color:var(--sub)}
+.fikra-cloudbar{margin:0 17px 0;border-bottom:1px solid var(--line);padding:8px 4px}
+.main .intro,.main .compose,.main .tabs{display:none}
+.profile-row .fikra-profile-settings{display:none!important}
+.mainhead .fikra-premium-top{color:var(--sub);background:var(--hover)}
+.mainhead .fikra-premium-top.member{color:#ad7d09;background:#ffe5a0;box-shadow:0 0 0 1px #d7b050 inset}
+.mobile-nav button{flex:1}
+.fab{display:none!important}
+.fikra-settings-link{display:none!important}
+.fikra-profile-settings{margin-left:auto;border:0;background:var(--hover)}
+.fikra-search-hint{padding:8px 18px;color:var(--sub);font-size:12px}
+.fikra-corner-ad{z-index:29}
+body.dark .post-card{box-shadow:none}
+@media(max-width:1190px){.app{grid-template-columns:195px minmax(0,1fr);max-width:1200px;gap:14px;padding:0 14px}.right{display:none}}
+@media(max-width:990px){.app{grid-template-columns:185px minmax(0,1fr);gap:10px;padding:0 12px}}
+@media(max-width:680px){.app{display:block;padding:0;max-width:100%}.left,.right{display:none}.main{width:100%;max-width:100%;min-height:100vh;padding-bottom:75px}.mainhead{padding:12px 12px}.mainhead h1{font-size:17px}.mainhead .subhead{display:none}.mainhead .round-action{height:35px;width:35px}.mainhead .main-actions{gap:1px}.mainhead .round-action .icon{height:18px;width:18px}.fikra-wide-posts{padding:11px 10px 35px}.post-card{border-radius:15px;margin:0 0 11px;padding:16px 13px 13px;gap:10px}.post-text{font-size:15px;line-height:1.7}.post-top strong{font-size:14px}.fikra-cloudbar{margin:0 10px}.mobile-nav{display:flex;justify-content:space-around;gap:5px}.mobile-nav button{width:auto!important}.fab{display:none!important}.fikra-corner-ad{bottom:77px}}
+@media(max-width:375px){.mainhead .round-action{width:32px}.mainhead .main-actions{gap:0}.mainhead h1{font-size:16px}.post-card{padding:14px 10px}}
+
 </style>
 </head>
 <body>
@@ -140,6 +184,7 @@ body.dark{--bg:#0f1220;--panel:#191d2e;--text:#f2f3fa;--sub:#a2a7bb;--line:#2a30
 <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></symbol>
 <symbol id="i-crown" viewBox="0 0 24 24"><path d="m3 7 5 5 4-7 4 7 5-5-2 12H5z"/><path d="M6 22h12"/></symbol>
 <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></symbol>
+<symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
 <symbol id="i-home" viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/></symbol>
 <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7.5"/><path d="m17 17 4.2 4.2"/></symbol>
 <symbol id="i-bell" viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/></symbol>
@@ -739,6 +784,67 @@ document.addEventListener('submit',function(event){
  if(url&&!/^https:\/\/[^\s]+$/i.test(url))return notify('Havola https:// bilan boshlanishi kerak');
  var ad={sponsor:f.elements.sponsor.value.trim().slice(0,70),headline:f.elements.headline.value.trim().slice(0,120),description:f.elements.description.value.trim().slice(0,350),cta_url:url||null,cta_text:f.elements.cta_text.value.trim().slice(0,35)||'Batafsil',active:f.elements.active.checked};
  (async function(){var r=await cloud.from('fikra_ads').insert(ad);if(r.error)throw r.error;await fikraAdminFetch();await cloudLoad(true);notify('Reklama saqlandi')})().catch(fail);
+},true);
+
+
+/* FIKRA v7: compact unified navigation and isolated reader cards. */
+var fikraV7Head=function(title,desc){
+ var isProfile=view==='profile';
+ var action=function(k,name,tip,extra){return '<button type="button" class="round-action '+(extra||'')+'" data-v7="'+k+'" aria-label="'+tip+'" title="'+tip+'">'+icon(name)+'</button>'};
+ return '<header class="mainhead"><div style="min-width:0"><h1>'+esc(title)+'</h1>'+(desc?'<div class="subhead">'+esc(desc)+'</div>':'')+'</div>'+
+ '<div class="main-actions">'+
+ (isProfile?action('settings','settings','Sozlamalar',''):'')+
+ action('search','search','Kashf etish va qidirish',view==='explore'?'active':'')+
+ action('notifications','bell','Bildirishnomalar',view==='notifications'?'active':'')+
+ action('premium','crown','FIKRA Premium','fikra-premium-top'+(fikraPremiumOn()?' member':''))+
+ action('post','plus','Yangi post','fikra-plus-top')+
+ '</div></header>'
+};
+head=fikraV7Head;
+renderLeft=function(){
+ $('left').innerHTML='<div class="brand"><span class="brand-logo">f.</span><span class="brand-name">fikra<span>.</span></span></div>'+
+ '<nav class="nav-list" aria-label="Asosiy bo‘limlar">'+navButton('home','Bosh sahifa','home')+navButton('bookmarks','Saqlanganlar','bookmark')+navButton('profile','Profilim','user')+'</nav>'+
+ '<button class="new-post" data-v7="post">'+icon('plus')+' Post yozish</button>'+
+ '<button class="profile-mini" data-act="nav" data-view="profile">'+avatar('men')+'<span><strong>'+esc(state.profile.name)+'</strong><small>@'+esc(state.profile.handle)+'</small></span>'+icon('chevron')+'</button>';
+};
+renderMobile=function(){
+ var entries=[['home','home','Bosh sahifa'],['bookmarks','bookmark','Saqlanganlar'],['post','plus','Post yaratish'],['profile','user','Profil']];
+ $('mobileNav').innerHTML=entries.map(function(a){
+  return '<button type="button" '+(a[0]==='post'?'data-v7="post"':'data-act="nav" data-view="'+a[0]+'"')+' class="'+(view===a[0]?'active':'')+'" aria-label="'+a[2]+'">'+icon(a[1])+'</button>'
+ }).join('');
+};
+var fikraV7OldMain=renderMain;
+renderMain=function(){
+ if(view==='home')tab='all';
+ fikraV7OldMain();
+ if(view==='home'){
+  var list=$('feedList');
+  if(list){
+   list.classList.add('fikra-wide-posts');
+   list.insertAdjacentHTML('afterbegin','<div class="fikra-feed-header"><strong>So‘nggi fikrlar</strong><small>Har bir post alohida</small></div>');
+  }
+  tab='all';
+ }
+ if(view==='explore'){
+  var box=$('exploreSearch');if(box){box.setAttribute('aria-label','FIKRAda izlash');box.placeholder='Fikr, odam yoki mavzuni izlash'}
+  var list=$('feedList');if(list)list.classList.add('fikra-wide-posts')
+ }
+ if(view==='bookmarks'||view==='profile'){
+  var list=$('feedList');if(list)list.classList.add('fikra-wide-posts')
+ }
+};
+document.addEventListener('click',function(e){
+ var btn=e.target.closest('[data-v7]');if(!btn)return;
+ e.preventDefault();e.stopImmediatePropagation();
+ var a=btn.dataset.v7;
+ if(a==='post'){if(!online()){authGuest=false;renderAuthGate();return}openModal('compose');return}
+ if(a==='premium'){view='premium'}
+ else if(a==='search'){view='explore'}
+ else if(a==='notifications'){view='notifications'}
+ else if(a==='settings'){view='settings'}
+ else return;
+ tab='all';render();window.scrollTo({top:0,behavior:'smooth'});
+ if(a==='search'){var field=$('exploreSearch');if(field)field.focus()}
 },true);
 
 render();
