@@ -230,6 +230,54 @@ body.dark .post-card{box-shadow:none}
 .brand-logo .fikra-brand-svg{width:35px;height:35px;display:block}
 .auth-identity .brand-logo .fikra-brand-svg{width:35px;height:35px}
 
+
+/* FIKRA v11 — real user profile pages, unique comments, nested replies */
+.fikra-click-profile{display:inline-flex;align-items:center;justify-content:center;padding:0;text-align:left;border:0;background:none;min-width:0;cursor:pointer;border-radius:12px}
+.fikra-click-profile:hover{color:var(--purple)}.fikra-click-profile .avatar{flex:none}
+.fikra-click-profile:focus-visible{outline:2px solid var(--purple);outline-offset:3px}
+.post-top .fikra-click-profile{font-weight:800;font-size:15px}
+.fikra-comments-tree{display:grid;gap:10px;margin-bottom:16px}
+.fikra-comment{display:flex;gap:9px;padding:12px 11px;background:var(--hover);border:1px solid var(--line);border-radius:13px;min-width:0;align-items:flex-start}
+.fikra-comment.depth-1{margin-left:24px;background:var(--panel);border-left:3px solid var(--purple-light)}
+.fikra-comment.depth-2{margin-left:38px;background:var(--panel)}
+.fikra-comment .avatar{width:31px;height:31px;font-size:11px;flex-shrink:0}
+.fikra-comment-body{flex:1;min-width:0}
+.fikra-comment-head{display:flex;gap:7px;flex-wrap:wrap;align-items:center}
+.fikra-comment-head .fikra-click-profile{font-size:13px;font-weight:800}
+.fikra-comment-head small{color:var(--sub);font-size:11px}
+.fikra-comment-text{margin:5px 0 6px;font-size:13px;line-height:1.65;overflow-wrap:anywhere;white-space:pre-wrap}
+.fikra-comment-actions{display:flex;gap:12px;flex-wrap:wrap}
+.fikra-comment-actions button{color:var(--sub);font-size:11px;font-weight:700;display:flex;gap:4px;align-items:center}
+.fikra-comment-actions button:hover{color:var(--purple)}
+.fikra-comment-actions .icon{height:13px;width:13px}
+.fikra-comment-editor{margin:8px 0 0;padding:10px;border:1px solid var(--line);background:var(--panel);border-radius:11px}
+.fikra-comment-editor textarea{width:100%;min-height:62px;resize:vertical;background:var(--panel);border:1px solid var(--line);border-radius:9px;color:var(--text);padding:9px;font-size:13px}
+.fikra-comment-editor button{font-size:11px;font-weight:780;background:var(--purple);color:#fff;padding:9px 14px;border-radius:8px}
+.fikra-comment-editor .cancel{background:var(--hover);color:var(--sub);margin-left:7px}
+.fikra-comment-send{margin:10px 0 0;display:flex;align-items:center;gap:8px}
+.fikra-comment-send textarea{flex:1;min-height:43px;max-height:140px;resize:vertical;border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--text);font-size:13px;padding:10px}
+.fikra-comment-send button{font-size:12px;padding:10px 12px;border-radius:10px;background:var(--purple);color:#fff;font-weight:740}
+.fikra-comment-send button:disabled{opacity:.5}
+.fikra-public-cover{height:136px;background:linear-gradient(115deg,#4c36b1,#8265e8 55%,#e7b5eb);border-radius:0 0 21px 21px}
+.fikra-public-area{padding:0 20px 20px}.fikra-public-heading{display:flex;align-items:center;gap:15px;flex-wrap:wrap;margin-top:-27px}
+.fikra-public-heading .avatar.big{position:relative;z-index:2;border:4px solid var(--panel)}
+.fikra-public-heading .btn-main{margin-left:auto;font-size:12px}
+.fikra-public-meta h2{font-size:21px;letter-spacing:-.5px;margin:14px 0 0}
+.fikra-public-meta p{font-size:13px;line-height:1.6;color:var(--sub);margin:6px 0 12px}
+.fikra-public-meta small{font-size:12px;color:var(--sub)}
+.fikra-user-directory{border:1px solid var(--line);background:var(--panel);padding:10px 13px;margin:12px 19px 15px;border-radius:15px}
+.fikra-user-directory h3{font-size:13px;margin:4px 0 8px}
+.fikra-user-result{display:flex;align-items:center;gap:9px;padding:10px 6px;border-radius:9px;width:100%;text-align:left}
+.fikra-user-result:hover{background:var(--hover)}
+.fikra-user-result .avatar{width:35px;height:35px;font-size:11px}
+.fikra-user-result span:nth-child(2){min-width:0}
+.fikra-user-result strong{display:block;font-size:12px}
+.fikra-user-result small{display:block;font-size:11px;color:var(--sub)}
+.fikra-public-loading{padding:30px;text-align:center;color:var(--sub)}
+.fikra-profile-stats{grid-template-columns:repeat(4,minmax(0,1fr))}
+.profile-area .profile-stat{display:none}
+@media(max-width:680px){.fikra-comment{padding:10px 8px}.fikra-comment.depth-1{margin-left:12px}.fikra-comment.depth-2{margin-left:20px}.fikra-public-area{padding:0 12px 14px}.fikra-public-heading{gap:8px}.fikra-user-directory{margin:10px}.fikra-profile-stats{grid-template-columns:repeat(4,minmax(0,1fr))}.fikra-profile-stat{padding:10px 3px}.fikra-profile-stat strong{font-size:15px}.fikra-profile-stat small{font-size:10px}}
+
 </style>
 </head>
 <body>
@@ -374,7 +422,7 @@ return '<article class="post-card" id="post-'+esc(p.id)+'">'+avatar(p.who)+'<div
 '<button class="engage '+(p.liked?'liked':'')+'" data-act="like" data-id="'+esc(p.id)+'" title="Layk">'+icon('heart')+'<span>'+p.likes+'</span></button>'+
 '<button class="engage '+(saved?'saved':'')+'" data-act="bookmark" data-id="'+esc(p.id)+'" title="Saqlash">'+icon('bookmark')+'</button>'+
 '<button class="engage" data-act="share" data-id="'+esc(p.id)+'" title="Ulashish">'+icon('share')+'</button></div>'+
-(showThreads[p.id]?'<div class="thread"><div class="thread-title">Izohlar ('+comments.length+')</div>'+comments.map(function(c){var cu=userFor(c.who);return '<div class="comment">'+avatar(c.who)+'<div><strong>'+esc(cu.name)+'</strong><span class="muted">@'+esc(cu.handle)+'</span><p>'+formatText(c.text)+'</p></div></div>'}).join('')+'<form class="reply-box" data-form="reply" data-id="'+esc(p.id)+'"><input name="reply" maxlength="280" required placeholder="Izoh yozing..." aria-label="Izoh yozish"><button type="submit">Yuborish</button></form></div>':'')+
+(showThreads[p.id]?fikraThreadHTML(p):'')+
 '</div></article>'
 }
 function listPosts(){var out=state.posts.slice();if(view==='home'&&tab==='following')out=out.filter(function(p){return p.who==='men'||state.following.includes(p.who)});if(view==='profile')out=out.filter(function(p){return p.who==='men'});if(view==='bookmarks')out=out.filter(function(p){return state.bookmarks.includes(p.id)});if(view==='explore'&&search.trim()){var q=search.toLocaleLowerCase('uz');out=out.filter(function(p){var u=userFor(p.who);return (p.text+' '+u.name+' @'+u.handle).toLocaleLowerCase('uz').includes(q)})}return out.sort(function(a,b){return b.created-a.created})}
@@ -453,7 +501,7 @@ if(a==='report'){notify('Demo rejimida shikoyat moderatorga yuborilmaydi.');retu
 if(a==='share'&&p){var text=p.text||'FIKRA posti';if(navigator.share){navigator.share({title:'FIKRA posti',text:text}).catch(function(){})}else if(navigator.clipboard){navigator.clipboard.writeText(text).then(function(){notify('Post matni nusxalandi')}).catch(function(){notify('Nusxalash imkoni bo‘lmadi')})}else notify('Ulashish hozircha qo‘llab-quvvatlanmaydi');return}
 });
 document.addEventListener('submit',function(e){
-if(e.target.dataset.form==='reply'){e.preventDefault();var p=postById(e.target.dataset.id),input=e.target.elements.reply;if(!p||!input.value.trim())return;p.comments=p.comments||[];p.comments.push({who:'men',text:input.value.trim().slice(0,280)});save();renderFeedBody();notify('Izoh qo‘shildi');return}
+/* Legacy demo reply handler removed: v11 handles comments through a single validated form. */
 if(e.target.id==='editForm'){e.preventDefault();var el=e.target;state.profile.name=el.elements.name.value.trim().slice(0,40);state.profile.handle=el.elements.handle.value.trim().slice(0,18);state.profile.bio=el.elements.bio.value.trim().slice(0,150);if(!state.profile.name||!state.profile.handle){notify('Ism va foydalanuvchi nomini kiriting');return}save();closeModal();render();notify('Profil yangilandi')}
 });
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal();if((e.ctrlKey||e.metaKey)&&e.key==='Enter'){if(modalOpen==='compose')addPost('modal');else if(view==='home'&&document.activeElement===$('inlineText'))addPost('inline')}});
@@ -491,7 +539,7 @@ async function cloudLoad(reset){
   var raw=pr.data||[],ids=raw.map(function(p){return p.id}),profs=[],likes=[],comments=[],reposts=[],marks=[];
   if(ids.length){
    var r=await Promise.all([
-    cloud.from('fikra_comments').select('post_id,author_id,content,created_at').in('post_id',ids).order('created_at',{ascending:false}).limit(100),
+    cloud.from('fikra_comments').select('id,post_id,parent_id,author_id,content,created_at,edited_at').in('post_id',ids).order('created_at',{ascending:false}).limit(100),
     cloud.from('fikra_likes').select('post_id,user_id').in('post_id',ids).limit(1000),
     cloud.from('fikra_reposts').select('post_id,user_id').in('post_id',ids).limit(1000),
     online()?cloud.from('fikra_bookmarks').select('post_id').eq('user_id',cu.id).in('post_id',ids):Promise.resolve({data:[]})
@@ -505,7 +553,7 @@ async function cloudLoad(reset){
   var map={};profs.forEach(function(p){map[p.id]=p;whoFor(p)});
   var posts=raw.map(function(p){
    var ps=likes.filter(function(x){return x.post_id===p.id}),rs=reposts.filter(function(x){return x.post_id===p.id});
-   var c=comments.filter(function(x){return x.post_id===p.id}).reverse().map(function(x){return {who:whoFor(map[x.author_id]||{id:x.author_id,display_name:'Foydalanuvchi',username:'user'}),text:x.content}});
+   var c=comments.filter(function(x){return x.post_id===p.id}).reverse().map(function(x){return {id:x.id,parent_id:x.parent_id,author_id:x.author_id,who:whoFor(map[x.author_id]||{id:x.author_id,display_name:'Foydalanuvchi',username:'user'}),text:x.content,created:new Date(x.created_at).getTime(),edited_at:x.edited_at}});
    return {id:p.id,who:whoFor(map[p.author_id]||{id:p.author_id,display_name:'Foydalanuvchi',username:'user'}),author_id:p.author_id,text:p.content,image:p.image_path?cloud.storage.from('fikra-media').getPublicUrl(p.image_path).data.publicUrl:'',image_path:p.image_path,created:new Date(p.created_at).getTime(),likes:ps.length,liked:ps.some(function(x){return x.user_id===cu?.id}),reposts:rs.length,reposted:rs.some(function(x){return x.user_id===cu?.id}),comments:c};
   });
   state.posts=reset?posts:state.posts.concat(posts);
@@ -1174,6 +1222,257 @@ renderLeft=function(){
  var logo=document.querySelector('#left .brand-logo');if(logo)logo.innerHTML=fikraCustomLogo();
 };
 var authLogo=document.querySelector('.auth-identity .brand-logo');if(authLogo)authLogo.innerHTML=fikraCustomLogo();
+
+
+/* FIKRA v11: safe, idempotent comment threads and browsable user profiles */
+var fikraCommentSubmitting=new Set(),fikraProfileDirectory=[],fikraDirectoryLoading=false;
+var fikraPublicUid='',fikraPublicUser=null,fikraPublicStats=null,fikraPublicPosts=[],fikraPublicReels=[],fikraPublicTab='posts',fikraPublicBusy=false;
+var fikraStatsEmpty={posts:0,reels:0,followers:0,following:0,likes:0,views:0};
+function fikraIsUuid(v){return typeof v==='string'&&/^[a-f0-9]{8}(-[a-f0-9]{4}){3}-[a-f0-9]{12}$/i.test(v)}
+function fikraCommentsHTML(comments,postId){
+ var byId=new Map(),roots=[],sorted=(comments||[]).slice().sort(function(a,b){return (a.created||0)-(b.created||0)});
+ sorted.forEach(function(c){if(c.id)byId.set(c.id,Object.assign({},c,{kids:[]}))});
+ byId.forEach(function(c){if(c.parent_id&&byId.has(c.parent_id)&&c.parent_id!==c.id)byId.get(c.parent_id).kids.push(c);else roots.push(c)});
+ function card(c,depth){
+  if(depth>8)return '';
+  var u=userFor(c.who),own=!!(cu&&c.author_id===cu.id);
+  return '<div class="fikra-comment depth-'+Math.min(2,depth)+'" data-comment-id="'+esc(c.id)+'">'+
+   '<button type="button" class="fikra-click-profile" data-fikra-profile="'+esc(c.author_id)+'" aria-label="'+esc(u.name)+' profili">'+avatar(c.who)+'</button>'+
+   '<div class="fikra-comment-body"><div class="fikra-comment-head">'+
+   '<button type="button" class="fikra-click-profile" data-fikra-profile="'+esc(c.author_id)+'">'+esc(u.name)+'</button>'+
+   fikraPremiumTag(c.who)+'<small>'+time(c.created||Date.now())+(c.edited_at?' · tahrirlangan':'')+'</small></div>'+
+   '<p class="fikra-comment-text">'+formatText(c.text||'')+'</p>'+
+   '<div class="fikra-comment-actions"><button type="button" data-fikra-comment="reply" data-post="'+esc(postId)+'" data-id="'+esc(c.id)+'">'+icon('message')+' Javob berish</button>'+
+   (own?'<button type="button" data-fikra-comment="edit" data-post="'+esc(postId)+'" data-id="'+esc(c.id)+'">'+icon('pen')+' Tahrirlash</button><button type="button" data-fikra-comment="delete" data-post="'+esc(postId)+'" data-id="'+esc(c.id)+'">'+icon('trash')+' O‘chirish</button>':'')+
+   '</div><div class="fikra-inline-comment-editor"></div></div></div>'+
+   c.kids.map(function(x){return card(x,depth+1)}).join('');
+ }
+ return roots.map(function(c){return card(c,0)}).join('');
+}
+function fikraCommentForm(postId,parentId,placeholder,initial,editingId){
+ var nonce=crypto.randomUUID();
+ return '<form class="'+(editingId?'fikra-comment-editor':'fikra-comment-send')+'" data-fikra-comment-form="1" data-post="'+esc(postId)+'" data-parent="'+esc(parentId||'')+'" data-edit="'+esc(editingId||'')+'" data-nonce="'+esc(nonce)+'">'+
+ '<textarea name="body" required maxlength="280" placeholder="'+esc(placeholder||'Izoh yozing...')+'" aria-label="Izoh matni">'+esc(initial||'')+'</textarea>'+
+ '<div><button type="submit">'+(editingId?'Saqlash':'Yuborish')+'</button>'+(parentId||editingId?'<button type="button" class="cancel" data-fikra-comment="cancel">Bekor qilish</button>':'')+'</div></form>';
+}
+function fikraThreadHTML(p){
+ return '<div class="thread"><div class="thread-title">Izohlar ('+(p.comments||[]).length+')</div>'+
+ '<div class="fikra-comments-tree">'+fikraCommentsHTML(p.comments,p.id)+'</div>'+
+ fikraCommentForm(p.id,'','Fikringizni yozing...')+'</div>';
+}
+var fikraV11PostHTML=postHTML;
+postHTML=function(p){
+ var html=fikraV11PostHTML(p);
+ if(fikraIsUuid(p.author_id)){
+  var av=avatar(p.who),needle='<article class="post-card" id="post-'+esc(p.id)+'">'+av;
+  html=html.replace(needle,'<article class="post-card" id="post-'+esc(p.id)+'"><button type="button" class="fikra-click-profile" data-fikra-profile="'+esc(p.author_id)+'" title="Profilga kirish">'+av+'</button>');
+  var nm='<div class="post-top"><strong>'+esc(userFor(p.who).name)+'</strong>';
+  html=html.replace(nm,'<div class="post-top"><button type="button" class="fikra-click-profile" data-fikra-profile="'+esc(p.author_id)+'">'+esc(userFor(p.who).name)+'</button>');
+ }
+ return html;
+};
+function fikraFourStats(stats){var s=stats||fikraStatsEmpty;
+ var one=function(key,label){return '<div class="fikra-profile-stat"><strong>'+fikraFmtNumber(s[key])+'</strong><small>'+label+'</small></div>'};
+ return '<div class="fikra-profile-stats">'+one('following','Obunalar')+one('likes','Layklar')+one('followers','Obunachilar')+one('posts','Postlar')+'</div>';
+}
+fikraProfileExtras=function(){
+ return fikraFourStats(fikraProfileNumbers)+'<div class="fikra-profile-tabs"><button class="fikra-profile-tab '+(fikraProfileTab==='posts'?'active':'')+'" data-short="profile-posts">'+icon('pen')+' Postlar</button><button class="fikra-profile-tab '+(fikraProfileTab==='reels'?'active':'')+'" data-short="profile-reels">'+icon('play')+' Reels</button></div>';
+};
+function fikraPublicReelsHTML(){
+ if(!fikraPublicReels.length)return '<div class="fikra-reel-empty"><p>Hozircha Reels yo‘q.</p></div>';
+ return '<div class="fikra-profile-reels">'+fikraPublicReels.map(function(r){
+  var url=fikraSafeReelUrl(r.video_path);
+  return '<button type="button" class="fikra-reel-thumb" data-fikra-public-reel="'+esc(r.id)+'"><video src="'+esc(url)+'#t=0.1" playsinline muted preload="metadata"></video><span class="thumb-play">'+icon('play')+'</span><span class="thumb-views">'+icon('eye')+' '+fikraFmtNumber(r.views_count)+'</span></button>';
+ }).join('')+'</div>';
+}
+function fikraPublicProfilePage(){
+ if(fikraPublicBusy||!fikraPublicUser)return head('Foydalanuvchi profili','FIKRA')+'<p class="fikra-public-loading">Profil yuklanmoqda...</p>';
+ var u=fikraPublicUser,uid=u.id,me=uid===cu?.id,followed=state.following.includes(uid);
+ var av=fikraValidPhoto(u.avatar_url)?'<span class="avatar big fikra-has-photo"><img src="'+esc(u.avatar_url)+'" alt="Profil rasmi"></span>':
+  '<span class="avatar big mine">'+esc((u.display_name||'U').slice(0,2).toUpperCase())+'</span>';
+ return head('Profil','@'+u.username)+
+  '<div class="fikra-public-cover"></div><section class="fikra-public-area"><div class="fikra-public-heading">'+av+
+  (!me?'<button class="btn-main" data-fikra-follow="'+esc(uid)+'">'+(followed?'Kuzatilmoqda':'+ Obuna bo‘lish')+'</button>':'')+
+  '</div><div class="fikra-public-meta"><h2>'+esc(u.display_name||'Foydalanuvchi')+(fikraPremium.has(uid)?'<span class="fikra-premium-tag">✦ PREMIUM</span>':'')+'</h2><small>@'+esc(u.username)+'</small><p>'+esc(u.bio||'FIKRA foydalanuvchisi')+'</p></div></section>'+
+  fikraFourStats(fikraPublicStats)+
+  '<div class="fikra-profile-tabs"><button class="fikra-profile-tab '+(fikraPublicTab==='posts'?'active':'')+'" data-fikra-public-tab="posts">'+icon('pen')+' Postlar</button><button class="fikra-profile-tab '+(fikraPublicTab==='reels'?'active':'')+'" data-fikra-public-tab="reels">'+icon('play')+' Reels</button></div>'+
+  '<div id="feedList" class="'+(fikraPublicTab==='posts'?'fikra-wide-posts':'')+'">'+
+  (fikraPublicTab==='posts'?(fikraPublicPosts.length?fikraPublicPosts.map(postHTML).join(''):'<div class="fikra-reel-empty">Postlar hali yo‘q.</div>'):fikraPublicReelsHTML())+'</div>';
+}
+async function fikraOpenProfile(uid){
+ if(!fikraIsUuid(uid))return;
+ if(uid===cu?.id){view='profile';fikraProfileTab='posts';render();window.scrollTo(0,0);return}
+ fikraPublicUid=uid;fikraPublicUser=null;fikraPublicStats=null;fikraPublicPosts=[];fikraPublicReels=[];fikraPublicTab='posts';fikraPublicBusy=true;
+ view='other-profile';render();window.scrollTo(0,0);
+ try{
+  var results=await Promise.all([
+   cloud.from('fikra_profiles').select('id,username,display_name,bio,avatar_url').eq('id',uid).maybeSingle(),
+   cloud.rpc('fikra_profile_stats',{p_uid:uid}),
+   cloud.from('fikra_posts').select('id,author_id,content,image_path,created_at').eq('author_id',uid).order('created_at',{ascending:false}).limit(30),
+   cloud.from('fikra_reels').select('id,author_id,caption,video_path,views_count,created_at').eq('author_id',uid).order('created_at',{ascending:false}).limit(30)
+  ]);
+  results.forEach(function(x){if(x.error)throw x.error});
+  if(uid!==fikraPublicUid)return;
+  fikraPublicUser=results[0].data;fikraPublicStats=(Array.isArray(results[1].data)?results[1].data[0]:results[1].data)||fikraStatsEmpty;
+  var posts=results[2].data||[],ids=posts.map(function(x){return x.id});
+  fikraPublicReels=results[3].data||[];
+  if(fikraPublicUser)whoFor(fikraPublicUser);
+  var comments=[],likes=[],reposts=[],bookmarks=[];
+  if(ids.length){
+   var more=await Promise.all([
+    cloud.from('fikra_comments').select('id,post_id,parent_id,author_id,content,created_at,edited_at').in('post_id',ids).order('created_at',{ascending:true}).limit(350),
+    cloud.from('fikra_likes').select('post_id,user_id').in('post_id',ids).limit(3000),
+    cloud.from('fikra_reposts').select('post_id,user_id').in('post_id',ids).limit(3000),
+    online()?cloud.from('fikra_bookmarks').select('post_id').eq('user_id',cu.id).in('post_id',ids):Promise.resolve({data:[]})
+   ]);
+   more.forEach(function(x){if(x.error)throw x.error});
+   comments=more[0].data||[];likes=more[1].data||[];reposts=more[2].data||[];bookmarks=more[3].data||[];
+   var commenters=[...new Set(comments.map(function(c){return c.author_id}))];
+   if(commenters.length){
+    var r=await cloud.from('fikra_profiles').select('id,username,display_name,bio,avatar_url').in('id',commenters).limit(150);
+    if(r.error)throw r.error;
+    (r.data||[]).forEach(whoFor);
+   }
+  }
+  if(uid!==fikraPublicUid)return;
+  var creator=whoFor(fikraPublicUser);
+  fikraPublicPosts=posts.map(function(x){
+   var lc=likes.filter(function(l){return l.post_id===x.id}),rc=reposts.filter(function(r){return r.post_id===x.id});
+   return {id:x.id,who:creator,author_id:x.author_id,text:x.content,image:x.image_path?cloud.storage.from('fikra-media').getPublicUrl(x.image_path).data.publicUrl:'',
+    image_path:x.image_path,created:new Date(x.created_at).getTime(),likes:lc.length,liked:lc.some(function(z){return z.user_id===cu?.id}),reposts:rc.length,
+    reposted:rc.some(function(z){return z.user_id===cu?.id}),comments:comments.filter(function(z){return z.post_id===x.id}).map(function(z){
+     return {id:z.id,parent_id:z.parent_id,author_id:z.author_id,who:z.author_id===cu?.id?'men':z.author_id,text:z.content,created:new Date(z.created_at).getTime(),edited_at:z.edited_at};
+    })};
+  });
+ }catch(e){fail(e)}
+ finally{if(uid===fikraPublicUid){fikraPublicBusy=false;if(view==='other-profile')render()}}
+}
+var fikraV11OriginalPostById=postById;
+postById=function(id){return fikraV11OriginalPostById(id)||fikraPublicPosts.find(function(x){return x.id===id})};
+var fikraV11RenderMain=renderMain;
+renderMain=function(){
+ if(view==='other-profile'){$('main').innerHTML=fikraPublicProfilePage();return}
+ fikraV11RenderMain();
+ if(view==='explore'){
+  var field=$('exploreSearch');
+  if(field&&field.closest('label'))field.closest('label').insertAdjacentHTML('afterend','<div id="fikraDirectory" class="fikra-user-directory"></div>');
+  fikraDirectoryRender();
+ }
+};
+var fikraV11FeedBody=feedBody;
+feedBody=function(){
+ if(view==='other-profile')return fikraPublicPosts.map(postHTML).join('');
+ return fikraV11FeedBody();
+};
+function fikraDirectoryRender(){
+ var n=$('fikraDirectory');if(!n)return;
+ var q=(search||'').toLocaleLowerCase('uz').trim();
+ var rows=fikraProfileDirectory.filter(function(u){return !q||(u.display_name+' '+u.username).toLocaleLowerCase('uz').includes(q)}).slice(0,q?12:6);
+ n.innerHTML='<h3>Odamlarni topish</h3>'+
+ (rows.length?rows.map(function(u){var av=fikraValidPhoto(u.avatar_url)?'<span class="avatar fikra-has-photo"><img loading="lazy" src="'+esc(u.avatar_url)+'" alt=""></span>':'<span class="avatar mine">'+esc(u.display_name.slice(0,2))+'</span>';
+  return '<button type="button" class="fikra-user-result" data-fikra-profile="'+esc(u.id)+'">'+av+'<span><strong>'+esc(u.display_name)+'</strong><small>@'+esc(u.username)+'</small></span></button>'
+ }).join(''):'<small class="muted">'+(fikraDirectoryLoading?'Foydalanuvchilar yuklanmoqda...':'Foydalanuvchi topilmadi')+'</small>');
+}
+async function fikraDirectoryLoad(){
+ if(!cloud||fikraDirectoryLoading)return;
+ fikraDirectoryLoading=true;
+ try{var r=await cloud.from('fikra_profiles').select('id,username,display_name,avatar_url').order('created_at',{ascending:false}).limit(100);
+  if(r.error)throw r.error;fikraProfileDirectory=r.data||[];
+ }catch(e){console.warn('FIKRA user directory',e?.message)}
+ finally{fikraDirectoryLoading=false;fikraDirectoryRender()}
+}
+var fikraV11Cloud=cloudLoad;
+cloudLoad=async function(reset){await fikraV11Cloud(reset);if(reset&&cloud)fikraDirectoryLoad()};
+document.addEventListener('input',function(e){if(e.target?.id==='exploreSearch')fikraDirectoryRender()},true);
+async function fikraCommentSave(form){
+ if(!online()){notify('Izoh uchun Google bilan kiring');return}
+ var postId=form.dataset.post,parent=form.dataset.parent||null,edit=form.dataset.edit||null,body=form.elements.body.value.trim();
+ var nonce=form.dataset.nonce||crypto.randomUUID();form.dataset.nonce=nonce;
+ if(!fikraIsUuid(postId)||!body||body.length>280){notify('Izoh 1–280 belgi bo‘lishi kerak');return}
+ if(fikraCommentSubmitting.has(nonce)||form.dataset.busy==='1')return;
+ form.dataset.busy='1';fikraCommentSubmitting.add(nonce);
+ var submit=form.querySelector('[type="submit"]');if(submit)submit.disabled=true;
+ try{
+  var query;
+  if(edit){
+   var found=postById(postId)?.comments?.find(function(c){return c.id===edit});
+   if(!found||found.author_id!==cu.id)throw Error('Faqat o‘z izohingizni tahrirlaysiz');
+   query=await cloud.from('fikra_comments').update({content:body}).eq('id',edit).eq('author_id',cu.id).select('id');
+  }else{
+   if(parent&&!fikraIsUuid(parent))throw Error('Javob ID xato');
+   query=await cloud.from('fikra_comments').insert({post_id:postId,parent_id:parent,author_id:cu.id,content:body,client_nonce:nonce});
+  }
+  if(query.error&&!(query.error.code==='23505'&&!edit))throw query.error;
+  if(edit&&!query.data?.length)throw Error('Izoh topilmadi yoki ruxsat yo‘q');
+  notify(edit?'Izoh tahrirlandi':'Izoh yuborildi');
+  await cloudLoad(true);
+  if(view==='other-profile'&&fikraPublicUid)await fikraOpenProfileRefresh();
+ }catch(err){form.dataset.busy='';fikraCommentSubmitting.delete(nonce);if(submit)submit.disabled=false;fail(err);return}
+ fikraCommentSubmitting.delete(nonce);
+}
+async function fikraOpenProfileRefresh(){
+ if(!fikraPublicUid)return;
+ var uid=fikraPublicUid,tab=fikraPublicTab;
+ await fikraOpenProfile(uid);
+ fikraPublicTab=tab;if(view==='other-profile')render();
+}
+document.addEventListener('submit',function(e){
+ var form=e.target;if(!form?.matches?.('[data-fikra-comment-form]'))return;
+ e.preventDefault();e.stopImmediatePropagation();
+ fikraCommentSave(form);
+},true);
+document.addEventListener('click',function(e){
+ var user=e.target.closest('[data-fikra-profile]');
+ if(user){e.preventDefault();e.stopImmediatePropagation();fikraOpenProfile(user.dataset.fikraProfile);return}
+ var tab=e.target.closest('[data-fikra-public-tab]');
+ if(tab){e.preventDefault();e.stopImmediatePropagation();fikraPublicTab=tab.dataset.fikraPublicTab;render();return}
+ var follow=e.target.closest('[data-fikra-follow]');
+ if(follow){
+  e.preventDefault();e.stopImmediatePropagation();
+  if(!online())return notify('Kuzatish uchun Google orqali kiring');
+  var uid=follow.dataset.fikraFollow;if(!fikraIsUuid(uid)||uid===cu.id)return;
+  var active=state.following.includes(uid);follow.disabled=true;
+  (async function(){
+   var res=active?await cloud.from('fikra_follows').delete().eq('follower_id',cu.id).eq('following_id',uid):
+    await cloud.from('fikra_follows').insert({follower_id:cu.id,following_id:uid});
+   if(res.error)throw res.error;
+   state.following=active?state.following.filter(function(v){return v!==uid}):state.following.concat(uid);
+   fikraPublicStats=Object.assign({},fikraPublicStats||fikraStatsEmpty,{followers:Math.max(0,Number(fikraPublicStats?.followers||0)+(active?-1:1))});
+   render();
+  })().catch(fail).finally(function(){follow.disabled=false});
+  return;
+ }
+ var short=e.target.closest('[data-fikra-public-reel]');
+ if(short){e.preventDefault();e.stopImmediatePropagation();
+  var reel=fikraPublicReels.find(function(r){return r.id===short.dataset.fikraPublicReel});if(!reel)return;
+  var url=fikraSafeReelUrl(reel.video_path);if(!url)return;
+  $('overlay').innerHTML='<div class="overlay" data-fikra-comment="video-overlay"><div class="modal" style="max-width:400px;background:#111;color:white"><div class="modal-head"><h3>Reels</h3><button class="modal-close" data-fikra-comment="video-close">'+icon('x')+'</button></div><video controls autoplay playsinline style="width:100%;max-height:70dvh" src="'+esc(url)+'"></video></div></div>';return;
+ }
+ var btn=e.target.closest('[data-fikra-comment]');if(!btn)return;
+ e.preventDefault();e.stopImmediatePropagation();
+ var action=btn.dataset.fikraComment;
+ if(action==='video-close'||(action==='video-overlay'&&e.target===btn)){$('overlay').innerHTML='';return}
+ if(action==='cancel'){var editor=btn.closest('.fikra-inline-comment-editor');if(editor)editor.innerHTML='';return}
+ var post=postById(btn.dataset.post),id=btn.dataset.id;
+ var c=post?.comments?.find(function(x){return x.id===id});
+ if(!c)return;
+ if(action==='reply'||action==='edit'){
+  if(action==='edit'&&c.author_id!==cu?.id)return notify('Faqat egasi tahrirlashi mumkin');
+  var row=btn.closest('.fikra-comment'),editor=row?.querySelector('.fikra-inline-comment-editor');if(!editor)return;
+  document.querySelectorAll('.fikra-inline-comment-editor').forEach(function(n){n.innerHTML=''});
+  editor.innerHTML=action==='reply'?fikraCommentForm(post.id,c.id,'Javobingizni yozing...'):fikraCommentForm(post.id,'','Izohni tahrirlash...',c.text,c.id);
+  editor.querySelector('textarea')?.focus();return;
+ }
+ if(action==='delete'){
+  if(c.author_id!==cu?.id)return notify('Faqat egasi o‘chirishi mumkin');
+  if(!confirm('Ushbu izohni o‘chirasizmi?'))return;
+  btn.disabled=true;
+  (async function(){var r=await cloud.from('fikra_comments').delete().eq('id',id).eq('author_id',cu.id).select('id');
+   if(r.error)throw r.error;if(!r.data?.length)throw Error('Izoh o‘chmadi');
+   notify('Izoh o‘chirildi');await cloudLoad(true);if(view==='other-profile')await fikraOpenProfileRefresh();
+  })().catch(fail).finally(function(){btn.disabled=false});
+ }
+},true);
 
 render();
 initCloud();
